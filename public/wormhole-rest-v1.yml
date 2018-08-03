@@ -1,10 +1,9 @@
 openapi: 3.0.0
 info:
   description: >-
-    rest.bitcoin.com is the REST layer for Bitcoin.com's Cloud. More info:
-    [developer.bitcoin.com](https://developer.bitcoin.com). #bitbox chatroom [ambassador.cash](http://ambassador.cash)
-  version: 1.0.1
-  title: REST
+    wormholerest.bitcoin.com is [Wormhole](http://wormhole.cash/) over REST/HTTP
+  version: 0.0.1
+  title: WormholeREST
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
