@@ -25,17 +25,9 @@ let app = express();
 let index = require('./routes/index');
 let healthCheck = require('./routes/health-check');
 let configuration = require('./routes/configuration');
-let address = require('./routes/address');
-
-let block = require('./routes/block');
-let blockchain = require('./routes/blockchain');
-let control = require('./routes/control');
-let generating = require('./routes/generating');
-let mining = require('./routes/mining');
-let network = require('./routes/network');
-let rawtransactions = require('./routes/rawtransactions');
-let transaction = require('./routes/transaction');
-let util = require('./routes/util');
+let dataRetrieval = require('./routes/dataRetrieval');
+let payloadCreation = require('./routes/payloadCreation');
+let rawTransactions = require('./routes/rawTransactions');
 
 app.use(swStats.getMiddleware({ swaggerSpec: apiSpec }));
 
@@ -76,15 +68,9 @@ let prefix = 'v1';
 app.use('/', index);
 app.use('/' + prefix + '/' + 'health-check', healthCheck);
 app.use('/' + prefix + '/' + 'configuration', configuration);
-app.use('/' + prefix + '/' + 'blockchain', blockchain);
-app.use('/' + prefix + '/' + 'block', block);
-app.use('/' + prefix + '/' + 'control', control);
-app.use('/' + prefix + '/' + 'generating', generating);
-app.use('/' + prefix + '/' + 'mining', mining);
-app.use('/' + prefix + '/' + 'network', network);
-app.use('/' + prefix + '/' + 'rawtransactions', rawtransactions);
-app.use('/' + prefix + '/' + 'transaction', transaction);
-app.use('/' + prefix + '/' + 'util', util);
+app.use('/' + prefix + '/' + 'dataRetrieval', dataRetrieval);
+app.use('/' + prefix + '/' + 'payloadCreation', payloadCreation);
+app.use('/' + prefix + '/' + 'rawTransactions', rawTransactions);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

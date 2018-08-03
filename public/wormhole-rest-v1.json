@@ -75,7 +75,7 @@
         "tags": [
           "configuration"
         ],
-        "summary": "Address details",
+        "summary": "whcSetAutocommit",
         "description": "Sets the global flag that determines whether transactions are automatically committed and broadcast.",
         "operationId": "configurationWhcSetAutocommit",
         "parameters": [
@@ -115,19 +115,19 @@
         }
       }
     },
-    "/dataRetrieval/whc_getallbalancesforaddress/{address}": {
+    "/dataRetrieval/whcGetAllBalancesForAddress/:address": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "Address utxos",
-        "description": "Returns the list of utxo for an address",
-        "operationId": "utxo",
+        "summary": "whcGetAllBalancesForAddress",
+        "description": "Returns a list of all token balances for a given address.",
+        "operationId": "dataRetrievalWhcGetAllBalancesForAddress",
         "parameters": [
           {
             "name": "address",
             "in": "path",
-            "description": "the address or an array of addresses in cashAddr or legacy",
+            "description": "(string, required) the address",
             "required": true,
             "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
             "schema": {

@@ -11,7 +11,6 @@ let BitboxHTTP = axios.create({
 });
 let username = process.env.RPC_USERNAME;
 let password = process.env.RPC_PASSWORD;
-console.log(BitboxHTTP)
 
 let config = {
   configurationRateLimit1: undefined,

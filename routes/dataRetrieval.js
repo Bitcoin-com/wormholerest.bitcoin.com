@@ -3,6 +3,9 @@ let router = express.Router();
 let axios = require('axios');
 let RateLimit = require('express-rate-limit');
 
+let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
+let BITBOX = new BITBOXCli();
+
 let BitboxHTTP = axios.create({
   baseURL: process.env.RPC_BASEURL
 });
@@ -10,13 +13,23 @@ let username = process.env.RPC_USERNAME;
 let password = process.env.RPC_PASSWORD;
 
 let config = {
-  utilRateLimit1: undefined,
-  utilRateLimit2: undefined
+  dataRetrievalRateLimit1: undefined,
+  dataRetrievalRateLimit2: undefined,
+  dataRetrievalRateLimit3: undefined,
+  dataRetrievalRateLimit4: undefined,
+  dataRetrievalRateLimit5: undefined,
+  dataRetrievalRateLimit6: undefined,
+  dataRetrievalRateLimit7: undefined,
+  dataRetrievalRateLimit8: undefined,
+  dataRetrievalRateLimit9: undefined,
+  dataRetrievalRateLimit10: undefined,
+  dataRetrievalRateLimit11: undefined,
+  dataRetrievalRateLimit12: undefined
 };
 
 let i = 1;
-while(i < 3) {
-  config[`utilRateLimit${i}`] = new RateLimit({
+while(i < 19) {
+  config[`dataRetrievalRateLimit${i}`] = new RateLimit({
     windowMs: 60*60*1000, // 1 hour window
     delayMs: 0, // disable delaying - full speed until the max limit is reached
     max: 60, // start blocking after 60 requests
@@ -31,11 +44,13 @@ while(i < 3) {
   i++;
 }
 
-router.get('/', config.utilRateLimit1, (req, res, next) => {
-  res.json({ status: 'util' });
+router.get('/', config.dataRetrievalRateLimit1, (req, res, next) => {
+  res.json({ status: 'dataRetrieval' });
 });
 
-router.get('/validateAddress/:address', config.utilRateLimit2, (req, res, next) => {
+router.get('/whcGetAllBalancesForAddress/:address', config.dataRetrievalRateLimit2, (req, res, next) => {
+
+  console.log('sdasdasdfds')
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -44,8 +59,8 @@ router.get('/validateAddress/:address', config.utilRateLimit2, (req, res, next) 
     },
     data: {
       jsonrpc: "1.0",
-      id:"validateaddress",
-      method: "validateaddress",
+      id:"whc_getallbalancesforaddress",
+      method: "whc_getallbalancesforaddress",
       params: [
         req.params.address
       ]
