@@ -146,32 +146,7 @@ router.post('/whcCreatePayloadGrant/:propertyId', config.payloadCreationRateLimi
   });
 });
 
-router.post('/whcCreatePayloadIssuanceFixed/:ecosystem', config.payloadCreationRateLimit5, (req, res, next) => {
-
-  BitboxHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_issuancefixed",
-      method: "whc_createpayload_issuancefixed",
-      params: [
-        req.paams.ecosystem
-      ]
-    }
-  })
-  .then((response) => {
-    res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
-});
-
-router.post('/whcCreatePayloadIssuanceCrowdsale/:ecosystem', config.payloadCreationRateLimit6, (req, res, next) => {
+router.post('/whcCreatePayloadIssuanceCrowdsale/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.payloadCreationRateLimit6, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -184,7 +159,20 @@ router.post('/whcCreatePayloadIssuanceCrowdsale/:ecosystem', config.payloadCreat
       id:"whc_createpayload_issuancecrowdsale",
       method: "whc_createpayload_issuancecrowdsale",
       params: [
-        req.paams.ecosystem
+        req.paams.ecosystem,
+        req.paams.propertyPricision,
+        req.paams.previousId,
+        req.paams.category,
+        req.paams.subcategory,
+        req.paams.name,
+        req.paams.url,
+        req.paams.data,
+        req.paams.propertyIdDesired,
+        req.paams.tokensPerUnit,
+        req.paams.deadline,
+        req.paams.earlyBonus,
+        req.paams.undefine,
+        req.paams.totalNumber
       ]
     }
   })
@@ -196,7 +184,7 @@ router.post('/whcCreatePayloadIssuanceCrowdsale/:ecosystem', config.payloadCreat
   });
 });
 
-router.post('/whcCreatePayloadIssuanceFixed/:ecosystem', config.payloadCreationRateLimit7, (req, res, next) => {
+router.post('/whcCreatePayloadIssuanceFixed/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:amount', config.payloadCreationRateLimit7, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -209,7 +197,15 @@ router.post('/whcCreatePayloadIssuanceFixed/:ecosystem', config.payloadCreationR
       id:"whc_createpayload_issuancefixed",
       method: "whc_createpayload_issuancefixed",
       params: [
-        req.paams.ecosystem
+        req.paams.ecosystem,
+        req.paams.propertyPricision,
+        req.paams.previousId,
+        req.paams.category,
+        req.paams.subcategory,
+        req.paams.name,
+        req.paams.url,
+        req.paams.data,
+        req.paams.amount
       ]
     }
   })
@@ -221,7 +217,7 @@ router.post('/whcCreatePayloadIssuanceFixed/:ecosystem', config.payloadCreationR
   });
 });
 
-router.post('/whcCreatePayloadIssuanceManaged/:ecosystem', config.payloadCreationRateLimit8, (req, res, next) => {
+router.post('/whcCreatePayloadIssuanceManaged/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.payloadCreationRateLimit8, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -234,7 +230,14 @@ router.post('/whcCreatePayloadIssuanceManaged/:ecosystem', config.payloadCreatio
       id:"whc_createpayload_issuancemanaged",
       method: "whc_createpayload_issuancemanaged",
       params: [
-        req.paams.ecosystem
+        req.paams.ecosystem,
+        req.paams.propertyPricision,
+        req.paams.previousId,
+        req.paams.category,
+        req.paams.subcategory,
+        req.paams.name,
+        req.paams.url,
+        req.paams.data
       ]
     }
   })
@@ -271,7 +274,8 @@ router.post('/whcCreatePayloadParticrwoSale/:amount', config.payloadCreationRate
   });
 });
 
-router.post('/whcCreatePayloadRevoke/:propertyId', config.payloadCreationRateLimit10, (req, res, next) => {
+router.post('/whcCreatePayloadRevoke/:propertyId/:amount', config.payloadCreationRateLimit10, (req, res, next) => {
+  let memo;
 
   BitboxHTTP({
     method: 'post',
@@ -284,7 +288,9 @@ router.post('/whcCreatePayloadRevoke/:propertyId', config.payloadCreationRateLim
       id:"whc_createpayload_revoke",
       method: "whc_createpayload_revoke",
       params: [
-        req.paams.propertyId
+        req.paams.propertyId,
+        req.paams.amount,
+        memo
       ]
     }
   })
@@ -321,7 +327,7 @@ router.post('/whcCreatePayloadSendAll/:ecosystem', config.payloadCreationRateLim
   });
 });
 
-router.post('/whcCreatePayloadSimpleSend/:propertyId', config.payloadCreationRateLimit12, (req, res, next) => {
+router.post('/whcCreatePayloadSimpleSend/:propertyId/:amount', config.payloadCreationRateLimit12, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -334,7 +340,8 @@ router.post('/whcCreatePayloadSimpleSend/:propertyId', config.payloadCreationRat
       id:"whc_createpayload_simplesend",
       method: "whc_createpayload_simplesend",
       params: [
-        req.paams.propertyId
+        req.paams.propertyId,
+        req.paams.amount
       ]
     }
   })
@@ -346,7 +353,8 @@ router.post('/whcCreatePayloadSimpleSend/:propertyId', config.payloadCreationRat
   });
 });
 
-router.post('/whcCreatePayloadSTO/:propertyId', config.payloadCreationRateLimit13, (req, res, next) => {
+router.post('/whcCreatePayloadSTO/:propertyId/:amount', config.payloadCreationRateLimit13, (req, res, next) => {
+  let distributionProperty;
 
   BitboxHTTP({
     method: 'post',
@@ -359,7 +367,9 @@ router.post('/whcCreatePayloadSTO/:propertyId', config.payloadCreationRateLimit1
       id:"whc_createpayload_sto",
       method: "whc_createpayload_sto",
       params: [
-        req.paams.propertyId
+        req.paams.propertyId,
+        req.paams.amount,
+        distributionProperty
       ]
     }
   })
