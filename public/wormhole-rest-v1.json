@@ -115,7 +115,7 @@
         }
       }
     },
-    "/dataRetrieval/whcGetAllBalancesForAddress/:address": {
+    "/dataRetrieval/whcGetAllBalancesForAddress/{address}": {
       "get": {
         "tags": [
           "dataRetrieval"
@@ -135,6 +135,749 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetAllBalancesForId/{propertyId}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetAllBalancesForId",
+        "description": "Returns a list of token balances for a given currency or property identifier.",
+        "operationId": "dataRetrievalWhcGetAllBalancesForId",
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "(number, required) the property identifier",
+            "required": true,
+            "example": "BITBOXCoin",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetBalance/{address}/{propertyId}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetBalance",
+        "description": "Returns the token balance for a given address and property.",
+        "operationId": "dataRetrievalWhcGetBalance",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "description": "(string, required) the address",
+            "required": true,
+            "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "(number, required) the property identifier",
+            "required": true,
+            "example": "BITBOXCoin",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetBalancesHash/{propertyId}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetBalancesHash",
+        "description": "Returns a hash of the balances for the property.",
+        "operationId": "dataRetrievalWhcGetBalancesHash",
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "(number, required) the property to hash balances for",
+            "required": true,
+            "example": "BITBOXCoin",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetCrowdSale/{propertyId}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetCrowdSale",
+        "description": "Returns information about a crowdsale.",
+        "operationId": "dataRetrievalWhcGetCrowdSale",
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "(number, required) the identifier of the crowdsale",
+            "required": true,
+            "example": "BITBOXCoin",
+            "schema": {
+              "type": "string"
+            }
+          },
+					{
+						"name": "verbose",
+						"in": "query",
+						"description": "(boolean, optional) list crowdsale participants (default: false)",
+						"required": false,
+						"type": "boolean",
+						"default": true
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetCurrentConsensusHash": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetCurrentConsensusHash",
+        "description": "Returns the consensus hash for all balances for the current block.",
+        "operationId": "dataRetrievalWhcGetCurrentConsensusHash",
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetFeeShare": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetFeeShare",
+        "description": "Returns the percentage share of fees distribution applied to the wallet (default) or address (if supplied).",
+        "operationId": "dataRetrievalWhcGetFeeShare",
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetGrants/{propertyId}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetGrants",
+        "description": "Returns information about granted and revoked units of managed tokens.",
+        "operationId": "dataRetrievalWhcGetGrants",
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "(number, required) the identifier of the managed tokens to lookup",
+            "required": true,
+            "example": "BITBOXCoin",
+            "schema": {
+              "type": "string"
+            }
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetInfo": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetInfo",
+        "description": "Returns various state information of the client and protocol.",
+        "operationId": "dataRetrievalWhcGetInfo",
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetPayload/{txid}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetPayload",
+        "description": "Get the payload for an Omni transaction.",
+        "operationId": "dataRetrievalWhcGetPayload",
+        "parameters": [
+          {
+            "name": "txid",
+            "in": "path",
+            "description": "(string, required) the hash of the transaction to retrieve payload",
+            "required": true,
+            "example": "fe28050b93faea61fa88c4c630f0e1f0a1c24d0082dd0e10d369e13212128f33",
+            "schema": {
+              "type": "string"
+            }
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetProperty/{propertyId}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetProperty",
+        "description": "Returns details for about the tokens or smart property to lookup.",
+        "operationId": "dataRetrievalWhcGetProperty",
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "description": "(number, required) the identifier of the tokens or property",
+            "required": true,
+            "example": "BITBOXCoin",
+            "schema": {
+              "type": "string"
+            }
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetSeedBlocks/{startBlock}/{endBlock}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetSeedBlocks",
+        "description": "Returns a list of blocks containing Omni transactions for use in seed block filtering.",
+        "operationId": "dataRetrievalWhcGetSeedBlocks",
+        "parameters": [
+          {
+            "name": "startBlock",
+            "in": "path",
+            "description": "(number, required) the first block to look for Omni transactions (inclusive)",
+            "required": true,
+            "example": "0",
+            "schema": {
+              "type": "number"
+            }
+					},
+          {
+            "name": "endBlock",
+            "in": "path",
+            "description": "(number, required) the last block to look for Omni transactions (inclusive)",
+            "required": true,
+            "example": "500000",
+            "schema": {
+              "type": "number"
+            }
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetSto/{txid}/{recipientFilter}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetSto",
+        "description": "Get information and recipients of a send-to-owners transaction.",
+        "operationId": "dataRetrievalWhcGetSto",
+        "parameters": [
+          {
+            "name": "txid",
+            "in": "path",
+            "description": "(string, required) the hash of the transaction to lookup",
+            "required": true,
+            "example": "fe28050b93faea61fa88c4c630f0e1f0a1c24d0082dd0e10d369e13212128f33",
+            "schema": {
+              "type": "string"
+            }
+					},
+          {
+            "name": "recipientFilter",
+            "in": "query",
+            "description": "(string, optional) a filter for recipients (wallet by default, '*' for all)",
+            "required": true,
+            "example": "*",
+            "schema": {
+              "type": "number"
+            }
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcGetTransaction/{txid}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcGetTransaction",
+        "description": "Get detailed information about an Omni transaction.",
+        "operationId": "dataRetrievalWhcGetTransaction",
+        "parameters": [
+          {
+            "name": "txid",
+            "in": "path",
+            "description": "(string, required) the hash of the transaction to lookup",
+            "required": true,
+            "example": "fe28050b93faea61fa88c4c630f0e1f0a1c24d0082dd0e10d369e13212128f33",
+            "schema": {
+              "type": "string"
+            }
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcListBlockTransactions/{index}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcListBlockTransactions",
+        "description": "Lists all Omni transactions in a block.",
+        "operationId": "dataRetrievalWhcListBlockTransactions",
+        "parameters": [
+          {
+            "name": "index",
+            "in": "path",
+            "description": "(number, required) the block height or block index",
+            "required": true,
+            "example": "345345",
+            "schema": {
+              "type": "string"
+            }
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcListPendingTransactions/{address}": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcListPendingTransactions",
+        "description": "Returns a list of unconfirmed Omni transactions, pending in the memory pool.",
+        "operationId": "dataRetrievalWhcListPendingTransactions",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "description": "(string, optional) address filter (default: '' for no filter)",
+            "required": true,
+            "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
+            "schema": {
+              "type": "string"
+            }
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcListProperties": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcListProperties",
+        "description": "Lists all tokens or smart properties.",
+        "operationId": "dataRetrievalWhcListProperties",
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddressUtxo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid Bitcoin Cash address as input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid Bitcoin Cash address as input."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dataRetrieval/whcListTransactions": {
+      "get": {
+        "tags": [
+          "dataRetrieval"
+        ],
+        "summary": "whcListTransactions",
+        "description": "List wallet transactions, optionally filtered by an address and block boundaries.",
+        "operationId": "dataRetrievalWhcListTransactions",
         "responses": {
           "200": {
             "description": "successful response",

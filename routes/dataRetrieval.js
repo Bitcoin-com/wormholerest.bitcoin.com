@@ -86,7 +86,7 @@ router.get('/whcGetAllBalancesForId/:propertyId', config.dataRetrievalRateLimit2
       id:"whc_getallbalancesforid",
       method: "whc_getallbalancesforid",
       params: [
-        req.params.propertyid
+        req.params.propertyId
       ]
     }
   })
@@ -339,7 +339,7 @@ router.get('/whcGetProperty/:propertyId', config.dataRetrievalRateLimit2, (req, 
   });
 });
 
-router.get('/whcGetSeedBlocks/:startblock/:endblock', config.dataRetrievalRateLimit2, (req, res, next) => {
+router.get('/whcGetSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit2, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -352,8 +352,8 @@ router.get('/whcGetSeedBlocks/:startblock/:endblock', config.dataRetrievalRateLi
       id:"whc_getseedblocks",
       method: "whc_getseedblocks",
       params: [
-        req.params.startblock,
-        req.params.endblock
+        req.params.startBlock,
+        req.params.endBlock
       ]
     }
   })
@@ -466,7 +466,7 @@ router.get('/whcListPendingTransactions/:address', config.dataRetrievalRateLimit
   });
 });
 
-router.get('/whc_listproperties', config.dataRetrievalRateLimit2, (req, res, next) => {
+router.get('/whcListProperties', config.dataRetrievalRateLimit2, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
