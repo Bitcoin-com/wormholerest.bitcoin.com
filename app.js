@@ -24,6 +24,7 @@ let app = express();
 
 let index = require('./routes/index');
 let healthCheck = require('./routes/health-check');
+let configuration = require('./routes/configuration');
 let address = require('./routes/address');
 
 let block = require('./routes/block');
@@ -74,7 +75,7 @@ app.use(function (req, res, next) {
 let prefix = 'v1';
 app.use('/', index);
 app.use('/' + prefix + '/' + 'health-check', healthCheck);
-app.use('/' + prefix + '/' + 'address', address);
+app.use('/' + prefix + '/' + 'configuration', configuration);
 app.use('/' + prefix + '/' + 'blockchain', blockchain);
 app.use('/' + prefix + '/' + 'block', block);
 app.use('/' + prefix + '/' + 'control', control);
@@ -117,33 +118,33 @@ app.set('port', port);
 /**
  * Create HTTP server.
  */
-
+//
 let server = http.createServer(app);
 let io = require('socket.io').listen(server);
+//
+// io.on('connection', (socket) => {
+//   console.log("Socket Connected")
+//
+//   socket.on('disconnect', () => {
+//     console.log("Socket Disconnected")
+//   })
+// });
 
-io.on('connection', (socket) => {
-  console.log("Socket Connected")
-
-  socket.on('disconnect', () => {
-    console.log("Socket Disconnected")
-  })
-});
-
-let bitcoincashZmqDecoder =  new BitcoinCashZMQDecoder(process.env.NETWORK);
-
-sock.connect(`tcp://${process.env.ZEROMQ_URL}:${process.env.ZEROMQ_PORT}`);
-sock.subscribe('raw');
-
-sock.on('message', (topic, message) => {
-  let decoded = topic.toString('ascii');
-  if (decoded === 'rawtx') {
-    let txd = bitcoincashZmqDecoder.decodeTransaction(message);
-    io.emit('transactions', JSON.stringify(txd, null, 2));
-  } else if (decoded === 'rawblock') {
-    let blck = bitcoincashZmqDecoder.decodeBlock(message);
-    io.emit('blocks', JSON.stringify(blck, null, 2));
-  }
-});
+// let bitcoincashZmqDecoder =  new BitcoinCashZMQDecoder(process.env.NETWORK);
+//
+// sock.connect(`tcp://${process.env.ZEROMQ_URL}:${process.env.ZEROMQ_PORT}`);
+// sock.subscribe('raw');
+//
+// sock.on('message', (topic, message) => {
+//   let decoded = topic.toString('ascii');
+//   if (decoded === 'rawtx') {
+//     let txd = bitcoincashZmqDecoder.decodeTransaction(message);
+//     io.emit('transactions', JSON.stringify(txd, null, 2));
+//   } else if (decoded === 'rawblock') {
+//     let blck = bitcoincashZmqDecoder.decodeBlock(message);
+//     io.emit('blocks', JSON.stringify(blck, null, 2));
+//   }
+// });
 /**
  * Listen on provided port, on all network interfaces.
  */

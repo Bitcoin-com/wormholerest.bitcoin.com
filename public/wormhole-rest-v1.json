@@ -52,23 +52,41 @@
     }
   ],
   "paths": {
-    "/configuration/whc_setautocommit/{flag}": {
+    "/configuration": {
       "get": {
         "tags": [
           "configuration"
         ],
+        "summary": "Configuration health check",
+        "description": "Returns 'configuration'",
+        "operationId": "configuration",
+        "responses": {
+          "200": {
+            "description": "successful response"
+          },
+          "400": {
+            "description": "Server down."
+          }
+        }
+      }
+    },
+    "/configuration/whcSetAutocommit/{flag}": {
+      "post": {
+        "tags": [
+          "configuration"
+        ],
         "summary": "Address details",
-        "description": "Returns the details of an address including balance",
-        "operationId": "details",
+        "description": "Sets the global flag that determines whether transactions are automatically committed and broadcast.",
+        "operationId": "configurationWhcSetAutocommit",
         "parameters": [
           {
-            "name": "address",
+            "name": "flag",
             "in": "path",
-            "description": "the address or array of addresses in cashAddr or legacy",
+            "description": "(boolean, required) the flag",
             "required": true,
-            "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
+            "example": "true",
             "schema": {
-              "type": "string"
+              "type": "boolean"
             }
           }
         ],
