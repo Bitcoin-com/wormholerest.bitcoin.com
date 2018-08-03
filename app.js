@@ -16,7 +16,7 @@ let zmq = require('zeromq')
   , sock = zmq.socket('sub');
 
 let swStats = require('swagger-stats');
-let apiSpec = require('./public/bitcoin-com-rest-v1.json');
+let apiSpec = require('./public/wormhole-rest-v1.json');
 
 require('dotenv').config()
 
