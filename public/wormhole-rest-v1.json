@@ -1781,23 +1781,313 @@
         }
       }
     },
-    "/rawTransactions/whc_createrawtx_change/{rawtx}": {
+    "/rawTransactions/whcCreateRawTxChange/{rawtx}/{prevTxs}/{destination}/{fee}/{position}": {
       "get": {
         "tags": [
           "rawTransactions"
         ],
-        "summary": "Block details",
-        "description": "Details about a block",
-        "operationId": "rawTransactions",
+        "summary": "whcCreateRawTxChange",
+        "description": "Adds a change output to the transaction.",
+        "operationId": "rawTransactionsWhcCreateRawTxChange",
         "parameters": [
           {
-            "name": "id",
+            "name": "rawTx",
             "in": "path",
-            "description": "Block hash/height",
+            "description": "(string, required) the raw transaction to extend",
             "required": true,
-            "example": "500000",
+            "example": "",
             "schema": {
               "type": "string"
+            }
+          },
+          {
+            "name": "prevTxs",
+            "in": "path",
+            "description": "(string, required) a JSON array of transaction inputs",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destination",
+            "in": "path",
+            "description": "(string, required) the destination for the change",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "fee",
+            "in": "path",
+            "description": "(number, required) the desired transaction fees",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "position",
+            "in": "query",
+            "description": "(number, optional) the position of the change output (default: first position)",
+            "required": false,
+            "example": 0,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid block height.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid block height."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rawTransactions/whcCreateRawTxInput/{rawtx}/{txid}/{n}": {
+      "get": {
+        "tags": [
+          "rawTransactions"
+        ],
+        "summary": "whcCreateRawTxInput",
+        "description": "Adds a transaction input to the transaction.",
+        "operationId": "rawTransactionsWhcCreateRawTxInput",
+        "parameters": [
+          {
+            "name": "rawTx",
+            "in": "path",
+            "description": "(string, required) the raw transaction to extend",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "txid",
+            "in": "path",
+            "description": "(string, required) the hash of the input transaction",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "n",
+            "in": "path",
+            "description": "(number, required) the index of the transaction output used as input",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid block height.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid block height."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rawTransactions/whcCreateRawTxOpReturn/{rawtx}/{txid}/{n}": {
+      "get": {
+        "tags": [
+          "rawTransactions"
+        ],
+        "summary": "whcCreateRawTxOpReturn",
+        "description": "Adds a payload with class C (op-return) encoding to the transaction.",
+        "operationId": "rawTransactionsWhcCreateRawTxOpReturn",
+        "parameters": [
+          {
+            "name": "rawTx",
+            "in": "path",
+            "description": "(string, required) the raw transaction to extend",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "payload",
+            "in": "path",
+            "description": "(string, required) the hex-encoded payload to add",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid block height.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid block height."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rawTransactions/whcCreateRawTxReference/{rawtx}/{txid}/{n}": {
+      "get": {
+        "tags": [
+          "rawTransactions"
+        ],
+        "summary": "whcCreateRawTxReference",
+        "description": "Adds a reference output to the transaction.",
+        "operationId": "rawTransactionsWhcCreateRawTxReference",
+        "parameters": [
+          {
+            "name": "rawTx",
+            "in": "path",
+            "description": "(string, required) the raw transaction to extend",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "destination",
+            "in": "path",
+            "description": "(string, required) the reference address or destination",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "amount",
+            "in": "path",
+            "description": "(number, optional) the optional reference amount (minimal by default)",
+            "required": false,
+            "example": 0,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BlockDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Received an invalid block height.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid block height."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rawTransactions/whcDecodeTransaction/{rawtx}": {
+      "get": {
+        "tags": [
+          "rawTransactions"
+        ],
+        "summary": "whcDecodeTransaction",
+        "description": "Decodes an Omni transaction.",
+        "operationId": "rawTransactionsWhcDecodeTransaction",
+        "parameters": [
+          {
+            "name": "rawTx",
+            "in": "path",
+            "description": "(string, required) the raw transaction to decode",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "prevTxs",
+            "in": "path",
+            "description": "(string, optional) a JSON array of transaction inputs (default: none)",
+            "required": false,
+            "example": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "height",
+            "in": "path",
+            "description": "(number, optional) the parsing block height (default: 0 for chain height)",
+            "required": false,
+            "example": 0,
+            "schema": {
+              "type": "number"
             }
           }
         ],

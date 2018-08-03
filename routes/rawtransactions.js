@@ -13,23 +13,17 @@ let username = process.env.RPC_USERNAME;
 let password = process.env.RPC_PASSWORD;
 
 let config = {
-  dataRetrievalRateLimit1: undefined,
-  dataRetrievalRateLimit2: undefined,
-  dataRetrievalRateLimit3: undefined,
-  dataRetrievalRateLimit4: undefined,
-  dataRetrievalRateLimit5: undefined,
-  dataRetrievalRateLimit6: undefined,
-  dataRetrievalRateLimit7: undefined,
-  dataRetrievalRateLimit8: undefined,
-  dataRetrievalRateLimit9: undefined,
-  dataRetrievalRateLimit10: undefined,
-  dataRetrievalRateLimit11: undefined,
-  dataRetrievalRateLimit12: undefined
+  rawTransactionsRateLimit1: undefined,
+  rawTransactionsRateLimit2: undefined,
+  rawTransactionsRateLimit3: undefined,
+  rawTransactionsRateLimit4: undefined,
+  rawTransactionsRateLimit5: undefined,
+  rawTransactionsRateLimit6: undefined,
 };
 
 let i = 1;
-while(i < 19) {
-  config[`dataRetrievalRateLimit${i}`] = new RateLimit({
+while(i < 7) {
+  config[`rawTransactionsRateLimit${i}`] = new RateLimit({
     windowMs: 60*60*1000, // 1 hour window
     delayMs: 0, // disable delaying - full speed until the max limit is reached
     max: 60, // start blocking after 60 requests
@@ -44,13 +38,13 @@ while(i < 19) {
   i++;
 }
 
-router.get('/', config.dataRetrievalRateLimit1, (req, res, next) => {
+router.get('/', config.rawTransactionsRateLimit1, (req, res, next) => {
   res.json({ status: 'dataRetrieval' });
 });
 
-router.post('/whcGetAllBalancesForAddress/:address', config.dataRetrievalRateLimit2, (req, res, next) => {
+router.post('/whcCreateRawTxChange/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, (req, res, next) => {
+  let query;
 
-  console.log('sdasdasdfds')
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -59,10 +53,123 @@ router.post('/whcGetAllBalancesForAddress/:address', config.dataRetrievalRateLim
     },
     data: {
       jsonrpc: "1.0",
-      id:"whc_getallbalancesforaddress",
-      method: "whc_getallbalancesforaddress",
+      id:"whc_createrawtx_change",
+      method: "whc_createrawtx_change",
       params: [
-        req.paams.address
+        req.paams.rawtx,
+        req.paams.prevTxs,
+        req.paams.destination,
+        req.paams.fee,
+        query
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.post('/whcCreateRawTxInput/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, (req, res, next) => {
+
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_createrawtx_input",
+      method: "whc_createrawtx_input",
+      params: [
+        req.paams.rawTx,
+        req.paams.txid,
+        req.paams.n
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.post('/whcCreateRawTxOpReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req, res, next) => {
+
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_createrawtx_opreturn",
+      method: "whc_createrawtx_opreturn",
+      params: [
+        req.paams.rawTx,
+        req.paams.payload
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.post('/whcCreateRawTxReference/:rawTx/:destination/:amount', config.rawTransactionsRateLimit5, (req, res, next) => {
+
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_createrawtx_reference",
+      method: "whc_createrawtx_reference",
+      params: [
+        req.paams.rawTx,
+        req.paams.destination,
+        req.paams.amount
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.post('/whcDecodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, res, next) => {
+  let prevTxs;
+  let height;
+
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_decodetransaction",
+      method: "whc_decodetransaction",
+      params: [
+        req.paams.rawTx,
+        prevTxs,
+        height
       ]
     }
   })
