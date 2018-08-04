@@ -6,6 +6,12 @@ let RateLimit = require('express-rate-limit');
 let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
 let BITBOX = new BITBOXCli();
 
+let BitboxHTTP = axios.create({
+  baseURL: process.env.RPC_BASEURL
+});
+let username = process.env.RPC_USERNAME;
+let password = process.env.RPC_PASSWORD;
+
 let config = {
   transactionRateLimit1: undefined,
   transactionRateLimit2: undefined
@@ -32,42 +38,391 @@ router.get('/', config.transactionRateLimit1, (req, res, next) => {
   res.json({ status: 'transaction' });
 });
 
-router.get('/details/:txid', config.transactionRateLimit1, (req, res, next) => {
-  try {
-    let txs = JSON.parse(req.params.txid);
-    let result = [];
-    txs = txs.map(function(tx) {
-      return BITBOX.Transaction.details(tx)
-    })
-    axios.all(txs)
-    .then(axios.spread(function (...spread) {
-      result.push(...spread);
-      res.json(result);
-    }));
-  }
-  catch(error) {
-    axios.get(`${process.env.BITCOINCOM_BASEURL}tx/${req.params.txid}`)
-    .then((response) => {
-      let parsed = response.data;
-      if(parsed && parsed.vin) {
-        parsed.vin.forEach((vin) => {
-          if(!vin.coinbase) {
-            let address = vin.addr;
-            vin.legacyAddress = BITBOX.Address.toLegacyAddress(address);
-            vin.cashAddress = BITBOX.Address.toCashAddress(address);
-            vin.value = vin.valueSat;
-            delete vin.addr;
-            delete vin.valueSat;
-            delete vin.doubleSpentTxID;
-          }
-        });
-      }
-      res.json(parsed);
-    })
-    .catch((error) => {
-      res.send(error.response.data.error.message);
-    });
-  }
+router.get('/whcBurnBCHGetWHC/:amount', config.transactionRateLimit1, (req, res, next) => {
+  let redeemaddress;
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_burnbchgetwhc",
+      method: "whc_burnbchgetwhc",
+      params: [
+        req.paams.amount,
+        redeemaddress
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/whcPartiCrowSale/:fromAddress/:toAddress/:fromAddress/:amount"', config.transactionRateLimit1, (req, res, next) => {
+  let redeemAddress;
+  let referenceAmount;
+
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_particrowsale",
+      method: "whc_particrowsale",
+      params: [
+        req.paams.fromAddress,
+        req.paams.toAddress,
+        req.paams.amount,
+        redeemAddress,
+        referenceAmount
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+
+router.get('/whcSend/:fromAddress/:toAddress/:propertyId/:amount', config.transactionRateLimit1, (req, res, next) => {
+  let redeemAddress;
+  let referenceAmount;
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_send",
+      method: "whc_send",
+      params: [
+        req.paams.fromAddress,
+        req.paams.toAddress,
+        req.paams.propertyId,
+        req.paams.amount,
+        redeemAddress,
+        referenceAmount
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+
+router.get('/whcSendAll/:fromAddress/:toAddress/:ecosystem', config.transactionRateLimit1, (req, res, next) => {
+  let redeemAddress;
+  let referenceAmount;
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendall",
+      method: "whc_sendall",
+      params: [
+        req.paams.fromAddress,
+        req.paams.toAddress,
+        req.paams.ecosystem,
+        redeemAddress,
+        referenceAmount
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/whcSendChangeIssuer/:fromAddress/:toAddress/:propertyId', config.transactionRateLimit1, (req, res, next) => {
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendchangeissuer",
+      method: "whc_sendchangeissuer",
+      params: [
+        req.paams.fromAddress,
+        req.paams.toAddress,
+        req.paams.propertyId
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/whcSendCloseCrowdSale/:fromAddress/:propertyId', config.transactionRateLimit1, (req, res, next) => {
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendclosecrowdsale",
+      method: "whc_sendclosecrowdsale",
+      params: [
+        req.paams.fromAddress,
+        req.paams.propertyId
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+
+router.get('/whcSendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}', config.transactionRateLimit1, (req, res, next) => {
+  let memo;
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendgrant",
+      method: "whc_sendgrant",
+      params: [
+        req.paams.fromAddress,
+        req.paams.toAddress,
+        req.paams.propertyId,
+        req.paams.amount,
+        memo
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/whcSendIssuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.transactionRateLimit1, (req, res, next) => {
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendissuancecrowdsale",
+      method: "whc_sendissuancecrowdsale",
+      params: [
+        req.paams.fromAddress,
+        req.paams.ecosystem,
+        req.paams.propertyPricision,
+        req.paams.previousId,
+        req.paams.category,
+        req.paams.subcategory,
+        req.paams.name,
+        req.paams.url,
+        req.paams.data,
+        req.paams.propertyIdDesired,
+        req.paams.tokensPerUnit,
+        req.paams.deadline,
+        req.paams.earlyBonus,
+        req.paams.undefine,
+        req.paams.totalNumber
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/whcSendIssuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:totalNumber', config.transactionRateLimit1, (req, res, next) => {
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendissuancefixed",
+      method: "whc_sendissuancefixed",
+      params: [
+        req.paams.fromAddress,
+        req.paams.ecosystem,
+        req.paams.propertyPricision,
+        req.paams.previousId,
+        req.paams.category,
+        req.paams.subcategory,
+        req.paams.name,
+        req.paams.url,
+        req.paams.data,
+        req.paams.totalNumber
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/whcSendIssuanceManaged/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.transactionRateLimit1, (req, res, next) => {
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendissuancemanaged",
+      method: "whc_sendissuancemanaged",
+      params: [
+        req.paams.fromAddress,
+        req.paams.ecosystem,
+        req.paams.propertyPricision,
+        req.paams.previousId,
+        req.paams.category,
+        req.paams.subcategory,
+        req.paams.name,
+        req.paams.url,
+        req.paams.data
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/whcSendRawTx/{fromAddress}/{rawTransaction}', config.transactionRateLimit1, (req, res, next) => {
+  let referenceAddress;
+  let redeemAddress;
+  let referenceAmount;
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendrawtx",
+      method: "whc_sendrawtx",
+      params: [
+        req.paams.fromAddress,
+        req.paams.rawTransaction,
+        referenceAddress,
+        redeemAddress,
+        referenceAmount
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/whcSendRevoke/:fromAddress/:propertyId/:amount', config.transactionRateLimit1, (req, res, next) => {
+  let memo;
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendrevoke",
+      method: "whc_sendrevoke",
+      params: [
+        req.paams.fromAddress,
+        req.paams.propertyId,
+        req.paams.amount,
+        memo
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/whcSendSTO/:fromAddress/:propertyId/:amount', config.transactionRateLimit1, (req, res, next) => {
+  let redeemAddress;
+  let distributionProperty;
+  BitboxHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"whc_sendsto",
+      method: "whc_sendsto",
+      params: [
+        req.paams.fromAddress,
+        req.paams.propertyId,
+        req.paams.amount,
+        redeemAddress,
+        distributionProperty
+      ]
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
 });
 
 module.exports = router;
