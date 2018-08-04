@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "description": "wormholerest.bitcoin.com is [Wormhole](http://wormhole.cash/) over REST/HTTP",
+    "description": "[Wormhole](http://wormhole.cash/) over HTTP",
     "version": "0.0.1",
     "title": "WormholeREST",
     "license": {
@@ -43,33 +43,15 @@
       }
     },
     {
-      "name": "transactionCreation",
-      "description": "transactionCreation",
+      "name": "transaction",
+      "description": "transaction",
       "externalDocs": {
         "description": "Find out more",
-        "url": "https://developer.bitcoin.com/wormhole/docs/transactionCreation.html"
+        "url": "https://developer.bitcoin.com/wormhole/docs/transaction.html"
       }
     }
   ],
   "paths": {
-    "/configuration": {
-      "get": {
-        "tags": [
-          "configuration"
-        ],
-        "summary": "Configuration health check",
-        "description": "Returns 'configuration'",
-        "operationId": "configuration",
-        "responses": {
-          "200": {
-            "description": "successful response"
-          },
-          "400": {
-            "description": "Server down."
-          }
-        }
-      }
-    },
     "/configuration/whcSetAutocommit/{flag}": {
       "post": {
         "tags": [
@@ -137,14 +119,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -182,14 +157,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -237,14 +205,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -282,14 +243,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -335,14 +289,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -368,14 +315,7 @@
         "operationId": "dataRetrievalWhcGetCurrentConsensusHash",
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -401,14 +341,7 @@
         "operationId": "dataRetrievalWhcGetFeeShare",
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -446,14 +379,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -479,14 +405,7 @@
         "operationId": "dataRetrievalWhcGetInfo",
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -524,14 +443,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -569,14 +481,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -624,14 +529,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -679,14 +577,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -724,14 +615,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -769,14 +653,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -814,14 +691,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -847,14 +717,7 @@
         "operationId": "dataRetrievalWhcListProperties",
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -880,14 +743,7 @@
         "operationId": "dataRetrievalWhcListTransactions",
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUtxo"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -913,14 +769,7 @@
         "operationId": "payloadCreationWhcCreatePayloadBurnBCH",
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -958,14 +807,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1003,14 +845,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1068,14 +903,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1243,14 +1071,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1368,14 +1189,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1483,14 +1297,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1528,14 +1335,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1593,14 +1393,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1638,14 +1431,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1693,14 +1479,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1758,14 +1537,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressUnconfirmed"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
@@ -1843,14 +1615,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlockDetails"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid block height.",
@@ -1908,14 +1673,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlockDetails"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid block height.",
@@ -1963,14 +1721,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlockDetails"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid block height.",
@@ -2028,14 +1779,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlockDetails"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid block height.",
@@ -2093,14 +1837,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlockDetails"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid block height.",
@@ -2148,14 +1885,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -2222,14 +1952,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -2306,14 +2029,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -2380,14 +2096,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -2434,14 +2143,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -2478,14 +2180,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -2552,14 +2247,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -2726,14 +2414,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -2850,14 +2531,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -2964,14 +2638,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -3038,14 +2705,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -3102,14 +2762,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -3176,14 +2829,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BestBlockHash"
-                }
-              }
-            }
+            "description": "successful response"
           }
         }
       }
@@ -3193,901 +2839,5 @@
     {
       "url": "/v1"
     }
-  ],
-  "components": {
-    "schemas": {
-      "AddressDetails": {
-        "type": "object",
-        "properties": {
-          "balance": {
-            "type": "number",
-            "format": "float"
-          },
-          "balanceSat": {
-            "type": "number",
-            "format": "float"
-          },
-          "totalReceived": {
-            "type": "number",
-            "format": "float"
-          },
-          "totalReceivedSat": {
-            "type": "number",
-            "format": "float"
-          },
-          "totalSent": {
-            "type": "number",
-            "format": "float"
-          },
-          "totalSentSat": {
-            "type": "number",
-            "format": "float"
-          },
-          "unconfirmedBalance": {
-            "type": "number",
-            "format": "float"
-          },
-          "unconfirmedBalanceSat": {
-            "type": "number",
-            "format": "float"
-          },
-          "unconfirmedTxApperances": {
-            "type": "number",
-            "format": "float"
-          },
-          "txApperances": {
-            "type": "number"
-          },
-          "transactions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "legacyAddress": {
-            "type": "string"
-          },
-          "cashAddress": {
-            "type": "string"
-          }
-        }
-      },
-      "AddressUtxo": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Utxo"
-        }
-      },
-      "Utxo": {
-        "type": "object",
-        "properties": {
-          "txid": {
-            "type": "string"
-          },
-          "vout": {
-            "type": "number"
-          },
-          "scriptPubKey": {
-            "type": "string"
-          },
-          "amount": {
-            "type": "number",
-            "format": "float"
-          },
-          "satoshis": {
-            "type": "number"
-          },
-          "height": {
-            "type": "number"
-          },
-          "confirmations": {
-            "type": "number"
-          },
-          "legacyAddress": {
-            "type": "string"
-          },
-          "cashAddress": {
-            "type": "string"
-          }
-        }
-      },
-      "AddressUnconfirmed": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/Unconfirmed"
-        }
-      },
-      "Unconfirmed": {
-        "type": "object",
-        "properties": {
-          "txid": {
-            "type": "string"
-          },
-          "vout": {
-            "type": "number"
-          },
-          "scriptPubKey": {
-            "type": "string"
-          },
-          "amount": {
-            "type": "number",
-            "format": "float"
-          },
-          "satoshis": {
-            "type": "number"
-          },
-          "height": {
-            "type": "number"
-          },
-          "confirmations": {
-            "type": "number"
-          },
-          "legacyAddress": {
-            "type": "string"
-          },
-          "cashAddress": {
-            "type": "string"
-          }
-        }
-      },
-      "BlockDetails": {
-        "type": "object",
-        "properties": {
-          "hash": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number"
-          },
-          "height": {
-            "type": "number"
-          },
-          "version": {
-            "type": "number"
-          },
-          "merkleroot": {
-            "type": "string"
-          },
-          "tx": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "time": {
-            "type": "number"
-          },
-          "nonce": {
-            "type": "number"
-          },
-          "bits": {
-            "type": "string"
-          },
-          "difficulty": {
-            "type": "number",
-            "format": "float"
-          },
-          "chainwork": {
-            "type": "string"
-          },
-          "confirmations": {
-            "type": "number"
-          },
-          "previousblockhash": {
-            "type": "string"
-          },
-          "nextblockhash": {
-            "type": "string"
-          },
-          "reward": {
-            "type": "number",
-            "format": "float"
-          },
-          "isMainChain": {
-            "type": "boolean"
-          },
-          "poolInfo": {
-            "type": "object",
-            "properties": {
-              "poolName": "string",
-              "url": "string"
-            }
-          }
-        }
-      },
-      "BestBlockHash": {
-        "type": "string"
-      },
-      "Block": {
-        "type": "object",
-        "properties": {
-          "hash": {
-            "type": "string"
-          },
-          "confirmations": {
-            "type": "number"
-          },
-          "size": {
-            "type": "number"
-          },
-          "height": {
-            "type": "number"
-          },
-          "version": {
-            "type": "number"
-          },
-          "versionHex": {
-            "type": "string"
-          },
-          "merkleroot": {
-            "type": "string"
-          },
-          "tx": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "time": {
-            "type": "number"
-          },
-          "mediantime": {
-            "type": "number"
-          },
-          "nonce": {
-            "type": "number"
-          },
-          "bits": {
-            "type": "string"
-          },
-          "difficulty": {
-            "type": "number",
-            "format": "float"
-          },
-          "chainwork": {
-            "type": "string"
-          },
-          "previousblockhash": {
-            "type": "string"
-          },
-          "nextblockhash": {
-            "type": "string"
-          }
-        }
-      },
-      "BlockchainInfo": {
-        "type": "object",
-        "properties": {
-          "chain": {
-            "type": "string"
-          },
-          "blocks": {
-            "type": "number"
-          },
-          "headers": {
-            "type": "number"
-          },
-          "bestblockhash": {
-            "type": "string"
-          },
-          "difficulty": {
-            "type": "number",
-            "format": "float"
-          },
-          "mediantime": {
-            "type": "number"
-          },
-          "verificationprogress": {
-            "type": "number",
-            "format": "float"
-          },
-          "chainwork": {
-            "type": "string"
-          },
-          "pruned": {
-            "type": "boolean"
-          },
-          "softforks": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "id": "string",
-                "version": "number",
-                "reject": {
-                  "type": "object",
-                  "properties": {
-                    "status": "boolean"
-                  }
-                }
-              }
-            }
-          },
-          "bip9_softforks": {
-            "type": "object",
-            "properties": {
-              "status": "string",
-              "startTime": "number",
-              "timeout": "number",
-              "since": "number"
-            }
-          }
-        }
-      },
-      "BlockCount": {
-        "type": "number"
-      },
-      "BlockHash": {
-        "type": "string"
-      },
-      "BlockHeader": {
-        "type": "object",
-        "properties": {
-          "hash": {
-            "type": "string"
-          },
-          "confirmations": {
-            "type": "number"
-          },
-          "height": {
-            "type": "number"
-          },
-          "version": {
-            "type": "number"
-          },
-          "versionHex": {
-            "type": "string"
-          },
-          "merkleroot": {
-            "type": "string"
-          },
-          "time": {
-            "type": "number"
-          },
-          "mediantime": {
-            "type": "number"
-          },
-          "nonce": {
-            "type": "number"
-          },
-          "bits": {
-            "type": "string"
-          },
-          "difficulty": {
-            "type": "number",
-            "format": "float"
-          },
-          "chainwork": {
-            "type": "string"
-          },
-          "previousblockhash": {
-            "type": "string"
-          },
-          "nextblockhash": {
-            "type": "string"
-          }
-        }
-      },
-      "Difficulty": {
-        "type": "number",
-        "format": "float"
-      },
-      "MempoolInfo": {
-        "type": "object",
-        "properties": {
-          "size": {
-            "type": "number"
-          },
-          "bytes": {
-            "type": "number"
-          },
-          "usage": {
-            "type": "number"
-          },
-          "maxmempool": {
-            "type": "number"
-          },
-          "mempoolminfee": {
-            "type": "number"
-          }
-        }
-      },
-      "RawMempool": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
-      "DecodeRawTransaction": {
-        "type": "object",
-        "properties": {
-          "txid": {
-            "type": "string"
-          },
-          "hash": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number"
-          },
-          "version": {
-            "type": "number"
-          },
-          "vin": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "txid": {
-                  "type": "string"
-                },
-                "vout": {
-                  "type": "number"
-                },
-                "scriptSig": {
-                  "type": "object",
-                  "properties": {
-                    "asm": {
-                      "type": "string"
-                    },
-                    "hex": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "sequence": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "vout": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "number"
-                },
-                "n": {
-                  "type": "number"
-                },
-                "scriptPubkey": {
-                  "type": "object",
-                  "properties": {
-                    "asm": {
-                      "type": "string"
-                    },
-                    "hex": {
-                      "type": "string"
-                    },
-                    "reqSigs": {
-                      "type": "number"
-                    },
-                    "type": {
-                      "type": "string"
-                    },
-                    "addresses": {
-                      "type": "array",
-                      "items": {
-                        "address": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "DecodeScript": {
-        "type": "object",
-        "properties": {
-          "asm": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "p2sh": {
-            "type": "string"
-          }
-        }
-      },
-      "GetRawTransaction": {
-        "type": "object",
-        "properties": {
-          "hex": {
-            "type": "string"
-          },
-          "txid": {
-            "type": "string"
-          },
-          "hash": {
-            "type": "string"
-          },
-          "size": {
-            "type": "number"
-          },
-          "version": {
-            "type": "number"
-          },
-          "vin": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "txid": {
-                  "type": "string"
-                },
-                "vout": {
-                  "type": "number"
-                },
-                "scriptSig": {
-                  "type": "object",
-                  "properties": {
-                    "asm": {
-                      "type": "string"
-                    },
-                    "hex": {
-                      "type": "string"
-                    },
-                    "sequence": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "vout": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "number"
-                },
-                "n": {
-                  "type": "number"
-                },
-                "scriptPubkey": {
-                  "type": "object",
-                  "properties": {
-                    "asm": {
-                      "type": "string"
-                    },
-                    "hex": {
-                      "type": "string"
-                    },
-                    "reqSigs": {
-                      "type": "number"
-                    },
-                    "type": {
-                      "type": "string"
-                    },
-                    "addresses": {
-                      "type": "array",
-                      "items": {
-                        "address": {
-                          "type": "string"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "blockhash": {
-            "type": "string"
-          },
-          "confirmations": {
-            "type": "number"
-          },
-          "time": {
-            "type": "number"
-          },
-          "blocktime": {
-            "type": "number"
-          }
-        }
-      },
-      "TransactionDetails": {
-        "type": "object",
-        "properties": {
-          "txid": {
-            "type": "string"
-          },
-          "version": {
-            "type": "number"
-          },
-          "locktime": {
-            "type": "number"
-          },
-          "vin": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {
-                "txid": {
-                  "type": "string"
-                },
-                "vout": {
-                  "type": "number"
-                },
-                "sequence": {
-                  "type": "number"
-                },
-                "n": {
-                  "type": "number"
-                },
-                "scriptSig": {
-                  "type": "object",
-                  "properties": {
-                    "hex": {
-                      "type": "string"
-                    },
-                    "asm": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "number"
-                    },
-                    "legacyAddress": {
-                      "type": "string"
-                    },
-                    "cashAddress": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "vout": {
-            "type": "array",
-            "items": {
-              "objects": {
-                "type": "object",
-                "properties": {
-                  "value": {
-                    "type": "number"
-                  },
-                  "n": {
-                    "type": "number"
-                  },
-                  "scriptPubkey": {
-                    "type": "object",
-                    "properties": {
-                      "hex": {
-                        "type": "string"
-                      },
-                      "asm": {
-                        "type": "string"
-                      },
-                      "addresses": {
-                        "type": "array",
-                        "items": {
-                          "address": {
-                            "type": "string"
-                          }
-                        }
-                      },
-                      "type": {
-                        "type": "string"
-                      }
-                    }
-                  },
-                  "spentTxId": {
-                    "type": "string"
-                  },
-                  "spentIndex": {
-                    "type": "number"
-                  },
-                  "spentHeight": {
-                    "type": "number"
-                  }
-                }
-              },
-              "type": "object",
-              "properties": {
-                "value": {
-                  "type": "number"
-                },
-                "n": {
-                  "type": "number"
-                },
-                "scriptPubkey": {
-                  "type": "object",
-                  "properties": {
-                    "hex": {
-                      "type": "string"
-                    },
-                    "asm": {
-                      "type": "string"
-                    }
-                  }
-                },
-                "spentTxId": {
-                  "type": "string"
-                },
-                "spentIndex": {
-                  "type": "number"
-                },
-                "spentHeight": {
-                  "type": "number"
-                }
-              }
-            }
-          },
-          "blockhash": {
-            "type": "string"
-          },
-          "blockheight": {
-            "type": "number"
-          },
-          "confirmations": {
-            "type": "number"
-          },
-          "time": {
-            "type": "number"
-          },
-          "valueOut": {
-            "type": "number"
-          },
-          "size": {
-            "type": "number"
-          },
-          "valueIn": {
-            "type": "number"
-          },
-          "fees": {
-            "type": "number"
-          }
-        }
-      },
-      "ValidateAddress": {
-        "type": "object",
-        "properties": {
-          "isvalid": {
-            "type": "boolean"
-          },
-          "address": {
-            "type": "string"
-          },
-          "scriptPubKey": {
-            "type": "string"
-          },
-          "ismine": {
-            "type": "boolean"
-          },
-          "iswatchonly": {
-            "type": "boolean"
-          },
-          "isscript": {
-            "type": "boolean"
-          }
-        }
-      },
-      "Info": {
-        "type": "object",
-        "properties": {
-          "version": {
-            "type": "number"
-          },
-          "protocolversion": {
-            "type": "number"
-          },
-          "blocks": {
-            "type": "number"
-          },
-          "timeoffset": {
-            "type": "number"
-          },
-          "connections": {
-            "type": "number"
-          },
-          "proxy": {
-            "type": "string"
-          },
-          "difficulty": {
-            "type": "number",
-            "format": "float"
-          },
-          "paytxfee": {
-            "type": "number"
-          },
-          "relayfee": {
-            "type": "number",
-            "format": "float"
-          },
-          "errors": {
-            "type": "string"
-          }
-        }
-      },
-      "MemoryInfo": {
-        "type": "object",
-        "properties": {
-          "locked": {
-            "type": "object",
-            "properties": {
-              "used": {
-                "type": "number"
-              },
-              "free": {
-                "type": "number"
-              },
-              "total": {
-                "type": "number"
-              },
-              "locked": {
-                "type": "number"
-              },
-              "chunks_used": {
-                "type": "number"
-              },
-              "chunks_free": {
-                "type": "number"
-              }
-            }
-          }
-        }
-      },
-      "MiningInfo": {
-        "type": "object",
-        "properties": {
-          "blocks": {
-            "type": "number"
-          },
-          "currentblocksize": {
-            "type": "number"
-          },
-          "currentblocktx": {
-            "type": "number"
-          },
-          "difficulty": {
-            "type": "number",
-            "format": "float"
-          },
-          "blockprioritypercentage": {
-            "type": "number"
-          },
-          "errors": {
-            "type": "string"
-          },
-          "networkhashps": {
-            "type": "number"
-          },
-          "pooledtx": {
-            "type": "number"
-          },
-          "chain": {
-            "type": "string"
-          }
-        }
-      },
-      "NetworkHashps": {
-        "type": "number"
-      },
-      "ConnectionCount": {
-        "type": "number"
-      },
-      "MempoolAncestors": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      },
-      "MempoolDescendants": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
-      }
-    }
-  }
+  ]
 }
