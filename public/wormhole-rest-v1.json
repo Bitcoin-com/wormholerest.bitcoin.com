@@ -887,16 +887,6 @@
             }
 					},
           {
-            "name": "deadline",
-            "in": "path",
-            "description": "The deadline of the crowdsale as Unix timestamp",
-            "required": true,
-            "example": 0,
-            "schema": {
-              "type": "number"
-            }
-					},
-          {
             "name": "earlyBonus",
             "in": "path",
             "description": "An early bird bonus for participants in percent per week",
@@ -1174,7 +1164,7 @@
           "payloadCreation"
         ],
         "summary": "createPayloadRevoke",
-        "description": "Create the payload for a participate crowsale transaction",
+        "description": "Creates the payload to revoke units of managed tokens.",
         "operationId": "payloadCreationCreatePayloadRevoke",
         "parameters": [
           {
@@ -1264,7 +1254,7 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "She amount to send",
+            "description": "The amount to send",
             "required": true,
             "example": "",
             "schema": {
@@ -1309,7 +1299,7 @@
             }
 					},
           {
-            "name": "distributionproperty",
+            "name": "distributionProperty",
             "in": "query",
             "description": "The identifier of the property holders to distribute to",
             "required": false,
