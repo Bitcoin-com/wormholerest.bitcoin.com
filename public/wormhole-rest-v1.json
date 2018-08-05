@@ -1583,7 +1583,7 @@
       }
     },
     "/transaction/whcBurnBCHGetWHC/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -1594,17 +1594,17 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(numeric or string, required) The burn bch amount, required minimum amount is 1BCH",
+            "description": "The burn bch amount, required minimum amount is 1BCH",
             "required": true,
-            "example": "",
+            "example": "1",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "redeemaddress",
-            "in": "path",
-            "description": "(string, optional) the redeem bitcoin address",
+            "name": "redeemAddress",
+            "in": "query",
+            "description": "The redeem bitcoin address",
             "required": false,
             "example": "",
             "schema": {
@@ -1620,7 +1620,7 @@
       }
     },
     "/transaction/whcPartiCrowSale/{fromAddress}/{toAddress}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -1631,7 +1631,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to send from",
+            "description": "The address to send from",
             "required": true,
             "example": "",
             "schema": {
@@ -1641,7 +1641,7 @@
           {
             "name": "toAddress",
             "in": "path",
-            "description": "(string, required) the address of the receiver",
+            "description": "The address of the receiver",
             "required": true,
             "example": "",
             "schema": {
@@ -1651,7 +1651,7 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the amount of WHC to participate crowsale",
+            "description": "The amount of WHC to participate crowsale",
             "required": true,
             "example": "",
             "schema": {
@@ -1660,8 +1660,8 @@
           },
           {
             "name": "redeemAddress",
-            "in": "path",
-            "description": "(string, optional) an address that can spend the transaction dust (sender by default)",
+            "in": "query",
+            "description": "An address that can spend the transaction dust (sender by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -1670,8 +1670,8 @@
           },
           {
             "name": "referenceAmount",
-            "in": "path",
-            "description": "(string, optional) a bitcoin amount that is sent to the receiver (minimal by default)",
+            "in": "query",
+            "description": "A bitcoin amount that is sent to the receiver (minimal by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -1687,7 +1687,7 @@
       }
     },
     "/transaction/whcSend/{fromAddress}/{toAddress}/{propertyId}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -1698,7 +1698,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to send from",
+            "description": "The address to send from",
             "required": true,
             "example": "",
             "schema": {
@@ -1708,7 +1708,7 @@
           {
             "name": "toAddress",
             "in": "path",
-            "description": "(string, required) the address of the receiver",
+            "description": "The address of the receiver",
             "required": true,
             "example": "",
             "schema": {
@@ -1718,17 +1718,17 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens to send",
+            "description": "The identifier of the tokens to send",
             "required": true,
-            "example": "",
+            "example": 0,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           },
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the amount to send",
+            "description": "The amount to send",
             "required": true,
             "example": "",
             "schema": {
@@ -1737,8 +1737,8 @@
           },
           {
             "name": "redeemAddress",
-            "in": "path",
-            "description": "(string, optional) an address that can spend the transaction dust (sender by default)",
+            "in": "query",
+            "description": "An address that can spend the transaction dust (sender by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -1747,8 +1747,8 @@
           },
           {
             "name": "referenceAmount",
-            "in": "path",
-            "description": "(string, optional) a bitcoin amount that is sent to the receiver (minimal by default)",
+            "in": "query",
+            "description": "A bitcoin amount that is sent to the receiver (minimal by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -1764,7 +1764,7 @@
       }
     },
     "/transaction/whcSendAll/{fromAddress}/{toAddress}/{ecosystem}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -1775,7 +1775,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to send from",
+            "description": "The address to send from",
             "required": true,
             "example": "",
             "schema": {
@@ -1785,7 +1785,7 @@
           {
             "name": "toAddress",
             "in": "path",
-            "description": "(string, required) the address of the receiver",
+            "description": "The address of the receiver",
             "required": true,
             "example": "",
             "schema": {
@@ -1795,17 +1795,17 @@
           {
             "name": "ecosystem",
             "in": "path",
-            "description": "(number, required) the ecosystem of the tokens to send (1 for main ecosystem, 2 for test ecosystem)",
+            "description": "The ecosystem of the tokens to send (1 for main ecosystem, 2 for test ecosystem)",
             "required": true,
-            "example": 0,
+            "example": 2,
             "schema": {
               "type": "number"
             }
           },
           {
             "name": "redeemAddress",
-            "in": "path",
-            "description": "(string, optional) an address that can spend the transaction dust (sender by default)",
+            "in": "query",
+            "description": "An address that can spend the transaction dust (sender by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -1814,8 +1814,8 @@
           },
           {
             "name": "referenceAmount",
-            "in": "path",
-            "description": "(string, optional) a bitcoin amount that is sent to the receiver (minimal by default)",
+            "in": "query",
+            "description": "A bitcoin amount that is sent to the receiver (minimal by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -1831,7 +1831,7 @@
       }
     },
     "/transaction/whcSendChangeIssuer/{fromAddress}/{toAddress}/{propertyId}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -1842,7 +1842,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address associated with the tokens",
+            "description": "The address associated with the tokens",
             "required": true,
             "example": "",
             "schema": {
@@ -1852,7 +1852,7 @@
           {
             "name": "toAddress",
             "in": "path",
-            "description": "(string, required) the address to transfer administrative control to",
+            "description": "The address to transfer administrative control to",
             "required": true,
             "example": "",
             "schema": {
@@ -1862,7 +1862,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens",
+            "description": "The identifier of the tokens",
             "required": true,
             "example": 0,
             "schema": {
@@ -1878,7 +1878,7 @@
       }
     },
     "/transaction/whcSendCloseCrowdSale/{fromAddress}/{propertyId}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -1889,7 +1889,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address associated with the crowdsale to close",
+            "description": "The address associated with the crowdsale to close",
             "required": true,
             "example": "",
             "schema": {
@@ -1899,7 +1899,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the crowdsale to close",
+            "description": "The identifier of the crowdsale to close",
             "required": true,
             "example": 0,
             "schema": {
@@ -1915,7 +1915,7 @@
       }
     },
     "/transaction/whcSendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -1926,7 +1926,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to send from",
+            "description": "The address to send from",
             "required": true,
             "example": "",
             "schema": {
@@ -1936,7 +1936,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the receiver of the tokens (sender by default, can be '')",
+            "description": "The receiver of the tokens (sender by default, can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -1946,7 +1946,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens to grant",
+            "description": "The identifier of the tokens to grant",
             "required": true,
             "example": 0,
             "schema": {
@@ -1956,7 +1956,7 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the amount of tokens to create",
+            "description": "The amount of tokens to create",
             "required": true,
             "example": "",
             "schema": {
@@ -1965,8 +1965,8 @@
           },
           {
             "name": "memo",
-            "in": "path",
-            "description": "(string, optional) a text note attached to this transaction (none by default)",
+            "in": "query",
+            "description": "A text note attached to this transaction (none by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -1982,7 +1982,7 @@
       }
     },
     "/transaction/whcSendIssuanceCrowdSale/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -1993,7 +1993,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to send from",
+            "description": "The address to send from",
             "required": true,
             "example": "",
             "schema": {
@@ -2003,7 +2003,7 @@
           {
             "name": "ecosystem",
             "in": "path",
-            "description": "(string, required) the ecosystem to create the tokens in, must be 1",
+            "description": "The ecosystem to create the tokens in, must be 1",
             "required": true,
             "example": "",
             "schema": {
@@ -2013,7 +2013,7 @@
           {
             "name": "propertyPricision",
             "in": "path",
-            "description": "(number, required) the pricision of the tokens to create:[0, 8]",
+            "description": "The pricision of the tokens to create:[0, 8]",
             "required": true,
             "example": 0,
             "schema": {
@@ -2023,7 +2023,7 @@
           {
             "name": "previousId",
             "in": "path",
-            "description": "(number, required) an identifier of a predecessor token (0 for new crowdsales)",
+            "description": "An identifier of a predecessor token (0 for new crowdsales)",
             "required": true,
             "example": 0,
             "schema": {
@@ -2033,7 +2033,7 @@
           {
             "name": "category",
             "in": "path",
-            "description": "(string, required) a category for the new tokens (can be '')",
+            "description": "A category for the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2043,7 +2043,7 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "(string, required) a subcategory for the new tokens  (can be '')",
+            "description": "A subcategory for the new tokens  (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2053,7 +2053,7 @@
           {
             "name": "name",
             "in": "path",
-            "description": "(string, required) the name of the new tokens to create",
+            "description": "The name of the new tokens to create",
             "required": true,
             "example": "",
             "schema": {
@@ -2063,7 +2063,7 @@
           {
             "name": "url",
             "in": "path",
-            "description": "(string, required) an URL for further information about the new tokens (can be '')",
+            "description": "An URL for further information about the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2073,7 +2073,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "(string, required) a description for the new tokens (can be '')",
+            "description": "A description for the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2083,7 +2083,7 @@
           {
             "name": "propertyIdDesired",
             "in": "path",
-            "description": "(number, required) the identifier of a token eligible to participate in the crowdsale",
+            "description": "The identifier of a token eligible to participate in the crowdsale",
             "required": true,
             "example": 0,
             "schema": {
@@ -2093,7 +2093,7 @@
           {
             "name": "tokensPerUnit",
             "in": "path",
-            "description": "(string, required) the amount of tokens granted per unit invested in the crowdsale",
+            "description": "The amount of tokens granted per unit invested in the crowdsale",
             "required": true,
             "example": "",
             "schema": {
@@ -2103,7 +2103,7 @@
           {
             "name": "deadline",
             "in": "path",
-            "description": "(number, required) the deadline of the crowdsale as Unix timestamp",
+            "description": "The deadline of the crowdsale as Unix timestamp",
             "required": true,
             "example": 0,
             "schema": {
@@ -2113,7 +2113,7 @@
           {
             "name": "earlyBonus",
             "in": "path",
-            "description": "(number, required) an early bird bonus for participants in percent per week",
+            "description": "An early bird bonus for participants in percent per week",
             "required": true,
             "example": 0,
             "schema": {
@@ -2123,7 +2123,7 @@
           {
             "name": "undefine",
             "in": "path",
-            "description": "(number, required) the value must be 0",
+            "description": "The value must be 0",
             "required": true,
             "example": 0,
             "schema": {
@@ -2133,7 +2133,7 @@
           {
             "name": "totalNumber",
             "in": "path",
-            "description": "(string, required) the number of tokens to create",
+            "description": "The number of tokens to create",
             "required": true,
             "example": "",
             "schema": {
@@ -2149,7 +2149,7 @@
       }
     },
     "/transaction/whcSendIssuanceFixed/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{totalNumber}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -2160,7 +2160,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to send from",
+            "description": "The address to send from",
             "required": true,
             "example": "",
             "schema": {
@@ -2170,7 +2170,7 @@
           {
             "name": "ecosystem",
             "in": "path",
-            "description": "(string, required) the ecosystem to create the tokens in, must be 1",
+            "description": "The ecosystem to create the tokens in, must be 1",
             "required": true,
             "example": "",
             "schema": {
@@ -2180,9 +2180,9 @@
           {
             "name": "propertyPricision",
             "in": "path",
-            "description": "(number, required) the pricision of the tokens to create:[0, 8]",
+            "description": "The pricision of the tokens to create:[0, 8]",
             "required": true,
-            "example": 0,
+            "example": 8,
             "schema": {
               "type": "number"
             }
@@ -2190,7 +2190,7 @@
           {
             "name": "previousId",
             "in": "path",
-            "description": "(number, required) an identifier of a predecessor token (use 0 for new tokens)",
+            "description": "An identifier of a predecessor token (use 0 for new tokens)",
             "required": true,
             "example": 0,
             "schema": {
@@ -2200,7 +2200,7 @@
           {
             "name": "category",
             "in": "path",
-            "description": "(string, required) a category for the new tokens (can be '')",
+            "description": "A category for the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2210,7 +2210,7 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "(string, required) a subcategory for the new tokens  (can be '')",
+            "description": "A subcategory for the new tokens  (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2220,7 +2220,7 @@
           {
             "name": "name",
             "in": "path",
-            "description": "(string, required) the name of the new tokens to create",
+            "description": "The name of the new tokens to create",
             "required": true,
             "example": "",
             "schema": {
@@ -2230,7 +2230,7 @@
           {
             "name": "url",
             "in": "path",
-            "description": "(string, required) an URL for further information about the new tokens (can be '')",
+            "description": "An URL for further information about the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2240,7 +2240,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "(string, required) a description for the new tokens (can be '')",
+            "description": "A description for the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2250,7 +2250,7 @@
           {
             "name": "totalNumber",
             "in": "path",
-            "description": "(string, required) the number of tokens to create",
+            "description": "The number of tokens to create",
             "required": true,
             "example": "",
             "schema": {
@@ -2266,7 +2266,7 @@
       }
     },
     "/transaction/whcSendIssuanceManaged/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -2277,7 +2277,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to send from",
+            "description": "The address to send from",
             "required": true,
             "example": "",
             "schema": {
@@ -2287,7 +2287,7 @@
           {
             "name": "ecosystem",
             "in": "path",
-            "description": "(string, required) the ecosystem to create the tokens in, must be 1",
+            "description": "The ecosystem to create the tokens in, must be 1",
             "required": true,
             "example": "",
             "schema": {
@@ -2297,7 +2297,7 @@
           {
             "name": "propertyPricision",
             "in": "path",
-            "description": "(number, required) the pricision of the tokens to create:[0, 8]",
+            "description": "The pricision of the tokens to create:[0, 8]",
             "required": true,
             "example": 0,
             "schema": {
@@ -2307,7 +2307,7 @@
           {
             "name": "previousId",
             "in": "path",
-            "description": "(number, required) an identifier of a predecessor token (use 0 for new tokens)",
+            "description": "An identifier of a predecessor token (use 0 for new tokens)",
             "required": true,
             "example": 0,
             "schema": {
@@ -2317,7 +2317,7 @@
           {
             "name": "category",
             "in": "path",
-            "description": "(string, required) a category for the new tokens (can be '')",
+            "description": "A category for the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2327,7 +2327,7 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "(string, required) a subcategory for the new tokens  (can be '')",
+            "description": "A subcategory for the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2337,7 +2337,7 @@
           {
             "name": "name",
             "in": "path",
-            "description": "(string, required) the name of the new tokens to create",
+            "description": "The name of the new tokens to create",
             "required": true,
             "example": "",
             "schema": {
@@ -2347,7 +2347,7 @@
           {
             "name": "url",
             "in": "path",
-            "description": "(string, required) an URL for further information about the new tokens (can be '')",
+            "description": "An URL for further information about the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2357,7 +2357,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "(string, required) a description for the new tokens (can be '')",
+            "description": "A description for the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -2373,7 +2373,7 @@
       }
     },
     "/transaction/whcSendRawTx/{fromAddress}/{rawTransaction}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -2384,7 +2384,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to send from",
+            "description": "The address to send from",
             "required": true,
             "example": "",
             "schema": {
@@ -2394,7 +2394,7 @@
           {
             "name": "rawTransaction",
             "in": "path",
-            "description": "(string, required) the hex-encoded raw transaction",
+            "description": "The hex-encoded raw transaction",
             "required": true,
             "example": "",
             "schema": {
@@ -2403,8 +2403,8 @@
           },
           {
             "name": "referenceAddress",
-            "in": "path",
-            "description": "(string, optional) a reference address (none by default)",
+            "in": "query",
+            "description": "A reference address (none by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -2413,8 +2413,8 @@
           },
           {
             "name": "redeemAddress",
-            "in": "path",
-            "description": "(string, optional) an address that can spent the transaction dust (sender by default)",
+            "in": "query",
+            "description": "An address that can spent the transaction dust (sender by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -2423,8 +2423,8 @@
           },
           {
             "name": "referenceAmount",
-            "in": "path",
-            "description": "(string, optional) a bitcoin amount that is sent to the receiver (minimal by default)",
+            "in": "query",
+            "description": "A bitcoin amount that is sent to the receiver (minimal by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -2440,7 +2440,7 @@
       }
     },
     "/transaction/whcSendRevoke/{fromAddress}/{propertyId}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -2451,7 +2451,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to revoke the tokens from",
+            "description": "The address to revoke the tokens from",
             "required": true,
             "example": "",
             "schema": {
@@ -2461,7 +2461,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens to revoke",
+            "description": "The identifier of the tokens to revoke",
             "required": true,
             "example": 0,
             "schema": {
@@ -2471,7 +2471,7 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the amount of tokens to revoke",
+            "description": "The amount of tokens to revoke",
             "required": true,
             "example": "",
             "schema": {
@@ -2480,8 +2480,8 @@
           },
           {
             "name": "memo",
-            "in": "path",
-            "description": "(string, optional) a text note attached to this transaction (none by default)",
+            "in": "query",
+            "description": "A text note attached to this transaction (none by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -2497,7 +2497,7 @@
       }
     },
     "/transaction/whcSendSTO/{fromAddress}/{propertyId}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "transaction"
         ],
@@ -2508,7 +2508,7 @@
           {
             "name": "fromAddress",
             "in": "path",
-            "description": "(string, required) the address to send from",
+            "description": "The address to send from",
             "required": true,
             "example": "",
             "schema": {
@@ -2518,7 +2518,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens to distribute",
+            "description": "The identifier of the tokens to distribute",
             "required": true,
             "example": 0,
             "schema": {
@@ -2528,7 +2528,7 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the amount to distribute",
+            "description": "The amount to distribute",
             "required": true,
             "example": "",
             "schema": {
@@ -2537,8 +2537,8 @@
           },
           {
             "name": "redeemAddress",
-            "in": "path",
-            "description": "(string, optional) an address that can spend the transaction dust (sender by default)",
+            "in": "query",
+            "description": "An address that can spend the transaction dust (sender by default)",
             "required": false,
             "example": "",
             "schema": {
@@ -2547,8 +2547,8 @@
           },
           {
             "name": "distributionProperty",
-            "in": "path",
-            "description": "(number, optional) the identifier of the property holders to distribute to",
+            "in": "query",
+            "description": "The identifier of the property holders to distribute to",
             "required": false,
             "example": 0,
             "schema": {
