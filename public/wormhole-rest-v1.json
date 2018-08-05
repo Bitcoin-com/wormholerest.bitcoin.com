@@ -242,7 +242,7 @@
 					{
 						"name": "verbose",
 						"in": "query",
-						"description": "(boolean, optional) list crowdsale participants (default: false)",
+						"description": "List crowdsale participants (default: false)",
 						"required": false,
 						"type": "boolean",
 						"default": false
@@ -285,7 +285,7 @@
           {
             "name": "address",
             "in": "query",
-            "description": "(string, optional) retrieve the fee share for the supplied address",
+            "description": "Retrieve the fee share for the supplied address",
             "required": false,
             "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
             "schema": {
@@ -295,7 +295,7 @@
           {
             "name": "ecosystem",
             "in": "query",
-            "description": "(number, optional) the ecosystem to check the fee share (1 for main ecosystem, 2 for test ecosystem)",
+            "description": "The ecosystem to check the fee share (1 for main ecosystem, 2 for test ecosystem)",
             "required": false,
             "example": 0,
             "schema": {
