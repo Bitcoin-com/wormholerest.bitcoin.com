@@ -38,7 +38,7 @@ router.get('/', config.configurationRateLimit1, (req, res, next) => {
   res.json({ status: 'configuration' });
 });
 
-router.post('/whcSetAutoCommit/:flag', config.configurationRateLimit2, (req, res, next) => {
+router.post('/setAutoCommit/:flag', config.configurationRateLimit2, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',

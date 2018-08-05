@@ -52,14 +52,14 @@
     }
   ],
   "paths": {
-    "/configuration/whcSetAutoCommit/{flag}": {
+    "/configuration/setAutoCommit/{flag}": {
       "post": {
         "tags": [
           "configuration"
         ],
-        "summary": "whcSetAutoCommit",
+        "summary": "setAutoCommit",
         "description": "Sets the global flag that determines whether transactions are automatically committed and broadcast.",
-        "operationId": "configurationWhcSetAutoCommit",
+        "operationId": "configurationSetAutoCommit",
         "parameters": [
           {
             "name": "flag",
@@ -97,7 +97,7 @@
         ],
         "summary": "getAllBalancesForAddress",
         "description": "Returns a list of all token balances for a given address.",
-        "operationId": "dataRetrievalWhcGetAllBalancesForAddress",
+        "operationId": "dataRetrievalGetAllBalancesForAddress",
         "parameters": [
           {
             "name": "address",
@@ -127,7 +127,7 @@
         ],
         "summary": "getAllBalancesForId",
         "description": "Returns a list of token balances for a given currency or property identifier.",
-        "operationId": "dataRetrievalWhcGetAllBalancesForId",
+        "operationId": "dataRetrievalGetAllBalancesForId",
         "parameters": [
           {
             "name": "propertyId",
@@ -157,7 +157,7 @@
         ],
         "summary": "getBalance",
         "description": "Returns the token balance for a given address and property.",
-        "operationId": "dataRetrievalWhcGetBalance",
+        "operationId": "dataRetrievalGetBalance",
         "parameters": [
           {
             "name": "address",
@@ -197,7 +197,7 @@
         ],
         "summary": "getBalancesHash",
         "description": "Returns a hash of the balances for the property.",
-        "operationId": "dataRetrievalWhcGetBalancesHash",
+        "operationId": "dataRetrievalGetBalancesHash",
         "parameters": [
           {
             "name": "propertyId",
@@ -227,7 +227,7 @@
         ],
         "summary": "getCrowdSale",
         "description": "Returns information about a crowdsale.",
-        "operationId": "dataRetrievalWhcGetCrowdSale",
+        "operationId": "dataRetrievalGetCrowdSale",
         "parameters": [
           {
             "name": "propertyId",
@@ -265,7 +265,7 @@
         ],
         "summary": "getCurrentConsensusHash",
         "description": "Returns the consensus hash for all balances for the current block.",
-        "operationId": "dataRetrievalWhcGetCurrentConsensusHash",
+        "operationId": "dataRetrievalGetCurrentConsensusHash",
         "responses": {
           "200": {
             "description": "successful response"
@@ -280,7 +280,7 @@
         ],
         "summary": "getFeeShare",
         "description": "Returns the percentage share of fees distribution applied to the wallet (default) or address (if supplied).",
-        "operationId": "dataRetrievalWhcGetFeeShare",
+        "operationId": "dataRetrievalGetFeeShare",
         "parameters": [
           {
             "name": "address",
@@ -320,7 +320,7 @@
         ],
         "summary": "getGrants",
         "description": "Returns information about granted and revoked units of managed tokens.",
-        "operationId": "dataRetrievalWhcGetGrants",
+        "operationId": "dataRetrievalGetGrants",
         "parameters": [
           {
             "name": "propertyId",
@@ -350,7 +350,7 @@
         ],
         "summary": "getInfo",
         "description": "Returns various state information of the client and protocol.",
-        "operationId": "dataRetrievalWhcGetInfo",
+        "operationId": "dataRetrievalGetInfo",
         "responses": {
           "200": {
             "description": "successful response"
@@ -365,7 +365,7 @@
         ],
         "summary": "getPayload",
         "description": "Get the payload for an Omni transaction.",
-        "operationId": "dataRetrievalWhcGetPayload",
+        "operationId": "dataRetrievalGetPayload",
         "parameters": [
           {
             "name": "txid",
@@ -395,7 +395,7 @@
         ],
         "summary": "getProperty",
         "description": "Returns details for about the tokens or smart property to lookup.",
-        "operationId": "dataRetrievalWhcGetProperty",
+        "operationId": "dataRetrievalGetProperty",
         "parameters": [
           {
             "name": "propertyId",
@@ -425,7 +425,7 @@
         ],
         "summary": "getSeedBlocks",
         "description": "Returns a list of blocks containing Omni transactions for use in seed block filtering.",
-        "operationId": "dataRetrievalWhcGetSeedBlocks",
+        "operationId": "dataRetrievalGetSeedBlocks",
         "parameters": [
           {
             "name": "startBlock",
@@ -465,7 +465,7 @@
         ],
         "summary": "getSTO",
         "description": "Get information and recipients of a send-to-owners transaction.",
-        "operationId": "dataRetrievalWhcGetSto",
+        "operationId": "dataRetrievalGetSto",
         "parameters": [
           {
             "name": "txid",
@@ -505,7 +505,7 @@
         ],
         "summary": "getTransaction",
         "description": "Get detailed information about an Omni transaction.",
-        "operationId": "dataRetrievalWhcGetTransaction",
+        "operationId": "dataRetrievalGetTransaction",
         "parameters": [
           {
             "name": "txid",
@@ -535,7 +535,7 @@
         ],
         "summary": "listBlockTransactions",
         "description": "Lists all Omni transactions in a block.",
-        "operationId": "dataRetrievalWhcListBlockTransactions",
+        "operationId": "dataRetrievalListBlockTransactions",
         "parameters": [
           {
             "name": "index",
@@ -565,7 +565,7 @@
         ],
         "summary": "listPendingTransactions",
         "description": "Returns a list of unconfirmed Omni transactions, pending in the memory pool.",
-        "operationId": "dataRetrievalWhcListPendingTransactions",
+        "operationId": "dataRetrievalListPendingTransactions",
         "parameters": [
           {
             "name": "address",
@@ -595,7 +595,7 @@
         ],
         "summary": "listProperties",
         "description": "Lists all tokens or smart properties.",
-        "operationId": "dataRetrievalWhcListProperties",
+        "operationId": "dataRetrievalListProperties",
         "responses": {
           "200": {
             "description": "successful response"
@@ -610,7 +610,7 @@
         ],
         "summary": "listTransactions",
         "description": "List wallet transactions, optionally filtered by an address and block boundaries.",
-        "operationId": "dataRetrievalWhcListTransactions",
+        "operationId": "dataRetrievalListTransactions",
         "responses": {
           "200": {
             "description": "successful response"
