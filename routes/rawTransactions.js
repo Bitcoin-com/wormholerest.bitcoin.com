@@ -56,10 +56,10 @@ router.post('/whcCreateRawTxChange/:rawtx/:prevTxs/:destination/:fee', config.ra
       id:"whc_createrawtx_change",
       method: "whc_createrawtx_change",
       params: [
-        req.paams.rawtx,
-        req.paams.prevTxs,
-        req.paams.destination,
-        req.paams.fee,
+        req.params.rawtx,
+        req.params.prevTxs,
+        req.params.destination,
+        req.params.fee,
         query
       ]
     }
@@ -85,9 +85,9 @@ router.post('/whcCreateRawTxInput/:rawTx/:txid/:n', config.rawTransactionsRateLi
       id:"whc_createrawtx_input",
       method: "whc_createrawtx_input",
       params: [
-        req.paams.rawTx,
-        req.paams.txid,
-        req.paams.n
+        req.params.rawTx,
+        req.params.txid,
+        req.params.n
       ]
     }
   })
@@ -112,8 +112,8 @@ router.post('/whcCreateRawTxOpReturn/:rawTx/:payload', config.rawTransactionsRat
       id:"whc_createrawtx_opreturn",
       method: "whc_createrawtx_opreturn",
       params: [
-        req.paams.rawTx,
-        req.paams.payload
+        req.params.rawTx,
+        req.params.payload
       ]
     }
   })
@@ -138,9 +138,9 @@ router.post('/whcCreateRawTxReference/:rawTx/:destination/:amount', config.rawTr
       id:"whc_createrawtx_reference",
       method: "whc_createrawtx_reference",
       params: [
-        req.paams.rawTx,
-        req.paams.destination,
-        req.paams.amount
+        req.params.rawTx,
+        req.params.destination,
+        req.params.amount
       ]
     }
   })
@@ -167,7 +167,7 @@ router.get('/whcDecodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (re
       id:"whc_decodetransaction",
       method: "whc_decodetransaction",
       params: [
-        req.paams.rawTx,
+        req.params.rawTx,
         prevTxs,
         height
       ]
