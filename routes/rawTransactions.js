@@ -152,7 +152,7 @@ router.post('/whcCreateRawTxReference/:rawTx/:destination/:amount', config.rawTr
   });
 });
 
-router.post('/whcDecodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, res, next) => {
+router.get('/whcDecodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, res, next) => {
   let prevTxs;
   let height;
 
