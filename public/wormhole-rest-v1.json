@@ -64,7 +64,7 @@
           {
             "name": "flag",
             "in": "path",
-            "description": "(boolean, required) the flag",
+            "description": "the flag",
             "required": true,
             "example": "true",
             "schema": {
@@ -102,7 +102,7 @@
           {
             "name": "address",
             "in": "path",
-            "description": "(string, required) the address",
+            "description": "the address",
             "required": true,
             "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
             "schema": {
@@ -115,15 +115,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "Invalid address. Note: use cashAddress"
           }
         }
       }
@@ -140,11 +132,11 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the property identifier",
+            "description": "The property identifier",
             "required": true,
-            "example": "BITBOXCoin",
+            "example": 0,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           }
         ],
@@ -153,15 +145,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "JSON value is not an integer as expected"
           }
         }
       }
@@ -178,7 +162,7 @@
           {
             "name": "address",
             "in": "path",
-            "description": "(string, required) the address",
+            "description": "The address",
             "required": true,
             "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
             "schema": {
@@ -188,11 +172,11 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the property identifier",
+            "description": "The property identifier",
             "required": true,
-            "example": "BITBOXCoin",
+            "example": 0,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           }
         ],
@@ -201,15 +185,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "Invalid address. Note: use cashAddress"
           }
         }
       }
@@ -226,11 +202,11 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the property to hash balances for",
+            "description": "The property to hash balances for",
             "required": true,
-            "example": "BITBOXCoin",
+            "example": 0,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           }
         ],
@@ -239,15 +215,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "JSON value is not an integer as expected"
           }
         }
       }
@@ -264,11 +232,11 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the crowdsale",
+            "description": "The identifier of the crowdsale",
             "required": true,
-            "example": "BITBOXCoin",
+            "example": 0,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
           },
 					{
@@ -277,7 +245,7 @@
 						"description": "(boolean, optional) list crowdsale participants (default: false)",
 						"required": false,
 						"type": "boolean",
-						"default": true
+						"default": false
 					}
         ],
         "responses": {
@@ -285,15 +253,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "JSON value is not an integer as expected"
           }
         }
       }
@@ -309,17 +269,6 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
@@ -332,20 +281,34 @@
         "summary": "whcGetFeeShare",
         "description": "Returns the percentage share of fees distribution applied to the wallet (default) or address (if supplied).",
         "operationId": "dataRetrievalWhcGetFeeShare",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "description": "(string, optional) retrieve the fee share for the supplied address",
+            "required": false,
+            "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
+            "schema": {
+              "type": "string"
+            }
+					},
+          {
+            "name": "ecosystem",
+            "in": "query",
+            "description": "(number, optional) the ecosystem to check the fee share (1 for main ecosystem, 2 for test ecosystem)",
+            "required": false,
+            "example": 0,
+            "schema": {
+              "type": "number"
+            }
+					}
+        ],
         "responses": {
           "200": {
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "JSON value is not an integer as expected"
           }
         }
       }
@@ -362,11 +325,11 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the managed tokens to lookup",
+            "description": "The identifier of the managed tokens to lookup",
             "required": true,
-            "example": "BITBOXCoin",
+            "example": 0,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
 					}
         ],
@@ -375,15 +338,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "JSON value is not an integer as expected"
           }
         }
       }
@@ -399,17 +354,6 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
@@ -426,7 +370,7 @@
           {
             "name": "txid",
             "in": "path",
-            "description": "(string, required) the hash of the transaction to retrieve payload",
+            "description": "The hash of the transaction to retrieve payload",
             "required": true,
             "example": "fe28050b93faea61fa88c4c630f0e1f0a1c24d0082dd0e10d369e13212128f33",
             "schema": {
@@ -439,15 +383,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "Received an invalid txid as input."
           }
         }
       }
@@ -464,11 +400,11 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens or property",
+            "description": "The identifier of the tokens or property",
             "required": true,
-            "example": "BITBOXCoin",
+            "example": 0,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
 					}
         ],
@@ -477,15 +413,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "JSON value is not an integer as expected"
           }
         }
       }
@@ -502,7 +430,7 @@
           {
             "name": "startBlock",
             "in": "path",
-            "description": "(number, required) the first block to look for Omni transactions (inclusive)",
+            "description": "The first block to look for Omni transactions (inclusive)",
             "required": true,
             "example": "0",
             "schema": {
@@ -512,7 +440,7 @@
           {
             "name": "endBlock",
             "in": "path",
-            "description": "(number, required) the last block to look for Omni transactions (inclusive)",
+            "description": "The last block to look for Omni transactions (inclusive)",
             "required": true,
             "example": "500000",
             "schema": {
@@ -525,15 +453,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "JSON value is not an integer as expected"
           }
         }
       }
@@ -550,7 +470,7 @@
           {
             "name": "txid",
             "in": "path",
-            "description": "(string, required) the hash of the transaction to lookup",
+            "description": "The hash of the transaction to lookup",
             "required": true,
             "example": "fe28050b93faea61fa88c4c630f0e1f0a1c24d0082dd0e10d369e13212128f33",
             "schema": {
@@ -560,11 +480,11 @@
           {
             "name": "recipientFilter",
             "in": "query",
-            "description": "(string, optional) a filter for recipients (wallet by default, '*' for all)",
-            "required": true,
+            "description": "A filter for recipients (wallet by default, '*' for all)",
+            "required": false,
             "example": "*",
             "schema": {
-              "type": "number"
+              "type": "string"
             }
 					}
         ],
@@ -573,15 +493,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "Invalid address. Note: use cashAddress"
           }
         }
       }
@@ -598,7 +510,7 @@
           {
             "name": "txid",
             "in": "path",
-            "description": "(string, required) the hash of the transaction to lookup",
+            "description": "The hash of the transaction to lookup",
             "required": true,
             "example": "fe28050b93faea61fa88c4c630f0e1f0a1c24d0082dd0e10d369e13212128f33",
             "schema": {
@@ -611,15 +523,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "No information available about transaction"
           }
         }
       }
@@ -636,11 +540,11 @@
           {
             "name": "index",
             "in": "path",
-            "description": "(number, required) the block height or block index",
+            "description": "The block height or block index",
             "required": true,
-            "example": "345345",
+            "example": 345345,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
 					}
         ],
@@ -649,15 +553,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "JSON value is not an integer as expected"
           }
         }
       }
@@ -674,8 +570,8 @@
           {
             "name": "address",
             "in": "path",
-            "description": "(string, optional) address filter (default: '' for no filter)",
-            "required": true,
+            "description": "Address filter (default: '' for no filter)",
+            "required": false,
             "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
             "schema": {
               "type": "string"
@@ -687,15 +583,7 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
+            "description": "Invalid address. Note: use cashAddress"
           }
         }
       }
@@ -711,17 +599,6 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
@@ -737,17 +614,6 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
