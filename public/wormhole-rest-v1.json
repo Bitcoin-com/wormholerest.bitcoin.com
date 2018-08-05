@@ -458,12 +458,12 @@
         }
       }
     },
-    "/dataRetrieval/whcGetSto/{txid}/{recipientFilter}": {
+    "/dataRetrieval/whcGetSTO/{txid}/{recipientFilter}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "whcGetSto",
+        "summary": "whcGetSTO",
         "description": "Get information and recipients of a send-to-owners transaction.",
         "operationId": "dataRetrievalWhcGetSto",
         "parameters": [

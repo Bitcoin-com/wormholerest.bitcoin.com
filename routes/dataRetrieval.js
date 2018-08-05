@@ -371,7 +371,7 @@ router.get('/whcGetSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLi
   });
 });
 
-router.get('/whcGetSto/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
+router.get('/whcGetSTO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
