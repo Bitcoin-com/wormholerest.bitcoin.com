@@ -629,36 +629,25 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
     },
     "/payloadCreation/whcCreatePayloadChangeIssuer/{propertyId}": {
-      "get": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
         "summary": "whcCreateWhcCreatePayloadChangeIssuer",
         "description": "Creates the payload to change the issuer on record of the given tokens.",
-        "operationId": "payloadCreationWhcCreatePayloadBurnBCH",
+        "operationId": "payloadCreationWhcCreatePayloadChangeIssuer",
         "parameters": [
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens",
+            "description": "The identifier of the tokens",
             "required": true,
-            "example": 100,
+            "example": 0,
             "schema": {
               "type": "number"
             }
@@ -668,13 +657,13 @@
           "200": {
             "description": "successful response"
           },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
+          "500": {
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
                   "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
+                  "message": "Not Found."
                 }
               }
             }
@@ -683,7 +672,7 @@
       }
     },
     "/payloadCreation/whcCreatePayloadCloseCrowdSale/{propertyId}": {
-      "get": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
@@ -694,11 +683,11 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the crowdsale to close",
+            "description": "The identifier of the crowdsale to close",
             "required": true,
-            "example": "BITBOXCoin",
+            "example": 0,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
 					}
         ],
@@ -707,12 +696,12 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
+            "description": "JSON value is not an integer as expected",
             "content": {
               "application/json": {
                 "schema": {
                   "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
+                  "message": "JSON value is not an integer as expected"
                 }
               }
             }
@@ -721,7 +710,7 @@
       }
     },
     "/payloadCreation/whcCreatePayloadGrant/{propertyId}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
@@ -732,9 +721,9 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens to grant",
+            "description": "The identifier of the tokens to grant",
             "required": true,
-            "example": 51,
+            "example": 0,
             "schema": {
               "type": "number"
             }
@@ -742,7 +731,7 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the amount of tokens to create",
+            "description": "The amount of tokens to create",
             "required": true,
             "example": "7000",
             "schema": {
@@ -752,7 +741,7 @@
           {
             "name": "memo",
             "in": "query",
-            "description": "(string, optional) a text note attached to this transaction (none by default)",
+            "description": "A text note attached to this transaction (none by default)",
             "required": false,
             "example": "Hello BITBOX",
             "schema": {
@@ -765,12 +754,12 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
+            "description": "Not Found",
             "content": {
               "application/json": {
                 "schema": {
                   "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
+                  "message": "Not Found"
                 }
               }
             }
@@ -779,7 +768,7 @@
       }
     },
     "/payloadCreation/whcCreatePayloadIssuanceCrowdsale/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
-      "get": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
@@ -790,9 +779,9 @@
           {
             "name": "ecosystem",
             "in": "path",
-            "description": "(string, required) the ecosystem to create the tokens in, must be 1",
+            "description": "The ecosystem to create the tokens in, must be 1",
             "required": true,
-            "example": "",
+            "example": "1",
             "schema": {
               "type": "string"
             }
@@ -800,9 +789,9 @@
           {
             "name": "propertyPricision",
             "in": "path",
-            "description": "(number, required) the pricision of the tokens to create:[0, 8]",
+            "description": "The pricision of the tokens to create:[0, 8]",
             "required": true,
-            "example": 7000,
+            "example": 8,
             "schema": {
               "type": "number"
             }
@@ -810,18 +799,18 @@
           {
             "name": "previousId",
             "in": "path",
-            "description": "(number, required) an identifier of a predecessor token (0 for new crowdsales)",
-            "required": false,
-            "example": "Hello BITBOX",
+            "description": "An identifier of a predecessor token (0 for new crowdsales)",
+            "required": true,
+            "example": 0,
             "schema": {
-              "type": "string"
+              "type": "number"
             }
 					},
           {
             "name": "category",
             "in": "path",
-            "description": "(string, required) a category for the new tokens (can be '')",
-            "required": false,
+            "description": "A category for the new tokens (can be '')",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -830,8 +819,8 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "(string, required) a subcategory for the new tokens  (can be '')",
-            "required": false,
+            "description": "A subcategory for the new tokens (can be '')",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -840,8 +829,8 @@
           {
             "name": "name",
             "in": "path",
-            "description": "(string, required) the name of the new tokens to create",
-            "required": false,
+            "description": "The name of the new tokens to create",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -850,8 +839,8 @@
           {
             "name": "url",
             "in": "path",
-            "description": "(string, required) an URL for further information about the new tokens (can be '')",
-            "required": false,
+            "description": "An URL for further information about the new tokens (can be '')",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -860,9 +849,9 @@
           {
             "name": "data",
             "in": "path",
-            "description": "(string, required) a description for the new tokens (can be '')",
-            "required": false,
-            "example": "(number, required) the identifier of a token eligible to participate in the crowdsale",
+            "description": "A description for the new tokens (can be '')",
+            "required": true,
+            "example": "",
             "schema": {
               "type": "string"
             }
@@ -870,9 +859,19 @@
           {
             "name": "propertyIdDesired",
             "in": "path",
-            "description": "tokensPerUnit",
-            "required": false,
-            "example": "(string, required) the amount of tokens granted per unit invested in the crowdsale",
+            "description": "The identifier of a token eligible to participate in the crowdsale",
+            "required": true,
+            "example": 0,
+            "schema": {
+              "type": "number"
+            }
+					},
+          {
+            "name": "tokensPerUnit",
+            "in": "path",
+            "description": "The amount of tokens granted per unit invested in the crowdsale",
+            "required": true,
+            "example": "",
             "schema": {
               "type": "string"
             }
@@ -880,8 +879,8 @@
           {
             "name": "deadline",
             "in": "path",
-            "description": "(number, required) the deadline of the crowdsale as Unix timestamp",
-            "required": false,
+            "description": "The deadline of the crowdsale as Unix timestamp",
+            "required": true,
             "example": 0,
             "schema": {
               "type": "number"
@@ -890,8 +889,8 @@
           {
             "name": "deadline",
             "in": "path",
-            "description": "(number, required) the deadline of the crowdsale as Unix timestamp",
-            "required": false,
+            "description": "The deadline of the crowdsale as Unix timestamp",
+            "required": true,
             "example": 0,
             "schema": {
               "type": "number"
@@ -900,8 +899,8 @@
           {
             "name": "earlyBonus",
             "in": "path",
-            "description": "(number, required) an early bird bonus for participants in percent per week",
-            "required": false,
+            "description": "An early bird bonus for participants in percent per week",
+            "required": true,
             "example": 0,
             "schema": {
               "type": "number"
@@ -910,8 +909,8 @@
           {
             "name": "undefine",
             "in": "path",
-            "description": "(number, required) the value must be 0",
-            "required": false,
+            "description": "The value must be 0",
+            "required": true,
             "example": 0,
             "schema": {
               "type": "number"
@@ -920,8 +919,8 @@
           {
             "name": "totalNumber",
             "in": "path",
-            "description": "(string, required) the number of tokens to create",
-            "required": false,
+            "description": "The number of tokens to create",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -931,23 +930,12 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
     },
     "/payloadCreation/whcCreatePayloadIssuanceFixed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
@@ -958,9 +946,9 @@
           {
             "name": "ecosystem",
             "in": "path",
-            "description": "(string, required) the ecosystem to create the tokens in, must be 1",
+            "description": "The ecosystem to create the tokens in, must be 1",
             "required": true,
-            "example": "",
+            "example": "1",
             "schema": {
               "type": "string"
             }
@@ -968,9 +956,9 @@
           {
             "name": "propertyPricision",
             "in": "path",
-            "description": "(number, required) the pricision of the tokens to create:[0, 8]",
+            "description": "The pricision of the tokens to create:[0, 8]",
             "required": true,
-            "example": 0,
+            "example": 8,
             "schema": {
               "type": "number"
             }
@@ -978,8 +966,8 @@
           {
             "name": "previousId",
             "in": "path",
-            "description": "(number, required) an identifier of a predecessor token (use 0 for new tokens)",
-            "required": false,
+            "description": "An identifier of a predecessor token (use 0 for new tokens)",
+            "required": true,
             "example": 0,
             "schema": {
               "type": "number"
@@ -988,8 +976,8 @@
           {
             "name": "category",
             "in": "path",
-            "description": "(string, required) a category for the new tokens (can be '')",
-            "required": false,
+            "description": "A category for the new tokens (can be '')",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -998,8 +986,8 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "(string, required) a subcategory for the new tokens  (can be '')",
-            "required": false,
+            "description": "A subcategory for the new tokens (can be '')",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -1008,8 +996,8 @@
           {
             "name": "name",
             "in": "path",
-            "description": "(string, required) the name of the new tokens to create",
-            "required": false,
+            "description": "The name of the new tokens to create",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -1018,8 +1006,8 @@
           {
             "name": "url",
             "in": "path",
-            "description": "(string, required) an URL for further information about the new tokens (can be '')",
-            "required": false,
+            "description": "An URL for further information about the new tokens (can be '')",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -1028,9 +1016,9 @@
           {
             "name": "data",
             "in": "path",
-            "description": "",
-            "required": false,
-            "example": "(string, required) a description for the new tokens (can be '')",
+            "description": "A description for the new tokens (can be '')",
+            "required": true,
+            "example": "",
             "schema": {
               "type": "string"
             }
@@ -1038,8 +1026,8 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the number of tokens to create",
-            "required": false,
+            "description": "The number of tokens to create",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -1049,23 +1037,12 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadIssuanceManaged/{propertyId}/{amount}": {
-      "get": {
+    "/payloadCreation/whcCreatePayloadIssuanceManaged/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
@@ -1076,9 +1053,9 @@
           {
             "name": "ecosystem",
             "in": "path",
-            "description": "(string, required) the ecosystem to create the tokens in, must be 1",
+            "description": "The ecosystem to create the tokens in, must be 1",
             "required": true,
-            "example": "",
+            "example": "1",
             "schema": {
               "type": "string"
             }
@@ -1086,9 +1063,9 @@
           {
             "name": "propertyPricision",
             "in": "path",
-            "description": "(number, required) the pricision of the tokens to create:[0, 8]",
+            "description": "The pricision of the tokens to create:[0, 8]",
             "required": true,
-            "example": 0,
+            "example": 8,
             "schema": {
               "type": "number"
             }
@@ -1096,8 +1073,8 @@
           {
             "name": "previousId",
             "in": "path",
-            "description": "(number, required) an identifier of a predecessor token (use 0 for new tokens)",
-            "required": false,
+            "description": "An identifier of a predecessor token (use 0 for new tokens)",
+            "required": true,
             "example": 0,
             "schema": {
               "type": "number"
@@ -1106,8 +1083,8 @@
           {
             "name": "category",
             "in": "path",
-            "description": "(string, required) a category for the new tokens (can be '')",
-            "required": false,
+            "description": "A category for the new tokens (can be '')",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -1116,8 +1093,8 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "(string, required) a subcategory for the new tokens  (can be '')",
-            "required": false,
+            "description": "A subcategory for the new tokens (can be '')",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -1126,8 +1103,8 @@
           {
             "name": "name",
             "in": "path",
-            "description": "(string, required) the name of the new tokens to create",
-            "required": false,
+            "description": "The name of the new tokens to create",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -1136,8 +1113,8 @@
           {
             "name": "url",
             "in": "path",
-            "description": "(string, required) an URL for further information about the new tokens (can be '')",
-            "required": false,
+            "description": "An URL for further information about the new tokens (can be '')",
+            "required": true,
             "example": "",
             "schema": {
               "type": "string"
@@ -1146,45 +1123,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "",
-            "required": false,
-            "example": "(string, required) a description for the new tokens (can be '')",
-            "schema": {
-              "type": "string"
-            }
-					}
-        ],
-        "responses": {
-          "200": {
-            "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/payloadCreation/whcCreatePayloadParticrwoSale/{amount}": {
-      "get": {
-        "tags": [
-          "payloadCreation"
-        ],
-        "summary": "whcCreatePayloadParticrwoSale",
-        "description": "Create the payload for a participate crowsale transaction",
-        "operationId": "payloadCreationWhcCreatePayloadParticrwoSale",
-        "parameters": [
-          {
-            "name": "amount",
-            "in": "path",
-            "description": "(string, required) the amount of WHC to particrowsale",
+            "description": "A description for the new tokens (can be '')",
             "required": true,
             "example": "",
             "schema": {
@@ -1197,21 +1136,40 @@
             "description": "successful response"
           },
           "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
+            "description": "Received an invalid Bitcoin Cash address as input."
+          }
+        }
+      }
+    },
+    "/payloadCreation/whcCreatePayloadPartiCrwoSale/{amount}": {
+      "post": {
+        "tags": [
+          "payloadCreation"
+        ],
+        "summary": "whcCreatePayloadPartiCrwoSale",
+        "description": "Create the payload for a participate crowsale transaction",
+        "operationId": "payloadCreationWhcCreatePayloadPartiCrwoSale",
+        "parameters": [
+          {
+            "name": "amount",
+            "in": "path",
+            "description": "The amount of WHC to particrowsale",
+            "required": true,
+            "example": "",
+            "schema": {
+              "type": "string"
             }
+					}
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response"
           }
         }
       }
     },
     "/payloadCreation/whcCreatePayloadRevoke/{propertyId}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
@@ -1222,7 +1180,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens to revoke",
+            "description": "The identifier of the tokens to revoke",
             "required": true,
             "example": 0,
             "schema": {
@@ -1232,7 +1190,7 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the amount of tokens to revoke",
+            "description": "The amount of tokens to revoke",
             "required": true,
             "example": "",
             "schema": {
@@ -1241,9 +1199,9 @@
 					},
           {
             "name": "memo",
-            "in": "path",
-            "description": "(string, optional) a text note attached to this transaction (none by default)",
-            "required": true,
+            "in": "query",
+            "description": "A text note attached to this transaction (none by default)",
+            "required": false,
             "example": "",
             "schema": {
               "type": "string"
@@ -1269,7 +1227,7 @@
       }
     },
     "/payloadCreation/whcCreatePayloadSendAll/{ecosystem}": {
-      "get": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
@@ -1280,9 +1238,9 @@
           {
             "name": "ecosystem",
             "in": "path",
-            "description": "(number, required) the ecosystem of the tokens to send (1 for main ecosystem, 2 for test ecosystem)",
+            "description": "The ecosystem of the tokens to send (1 for main ecosystem, 2 for test ecosystem)",
             "required": true,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -1291,23 +1249,12 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
     },
     "/payloadCreation/whcCreatePayloadSimpleSend/{propertyId}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
@@ -1318,7 +1265,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens to send",
+            "description": "The identifier of the tokens to send",
             "required": true,
             "example": 0,
             "schema": {
@@ -1328,7 +1275,7 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the amount to send",
+            "description": "She amount to send",
             "required": true,
             "example": "",
             "schema": {
@@ -1339,23 +1286,12 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
     },
     "/payloadCreation/whcCreatePayloadSTO/{propertyId}/{amount}": {
-      "get": {
+      "post": {
         "tags": [
           "payloadCreation"
         ],
@@ -1366,7 +1302,7 @@
           {
             "name": "propertyId",
             "in": "path",
-            "description": "(number, required) the identifier of the tokens to distribute",
+            "description": "The identifier of the tokens to distribute",
             "required": true,
             "example": 0,
             "schema": {
@@ -1376,7 +1312,7 @@
           {
             "name": "amount",
             "in": "path",
-            "description": "(string, required) the amount to distribute",
+            "description": "The amount to distribute",
             "required": true,
             "example": "",
             "schema": {
@@ -1385,10 +1321,10 @@
 					},
           {
             "name": "distributionproperty",
-            "in": "path",
-            "description": "(number, optional) the identifier of the property holders to distribute to",
+            "in": "query",
+            "description": "The identifier of the property holders to distribute to",
             "required": false,
-            "example": "",
+            "example": 0,
             "schema": {
               "type": "number"
             }
@@ -1397,17 +1333,6 @@
         "responses": {
           "200": {
             "description": "successful response"
-          },
-          "400": {
-            "description": "Received an invalid Bitcoin Cash address as input.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "status": 500,
-                  "message": "Received an invalid Bitcoin Cash address as input."
-                }
-              }
-            }
           }
         }
       }
