@@ -54,7 +54,7 @@ router.get('/', config.dataRetrievalRateLimit1, (req, res, next) => {
   res.json({ status: 'dataRetrieval' });
 });
 
-router.get('/whcGetAllBalancesForAddress/:address', config.dataRetrievalRateLimit2, (req, res, next) => {
+router.get('/getAllBalancesForAddress/:address', config.dataRetrievalRateLimit2, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -79,7 +79,7 @@ router.get('/whcGetAllBalancesForAddress/:address', config.dataRetrievalRateLimi
   });
 });
 
-router.get('/whcGetAllBalancesForId/:propertyId', config.dataRetrievalRateLimit2, (req, res, next) => {
+router.get('/getAllBalancesForId/:propertyId', config.dataRetrievalRateLimit2, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -104,7 +104,7 @@ router.get('/whcGetAllBalancesForId/:propertyId', config.dataRetrievalRateLimit2
   });
 });
 
-router.get('/whcGetBalance/:address/:propertyId', config.dataRetrievalRateLimit3, (req, res, next) => {
+router.get('/getBalance/:address/:propertyId', config.dataRetrievalRateLimit3, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -130,7 +130,7 @@ router.get('/whcGetBalance/:address/:propertyId', config.dataRetrievalRateLimit3
   });
 });
 
-router.get('/whcGetBalancesHash/:propertyId', config.dataRetrievalRateLimit4, (req, res, next) => {
+router.get('/getBalancesHash/:propertyId', config.dataRetrievalRateLimit4, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -155,7 +155,7 @@ router.get('/whcGetBalancesHash/:propertyId', config.dataRetrievalRateLimit4, (r
   });
 });
 
-router.get('/whcGetCrowdSale/:propertyId', config.dataRetrievalRateLimit5, (req, res, next) => {
+router.get('/getCrowdSale/:propertyId', config.dataRetrievalRateLimit5, (req, res, next) => {
   let verbose = false;
   if(req.query.verbose && req.query.verbose === 'true') {
     verbose = true;
@@ -185,7 +185,7 @@ router.get('/whcGetCrowdSale/:propertyId', config.dataRetrievalRateLimit5, (req,
   });
 });
 
-router.get('/whcGetCurrentConsensusHash', config.dataRetrievalRateLimit6, (req, res, next) => {
+router.get('/getCurrentConsensusHash', config.dataRetrievalRateLimit6, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -207,7 +207,7 @@ router.get('/whcGetCurrentConsensusHash', config.dataRetrievalRateLimit6, (req, 
   });
 });
 
-router.get('/whcGetFeeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
+router.get('/getFeeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
   let address = false;
   if(req.query.address && req.query.address === 'true') {
     address = true;
@@ -242,7 +242,7 @@ router.get('/whcGetFeeShare', config.dataRetrievalRateLimit7, (req, res, next) =
   });
 });
 
-router.get('/whcGetGrants/:propertyId', config.dataRetrievalRateLimit8, (req, res, next) => {
+router.get('/getGrants/:propertyId', config.dataRetrievalRateLimit8, (req, res, next) => {
   let address = false;
   if(req.query.address && req.query.address === 'true') {
     address = true;
@@ -276,7 +276,7 @@ router.get('/whcGetGrants/:propertyId', config.dataRetrievalRateLimit8, (req, re
   });
 });
 
-router.get('/whcGetinfo', config.dataRetrievalRateLimit9, (req, res, next) => {
+router.get('/getinfo', config.dataRetrievalRateLimit9, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -298,7 +298,7 @@ router.get('/whcGetinfo', config.dataRetrievalRateLimit9, (req, res, next) => {
   });
 });
 
-router.get('/whcGetPayload/:txid', config.dataRetrievalRateLimit10, (req, res, next) => {
+router.get('/getPayload/:txid', config.dataRetrievalRateLimit10, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -320,7 +320,7 @@ router.get('/whcGetPayload/:txid', config.dataRetrievalRateLimit10, (req, res, n
   });
 });
 
-router.get('/whcGetProperty/:propertyId', config.dataRetrievalRateLimit11, (req, res, next) => {
+router.get('/getProperty/:propertyId', config.dataRetrievalRateLimit11, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -345,7 +345,7 @@ router.get('/whcGetProperty/:propertyId', config.dataRetrievalRateLimit11, (req,
   });
 });
 
-router.get('/whcGetSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12, (req, res, next) => {
+router.get('/getSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -371,7 +371,7 @@ router.get('/whcGetSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLi
   });
 });
 
-router.get('/whcGetSTO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
+router.get('/getSTO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -397,7 +397,7 @@ router.get('/whcGetSTO/:txid/:recipientFilter', config.dataRetrievalRateLimit13,
   });
 });
 
-router.get('/whcGetTransaction/:txid', config.dataRetrievalRateLimit14, (req, res, next) => {
+router.get('/getTransaction/:txid', config.dataRetrievalRateLimit14, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -422,7 +422,7 @@ router.get('/whcGetTransaction/:txid', config.dataRetrievalRateLimit14, (req, re
   });
 });
 
-router.get('/whcListBlockTransactions/:index', config.dataRetrievalRateLimit15, (req, res, next) => {
+router.get('/listBlockTransactions/:index', config.dataRetrievalRateLimit15, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -447,7 +447,7 @@ router.get('/whcListBlockTransactions/:index', config.dataRetrievalRateLimit15, 
   });
 });
 
-router.get('/whcListPendingTransactions/:address', config.dataRetrievalRateLimit16, (req, res, next) => {
+router.get('/listPendingTransactions/:address', config.dataRetrievalRateLimit16, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -472,7 +472,7 @@ router.get('/whcListPendingTransactions/:address', config.dataRetrievalRateLimit
   });
 });
 
-router.get('/whcListProperties', config.dataRetrievalRateLimit17, (req, res, next) => {
+router.get('/listProperties', config.dataRetrievalRateLimit17, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -494,7 +494,7 @@ router.get('/whcListProperties', config.dataRetrievalRateLimit17, (req, res, nex
   });
 });
 
-router.get('/whcListTransactions', config.dataRetrievalRateLimit18, (req, res, next) => {
+router.get('/listTransactions', config.dataRetrievalRateLimit18, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
