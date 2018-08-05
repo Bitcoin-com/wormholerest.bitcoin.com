@@ -74,14 +74,7 @@
         ],
         "responses": {
           "200": {
-            "description": "successful response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/AddressDetails"
-                }
-              }
-            }
+            "description": "successful response"
           },
           "400": {
             "description": "Received an invalid Bitcoin Cash address as input.",
