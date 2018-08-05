@@ -52,14 +52,14 @@
     }
   ],
   "paths": {
-    "/configuration/whcSetAutocommit/{flag}": {
+    "/configuration/whcSetAutoCommit/{flag}": {
       "post": {
         "tags": [
           "configuration"
         ],
-        "summary": "whcSetAutocommit",
+        "summary": "whcSetAutoCommit",
         "description": "Sets the global flag that determines whether transactions are automatically committed and broadcast.",
-        "operationId": "configurationWhcSetAutocommit",
+        "operationId": "configurationWhcSetAutoCommit",
         "parameters": [
           {
             "name": "flag",
