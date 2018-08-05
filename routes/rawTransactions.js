@@ -42,7 +42,7 @@ router.get('/', config.rawTransactionsRateLimit1, (req, res, next) => {
   res.json({ status: 'dataRetrieval' });
 });
 
-router.post('/whcCreateRawTxChange/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, (req, res, next) => {
+router.post('/createRawTxChange/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, (req, res, next) => {
   let query;
 
   BitboxHTTP({
@@ -72,7 +72,7 @@ router.post('/whcCreateRawTxChange/:rawtx/:prevTxs/:destination/:fee', config.ra
   });
 });
 
-router.post('/whcCreateRawTxInput/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, (req, res, next) => {
+router.post('/createRawTxInput/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -99,7 +99,7 @@ router.post('/whcCreateRawTxInput/:rawTx/:txid/:n', config.rawTransactionsRateLi
   });
 });
 
-router.post('/whcCreateRawTxOpReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req, res, next) => {
+router.post('/createRawTxOpReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -125,7 +125,7 @@ router.post('/whcCreateRawTxOpReturn/:rawTx/:payload', config.rawTransactionsRat
   });
 });
 
-router.post('/whcCreateRawTxReference/:rawTx/:destination/:amount', config.rawTransactionsRateLimit5, (req, res, next) => {
+router.post('/createRawTxReference/:rawTx/:destination/:amount', config.rawTransactionsRateLimit5, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -152,7 +152,7 @@ router.post('/whcCreateRawTxReference/:rawTx/:destination/:amount', config.rawTr
   });
 });
 
-router.get('/whcDecodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, res, next) => {
+router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, res, next) => {
   let prevTxs;
   let height;
 

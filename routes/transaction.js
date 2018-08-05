@@ -49,7 +49,7 @@ router.get('/', config.transactionRateLimit1, (req, res, next) => {
   res.json({ status: 'transaction' });
 });
 
-router.post('/whcBurnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res, next) => {
+router.post('/burnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res, next) => {
   let redeemaddress;
   BitboxHTTP({
     method: 'post',
@@ -75,7 +75,7 @@ router.post('/whcBurnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res
   });
 });
 
-router.post('/whcPartiCrowSale/:fromAddress/:toAddress/:amount"', config.transactionRateLimit3, (req, res, next) => {
+router.post('/partiCrowSale/:fromAddress/:toAddress/:amount"', config.transactionRateLimit3, (req, res, next) => {
   let redeemAddress;
   let referenceAmount;
 
@@ -105,7 +105,7 @@ router.post('/whcPartiCrowSale/:fromAddress/:toAddress/:amount"', config.transac
     res.send(error.response.data.error.message);
   });
 
-router.post('/whcSend/:fromAddress/:toAddress/:propertyId/:amount', config.transactionRateLimit4, (req, res, next) => {
+router.post('/send/:fromAddress/:toAddress/:propertyId/:amount', config.transactionRateLimit4, (req, res, next) => {
   let redeemAddress;
   let referenceAmount;
   BitboxHTTP({
@@ -135,7 +135,7 @@ router.post('/whcSend/:fromAddress/:toAddress/:propertyId/:amount', config.trans
     res.send(error.response.data.error.message);
   });
 
-router.post('/whcSendAll/:fromAddress/:toAddress/:ecosystem', config.transactionRateLimit5, (req, res, next) => {
+router.post('/sendAll/:fromAddress/:toAddress/:ecosystem', config.transactionRateLimit5, (req, res, next) => {
   let redeemAddress;
   let referenceAmount;
   BitboxHTTP({
@@ -165,7 +165,7 @@ router.post('/whcSendAll/:fromAddress/:toAddress/:ecosystem', config.transaction
   });
 });
 
-router.post('/whcSendChangeIssuer/:fromAddress/:toAddress/:propertyId', config.transactionRateLimit6, (req, res, next) => {
+router.post('/sendChangeIssuer/:fromAddress/:toAddress/:propertyId', config.transactionRateLimit6, (req, res, next) => {
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -191,7 +191,7 @@ router.post('/whcSendChangeIssuer/:fromAddress/:toAddress/:propertyId', config.t
   });
 });
 
-router.post('/whcSendCloseCrowdSale/:fromAddress/:propertyId', config.transactionRateLimit7, (req, res, next) => {
+router.post('/sendCloseCrowdSale/:fromAddress/:propertyId', config.transactionRateLimit7, (req, res, next) => {
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -215,7 +215,7 @@ router.post('/whcSendCloseCrowdSale/:fromAddress/:propertyId', config.transactio
     res.send(error.response.data.error.message);
   });
 
-router.post('/whcSendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}', config.transactionRateLimit8, (req, res, next) => {
+router.post('/sendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}', config.transactionRateLimit8, (req, res, next) => {
   let memo;
   BitboxHTTP({
     method: 'post',
@@ -244,7 +244,7 @@ router.post('/whcSendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}', con
   });
 });
 
-router.post('/whcSendIssuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.transactionRateLimit9, (req, res, next) => {
+router.post('/sendIssuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.transactionRateLimit9, (req, res, next) => {
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -282,7 +282,7 @@ router.post('/whcSendIssuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricisio
   });
 });
 
-router.post('/whcSendIssuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:totalNumber', config.transactionRateLimit1, (req, res, next) => {
+router.post('/sendIssuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:totalNumber', config.transactionRateLimit1, (req, res, next) => {
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -315,7 +315,7 @@ router.post('/whcSendIssuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:p
   });
 });
 
-router.post('/whcSendIssuanceManaged/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.transactionRateLimit10, (req, res, next) => {
+router.post('/sendIssuanceManaged/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.transactionRateLimit10, (req, res, next) => {
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -347,7 +347,7 @@ router.post('/whcSendIssuanceManaged/:fromAddress/:ecosystem/:propertyPricision/
   });
 });
 
-router.post('/whcSendRawTx/{fromAddress}/{rawTransaction}', config.transactionRateLimit11, (req, res, next) => {
+router.post('/sendRawTx/{fromAddress}/{rawTransaction}', config.transactionRateLimit11, (req, res, next) => {
   let referenceAddress;
   let redeemAddress;
   let referenceAmount;
@@ -378,7 +378,7 @@ router.post('/whcSendRawTx/{fromAddress}/{rawTransaction}', config.transactionRa
   });
 });
 
-router.post('/whcSendRevoke/:fromAddress/:propertyId/:amount', config.transactionRateLimit12, (req, res, next) => {
+router.post('/sendRevoke/:fromAddress/:propertyId/:amount', config.transactionRateLimit12, (req, res, next) => {
   let memo;
   BitboxHTTP({
     method: 'post',
@@ -406,7 +406,7 @@ router.post('/whcSendRevoke/:fromAddress/:propertyId/:amount', config.transactio
   });
 });
 
-router.post('/whcSendSTO/:fromAddress/:propertyId/:amount', config.transactionRateLimit13, (req, res, next) => {
+router.post('/sendSTO/:fromAddress/:propertyId/:amount', config.transactionRateLimit13, (req, res, next) => {
   let redeemAddress;
   let distributionProperty;
   BitboxHTTP({

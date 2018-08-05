@@ -618,14 +618,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadBurnBCH": {
+    "/payloadCreation/createPayloadBurnBCH": {
       "get": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadBurnBCH",
+        "summary": "createPayloadBurnBCH",
         "description": "Creates the payload to burn bch to get whc.",
-        "operationId": "payloadCreationWhcCreatePayloadBurnBCH",
+        "operationId": "payloadCreationCreatePayloadBurnBCH",
         "responses": {
           "200": {
             "description": "successful response"
@@ -633,14 +633,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadChangeIssuer/{propertyId}": {
+    "/payloadCreation/createPayloadChangeIssuer/{propertyId}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreateWhcCreatePayloadChangeIssuer",
+        "summary": "createCreatePayloadChangeIssuer",
         "description": "Creates the payload to change the issuer on record of the given tokens.",
-        "operationId": "payloadCreationWhcCreatePayloadChangeIssuer",
+        "operationId": "payloadCreationCreatePayloadChangeIssuer",
         "parameters": [
           {
             "name": "propertyId",
@@ -671,14 +671,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadCloseCrowdSale/{propertyId}": {
+    "/payloadCreation/createPayloadCloseCrowdSale/{propertyId}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadCloseCrowdSale",
+        "summary": "createPayloadCloseCrowdSale",
         "description": "Creates the payload to manually close a crowdsale.",
-        "operationId": "payloadCreationWhcCreatePayloadCloseCrowdSale",
+        "operationId": "payloadCreationCreatePayloadCloseCrowdSale",
         "parameters": [
           {
             "name": "propertyId",
@@ -709,14 +709,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadGrant/{propertyId}/{amount}": {
+    "/payloadCreation/createPayloadGrant/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadGrant",
+        "summary": "createPayloadGrant",
         "description": "Creates the payload to issue or grant new units of managed tokens.",
-        "operationId": "payloadCreationWhcCreatePayloadGrant",
+        "operationId": "payloadCreationCreatePayloadGrant",
         "parameters": [
           {
             "name": "propertyId",
@@ -767,14 +767,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadIssuanceCrowdsale/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
+    "/payloadCreation/createPayloadIssuanceCrowdsale/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadIssuanceCrowdsale",
+        "summary": "createPayloadIssuanceCrowdsale",
         "description": "Creates the payload for a new tokens issuance with crowdsale.",
-        "operationId": "payloadCreationWhcCreatePayloadIssuanceCrowdsale",
+        "operationId": "payloadCreationCreatePayloadIssuanceCrowdsale",
         "parameters": [
           {
             "name": "ecosystem",
@@ -934,14 +934,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadIssuanceFixed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
+    "/payloadCreation/createPayloadIssuanceFixed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadIssuanceFixed",
+        "summary": "createPayloadIssuanceFixed",
         "description": "Creates the payload for a new tokens issuance with fixed supply.",
-        "operationId": "payloadCreationWhcCreatePayloadIssuanceFixed",
+        "operationId": "payloadCreationCreatePayloadIssuanceFixed",
         "parameters": [
           {
             "name": "ecosystem",
@@ -1041,14 +1041,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadIssuanceManaged/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
+    "/payloadCreation/createPayloadIssuanceManaged/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadIssuanceManaged",
+        "summary": "createPayloadIssuanceManaged",
         "description": "Creates the payload for a new tokens issuance with manageable supply.",
-        "operationId": "payloadCreationWhcCreatePayloadIssuanceManaged",
+        "operationId": "payloadCreationCreatePayloadIssuanceManaged",
         "parameters": [
           {
             "name": "ecosystem",
@@ -1141,14 +1141,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadPartiCrwoSale/{amount}": {
+    "/payloadCreation/createPayloadPartiCrwoSale/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadPartiCrwoSale",
+        "summary": "createPayloadPartiCrwoSale",
         "description": "Create the payload for a participate crowsale transaction",
-        "operationId": "payloadCreationWhcCreatePayloadPartiCrwoSale",
+        "operationId": "payloadCreationCreatePayloadPartiCrwoSale",
         "parameters": [
           {
             "name": "amount",
@@ -1168,14 +1168,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadRevoke/{propertyId}/{amount}": {
+    "/payloadCreation/createPayloadRevoke/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadRevoke",
+        "summary": "createPayloadRevoke",
         "description": "Create the payload for a participate crowsale transaction",
-        "operationId": "payloadCreationWhcCreatePayloadRevoke",
+        "operationId": "payloadCreationCreatePayloadRevoke",
         "parameters": [
           {
             "name": "propertyId",
@@ -1215,14 +1215,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadSendAll/{ecosystem}": {
+    "/payloadCreation/createPayloadSendAll/{ecosystem}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadSendAll",
+        "summary": "createPayloadSendAll",
         "description": "Create the payload for a send all transaction.",
-        "operationId": "payloadCreationWhcCreatePayloadSendAll",
+        "operationId": "payloadCreationCreatePayloadSendAll",
         "parameters": [
           {
             "name": "ecosystem",
@@ -1242,14 +1242,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadSimpleSend/{propertyId}/{amount}": {
+    "/payloadCreation/createPayloadSimpleSend/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadSimpleSend",
+        "summary": "createPayloadSimpleSend",
         "description": "Create the payload for a simple send transaction.",
-        "operationId": "payloadCreationWhcCreatePayloadSimpleSend",
+        "operationId": "payloadCreationCreatePayloadSimpleSend",
         "parameters": [
           {
             "name": "propertyId",
@@ -1279,14 +1279,14 @@
         }
       }
     },
-    "/payloadCreation/whcCreatePayloadSTO/{propertyId}/{amount}": {
+    "/payloadCreation/createPayloadSTO/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "whcCreatePayloadSTO",
+        "summary": "createPayloadSTO",
         "description": "Creates the payload for a send-to-owners transaction",
-        "operationId": "payloadCreationWhcCreatePayloadSTO",
+        "operationId": "payloadCreationCreatePayloadSTO",
         "parameters": [
           {
             "name": "propertyId",
@@ -1326,14 +1326,14 @@
         }
       }
     },
-    "/rawTransactions/whcCreateRawTxChange/{rawtx}/{prevTxs}/{destination}/{fee}/{position}": {
+    "/rawTransactions/createRawTxChange/{rawtx}/{prevTxs}/{destination}/{fee}/{position}": {
       "post": {
         "tags": [
           "rawTransactions"
         ],
-        "summary": "whcCreateRawTxChange",
+        "summary": "createRawTxChange",
         "description": "Adds a change output to the transaction.",
-        "operationId": "rawTransactionsWhcCreateRawTxChange",
+        "operationId": "rawTransactionsCreateRawTxChange",
         "parameters": [
           {
             "name": "rawTx",
@@ -1404,14 +1404,14 @@
         }
       }
     },
-    "/rawTransactions/whcCreateRawTxInput/{rawtx}/{txid}/{n}": {
+    "/rawTransactions/createRawTxInput/{rawtx}/{txid}/{n}": {
       "post": {
         "tags": [
           "rawTransactions"
         ],
-        "summary": "whcCreateRawTxInput",
+        "summary": "createRawTxInput",
         "description": "Adds a transaction input to the transaction.",
-        "operationId": "rawTransactionsWhcCreateRawTxInput",
+        "operationId": "rawTransactionsCreateRawTxInput",
         "parameters": [
           {
             "name": "rawTx",
@@ -1451,14 +1451,14 @@
         }
       }
     },
-    "/rawTransactions/whcCreateRawTxOpReturn/{rawtx}/{txid}/{n}": {
+    "/rawTransactions/createRawTxOpReturn/{rawtx}/{txid}/{n}": {
       "post": {
         "tags": [
           "rawTransactions"
         ],
-        "summary": "whcCreateRawTxOpReturn",
+        "summary": "createRawTxOpReturn",
         "description": "Adds a payload with class C (op-return) encoding to the transaction.",
-        "operationId": "rawTransactionsWhcCreateRawTxOpReturn",
+        "operationId": "rawTransactionsCreateRawTxOpReturn",
         "parameters": [
           {
             "name": "rawTx",
@@ -1488,14 +1488,14 @@
         }
       }
     },
-    "/rawTransactions/whcCreateRawTxReference/{rawtx}/{txid}/{n}": {
+    "/rawTransactions/createRawTxReference/{rawtx}/{txid}/{n}": {
       "post": {
         "tags": [
           "rawTransactions"
         ],
-        "summary": "whcCreateRawTxReference",
+        "summary": "createRawTxReference",
         "description": "Adds a reference output to the transaction.",
-        "operationId": "rawTransactionsWhcCreateRawTxReference",
+        "operationId": "rawTransactionsCreateRawTxReference",
         "parameters": [
           {
             "name": "rawTx",
@@ -1535,14 +1535,14 @@
         }
       }
     },
-    "/rawTransactions/whcDecodeTransaction/{rawtx}": {
+    "/rawTransactions/decodeTransaction/{rawtx}": {
       "get": {
         "tags": [
           "rawTransactions"
         ],
-        "summary": "whcDecodeTransaction",
+        "summary": "decodeTransaction",
         "description": "Decodes an Omni transaction.",
-        "operationId": "rawTransactionsWhcDecodeTransaction",
+        "operationId": "rawTransactionsDecodeTransaction",
         "parameters": [
           {
             "name": "rawTx",
@@ -1582,14 +1582,14 @@
         }
       }
     },
-    "/transaction/whcBurnBCHGetWHC/{amount}": {
+    "/transaction/burnBCHGetWHC/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcBurnBCHGetWHC",
+        "summary": "burnBCHGetWHC",
         "description": "burn BCH to get WHC",
-        "operationId": "transactionWhcBurnBCHGetWHC",
+        "operationId": "transactionBurnBCHGetWHC",
         "parameters": [
           {
             "name": "amount",
@@ -1619,14 +1619,14 @@
         }
       }
     },
-    "/transaction/whcPartiCrowSale/{fromAddress}/{toAddress}/{amount}": {
+    "/transaction/partiCrowSale/{fromAddress}/{toAddress}/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcPartiCrowSale",
+        "summary": "partiCrowSale",
         "description": "Create and broadcast a participate crowsale transaction.",
-        "operationId": "transactionWhcPartiCrowSale",
+        "operationId": "transactionPartiCrowSale",
         "parameters": [
           {
             "name": "fromAddress",
@@ -1686,14 +1686,14 @@
         }
       }
     },
-    "/transaction/whcSend/{fromAddress}/{toAddress}/{propertyId}/{amount}": {
+    "/transaction/send/{fromAddress}/{toAddress}/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSend",
+        "summary": "send",
         "description": "Create and broadcast a simple send transaction.",
-        "operationId": "transactionWhcSend",
+        "operationId": "transactionSend",
         "parameters": [
           {
             "name": "fromAddress",
@@ -1763,14 +1763,14 @@
         }
       }
     },
-    "/transaction/whcSendAll/{fromAddress}/{toAddress}/{ecosystem}": {
+    "/transaction/sendAll/{fromAddress}/{toAddress}/{ecosystem}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendAll",
+        "summary": "sendAll",
         "description": "Transfers all available tokens in the given ecosystem to the recipient.",
-        "operationId": "transactionWhcSendAll",
+        "operationId": "transactionSendAll",
         "parameters": [
           {
             "name": "fromAddress",
@@ -1830,14 +1830,14 @@
         }
       }
     },
-    "/transaction/whcSendChangeIssuer/{fromAddress}/{toAddress}/{propertyId}": {
+    "/transaction/sendChangeIssuer/{fromAddress}/{toAddress}/{propertyId}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendChangeIssuer",
+        "summary": "sendChangeIssuer",
         "description": "Change the issuer on record of the given tokens.",
-        "operationId": "transactionWhcSendChangeIssuer",
+        "operationId": "transactionSendChangeIssuer",
         "parameters": [
           {
             "name": "fromAddress",
@@ -1877,14 +1877,14 @@
         }
       }
     },
-    "/transaction/whcSendCloseCrowdSale/{fromAddress}/{propertyId}": {
+    "/transaction/sendCloseCrowdSale/{fromAddress}/{propertyId}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendCloseCrowdSale",
+        "summary": "sendCloseCrowdSale",
         "description": "Manually close a crowdsale.",
-        "operationId": "transactionWhcSendCloseCrowdSale",
+        "operationId": "transactionSendCloseCrowdSale",
         "parameters": [
           {
             "name": "fromAddress",
@@ -1914,14 +1914,14 @@
         }
       }
     },
-    "/transaction/whcSendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}": {
+    "/transaction/sendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendGrant",
+        "summary": "sendGrant",
         "description": "Issue or grant new units of managed tokens.",
-        "operationId": "transactionWhcSendGrant",
+        "operationId": "transactionSendGrant",
         "parameters": [
           {
             "name": "fromAddress",
@@ -1981,14 +1981,14 @@
         }
       }
     },
-    "/transaction/whcSendIssuanceCrowdSale/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
+    "/transaction/sendIssuanceCrowdSale/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendIssuanceCrowdSale",
+        "summary": "sendIssuanceCrowdSale",
         "description": "Create new tokens as crowdsale.",
-        "operationId": "transactionWhcSendIssuanceCrowdSale",
+        "operationId": "transactionSendIssuanceCrowdSale",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2148,14 +2148,14 @@
         }
       }
     },
-    "/transaction/whcSendIssuanceFixed/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{totalNumber}": {
+    "/transaction/sendIssuanceFixed/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{totalNumber}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendIssuanceFixed",
+        "summary": "sendIssuanceFixed",
         "description": "Create new tokens with fixed supply.",
-        "operationId": "transactionWhcSendIssuanceFixed",
+        "operationId": "transactionSendIssuanceFixed",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2265,14 +2265,14 @@
         }
       }
     },
-    "/transaction/whcSendIssuanceManaged/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
+    "/transaction/sendIssuanceManaged/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendIssuanceManaged",
+        "summary": "sendIssuanceManaged",
         "description": "Create new tokens with manageable supply.",
-        "operationId": "transactionWhcSendIssuanceManaged",
+        "operationId": "transactionSendIssuanceManaged",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2372,14 +2372,14 @@
         }
       }
     },
-    "/transaction/whcSendRawTx/{fromAddress}/{rawTransaction}": {
+    "/transaction/sendRawTx/{fromAddress}/{rawTransaction}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendIssuanceManaged",
+        "summary": "sendIssuanceManaged",
         "description": "Broadcasts a raw Omni Layer transaction.",
-        "operationId": "transactionWhcSendIssuanceManaged",
+        "operationId": "transactionSendIssuanceManaged",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2439,14 +2439,14 @@
         }
       }
     },
-    "/transaction/whcSendRevoke/{fromAddress}/{propertyId}/{amount}": {
+    "/transaction/sendRevoke/{fromAddress}/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendRevoke",
+        "summary": "sendRevoke",
         "description": "Revoke units of managed tokens.",
-        "operationId": "transactionWhcSendRevoke",
+        "operationId": "transactionSendRevoke",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2496,14 +2496,14 @@
         }
       }
     },
-    "/transaction/whcSendSTO/{fromAddress}/{propertyId}/{amount}": {
+    "/transaction/sendSTO/{fromAddress}/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "whcSendSTO",
+        "summary": "sendSTO",
         "description": "Create and broadcast a send-to-owners transaction.",
-        "operationId": "transactionWhcSendSTO",
+        "operationId": "transactionSendSTO",
         "parameters": [
           {
             "name": "fromAddress",
