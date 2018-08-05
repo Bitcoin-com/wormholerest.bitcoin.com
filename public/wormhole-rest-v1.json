@@ -618,14 +618,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadBurnBCH": {
+    "/payloadCreation/burnBCH": {
       "get": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadBurnBCH",
+        "summary": "burnBCH",
         "description": "Creates the payload to burn bch to get whc.",
-        "operationId": "payloadCreationCreatePayloadBurnBCH",
+        "operationId": "payloadCreationBurnBCH",
         "responses": {
           "200": {
             "description": "successful response"
@@ -633,14 +633,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadChangeIssuer/{propertyId}": {
+    "/payloadCreation/changeIssuer/{propertyId}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createCreatePayloadChangeIssuer",
+        "summary": "changeIssuer",
         "description": "Creates the payload to change the issuer on record of the given tokens.",
-        "operationId": "payloadCreationCreatePayloadChangeIssuer",
+        "operationId": "payloadCreationChangeIssuer",
         "parameters": [
           {
             "name": "propertyId",
@@ -671,14 +671,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadCloseCrowdSale/{propertyId}": {
+    "/payloadCreation/closeCrowdSale/{propertyId}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadCloseCrowdSale",
+        "summary": "closeCrowdSale",
         "description": "Creates the payload to manually close a crowdsale.",
-        "operationId": "payloadCreationCreatePayloadCloseCrowdSale",
+        "operationId": "payloadCreationCloseCrowdSale",
         "parameters": [
           {
             "name": "propertyId",
@@ -709,14 +709,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadGrant/{propertyId}/{amount}": {
+    "/payloadCreation/grant/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadGrant",
+        "summary": "grant",
         "description": "Creates the payload to issue or grant new units of managed tokens.",
-        "operationId": "payloadCreationCreatePayloadGrant",
+        "operationId": "payloadCreationGrant",
         "parameters": [
           {
             "name": "propertyId",
@@ -767,14 +767,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadIssuanceCrowdsale/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
+    "/payloadCreation/issuanceCrowdsale/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadIssuanceCrowdsale",
+        "summary": "issuanceCrowdsale",
         "description": "Creates the payload for a new tokens issuance with crowdsale.",
-        "operationId": "payloadCreationCreatePayloadIssuanceCrowdsale",
+        "operationId": "payloadCreationIssuanceCrowdsale",
         "parameters": [
           {
             "name": "ecosystem",
@@ -924,14 +924,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadIssuanceFixed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
+    "/payloadCreation/issuanceFixed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadIssuanceFixed",
+        "summary": "issuanceFixed",
         "description": "Creates the payload for a new tokens issuance with fixed supply.",
-        "operationId": "payloadCreationCreatePayloadIssuanceFixed",
+        "operationId": "payloadCreationIssuanceFixed",
         "parameters": [
           {
             "name": "ecosystem",
@@ -1031,14 +1031,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadIssuanceManaged/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
+    "/payloadCreation/issuanceManaged/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadIssuanceManaged",
+        "summary": "issuanceManaged",
         "description": "Creates the payload for a new tokens issuance with manageable supply.",
-        "operationId": "payloadCreationCreatePayloadIssuanceManaged",
+        "operationId": "payloadCreationIssuanceManaged",
         "parameters": [
           {
             "name": "ecosystem",
@@ -1131,14 +1131,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadPartiCrwoSale/{amount}": {
+    "/payloadCreation/partiCrwoSale/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadPartiCrwoSale",
+        "summary": "partiCrwoSale",
         "description": "Create the payload for a participate crowsale transaction",
-        "operationId": "payloadCreationCreatePayloadPartiCrwoSale",
+        "operationId": "payloadCreationPartiCrwoSale",
         "parameters": [
           {
             "name": "amount",
@@ -1158,14 +1158,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadRevoke/{propertyId}/{amount}": {
+    "/payloadCreation/revoke/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadRevoke",
+        "summary": "revoke",
         "description": "Creates the payload to revoke units of managed tokens.",
-        "operationId": "payloadCreationCreatePayloadRevoke",
+        "operationId": "payloadCreationRevoke",
         "parameters": [
           {
             "name": "propertyId",
@@ -1205,14 +1205,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadSendAll/{ecosystem}": {
+    "/payloadCreation/sendAll/{ecosystem}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadSendAll",
+        "summary": "sendAll",
         "description": "Create the payload for a send all transaction.",
-        "operationId": "payloadCreationCreatePayloadSendAll",
+        "operationId": "payloadCreationSendAll",
         "parameters": [
           {
             "name": "ecosystem",
@@ -1232,14 +1232,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadSimpleSend/{propertyId}/{amount}": {
+    "/payloadCreation/simpleSend/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadSimpleSend",
+        "summary": "simpleSend",
         "description": "Create the payload for a simple send transaction.",
-        "operationId": "payloadCreationCreatePayloadSimpleSend",
+        "operationId": "payloadCreationSimpleSend",
         "parameters": [
           {
             "name": "propertyId",
@@ -1269,14 +1269,14 @@
         }
       }
     },
-    "/payloadCreation/createPayloadSTO/{propertyId}/{amount}": {
+    "/payloadCreation/STO/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "createPayloadSTO",
+        "summary": "STO",
         "description": "Creates the payload for a send-to-owners transaction",
-        "operationId": "payloadCreationCreatePayloadSTO",
+        "operationId": "payloadCreationSTO",
         "parameters": [
           {
             "name": "propertyId",
@@ -1578,7 +1578,7 @@
           "transaction"
         ],
         "summary": "burnBCHGetWHC",
-        "description": "burn BCH to get WHC",
+        "description": "Burn BCH to get WHC",
         "operationId": "transactionBurnBCHGetWHC",
         "parameters": [
           {
@@ -1924,7 +1924,7 @@
             }
           },
           {
-            "name": "fromAddress",
+            "name": "toAddress",
             "in": "path",
             "description": "The receiver of the tokens (sender by default, can be '')",
             "required": true,

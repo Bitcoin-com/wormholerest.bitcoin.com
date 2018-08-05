@@ -49,7 +49,7 @@ router.get('/', config.payloadCreationRateLimit1, (req, res, next) => {
   res.json({ status: 'payloadCreation' });
 });
 
-router.get('/createPayloadBurnBCH', config.payloadCreationRateLimit2, (req, res, next) => {
+router.get('/burnBCH', config.payloadCreationRateLimit2, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -71,7 +71,7 @@ router.get('/createPayloadBurnBCH', config.payloadCreationRateLimit2, (req, res,
   });
 });
 
-router.post('/createPayloadChangeIssuer/:propertyId', config.payloadCreationRateLimit2, (req, res, next) => {
+router.post('/changeIssuer/:propertyId', config.payloadCreationRateLimit2, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -96,7 +96,7 @@ router.post('/createPayloadChangeIssuer/:propertyId', config.payloadCreationRate
   });
 });
 
-router.post('/createPayloadCloseCrowdSale/:propertyId', config.payloadCreationRateLimit3, (req, res, next) => {
+router.post('/closeCrowdSale/:propertyId', config.payloadCreationRateLimit3, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -121,7 +121,7 @@ router.post('/createPayloadCloseCrowdSale/:propertyId', config.payloadCreationRa
   });
 });
 
-router.post('/createPayloadGrant/:propertyId', config.payloadCreationRateLimit4, (req, res, next) => {
+router.post('/grant/:propertyId', config.payloadCreationRateLimit4, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -146,7 +146,7 @@ router.post('/createPayloadGrant/:propertyId', config.payloadCreationRateLimit4,
   });
 });
 
-router.post('/createPayloadIssuanceCrowdsale/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.payloadCreationRateLimit6, (req, res, next) => {
+router.post('/issuanceCrowdsale/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.payloadCreationRateLimit6, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -184,7 +184,7 @@ router.post('/createPayloadIssuanceCrowdsale/:ecosystem/:propertyPricision/:prev
   });
 });
 
-router.post('/createPayloadIssuanceFixed/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:amount', config.payloadCreationRateLimit7, (req, res, next) => {
+router.post('/issuanceFixed/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:amount', config.payloadCreationRateLimit7, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -217,7 +217,7 @@ router.post('/createPayloadIssuanceFixed/:ecosystem/:propertyPricision/:previous
   });
 });
 
-router.post('/createPayloadIssuanceManaged/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.payloadCreationRateLimit8, (req, res, next) => {
+router.post('/issuanceManaged/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.payloadCreationRateLimit8, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -249,7 +249,7 @@ router.post('/createPayloadIssuanceManaged/:ecosystem/:propertyPricision/:previo
   });
 });
 
-router.get('/createPayloadPartiCrwoSale/:amount', config.payloadCreationRateLimit9, (req, res, next) => {
+router.get('/partiCrwoSale/:amount', config.payloadCreationRateLimit9, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -274,7 +274,7 @@ router.get('/createPayloadPartiCrwoSale/:amount', config.payloadCreationRateLimi
   });
 });
 
-router.post('/createPayloadRevoke/:propertyId/:amount', config.payloadCreationRateLimit10, (req, res, next) => {
+router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, (req, res, next) => {
   let memo;
 
   BitboxHTTP({
@@ -302,7 +302,7 @@ router.post('/createPayloadRevoke/:propertyId/:amount', config.payloadCreationRa
   });
 });
 
-router.post('/createPayloadSendAll/:ecosystem', config.payloadCreationRateLimit11, (req, res, next) => {
+router.post('/sendAll/:ecosystem', config.payloadCreationRateLimit11, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -327,7 +327,7 @@ router.post('/createPayloadSendAll/:ecosystem', config.payloadCreationRateLimit1
   });
 });
 
-router.post('/createPayloadSimpleSend/:propertyId/:amount', config.payloadCreationRateLimit12, (req, res, next) => {
+router.post('/simpleSend/:propertyId/:amount', config.payloadCreationRateLimit12, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -353,7 +353,7 @@ router.post('/createPayloadSimpleSend/:propertyId/:amount', config.payloadCreati
   });
 });
 
-router.post('/createPayloadSTO/:propertyId/:amount', config.payloadCreationRateLimit13, (req, res, next) => {
+router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, (req, res, next) => {
   let distributionProperty;
 
   BitboxHTTP({
