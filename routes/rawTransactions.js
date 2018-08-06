@@ -143,7 +143,7 @@ router.post('/reference/:rawTx/:destination/:amount', config.rawTransactionsRate
       params: [
         req.params.rawTx,
         req.params.destination,
-        req.params.amount
+        parseFloat(req.params.amount)
       ]
     }
   })
