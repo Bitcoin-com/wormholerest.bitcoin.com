@@ -432,7 +432,7 @@
             "in": "path",
             "description": "The first block to look for Omni transactions (inclusive)",
             "required": true,
-            "example": "0",
+            "example": 290000,
             "schema": {
               "type": "number"
             }
@@ -442,7 +442,7 @@
             "in": "path",
             "description": "The last block to look for Omni transactions (inclusive)",
             "required": true,
-            "example": "500000",
+            "example": 300000,
             "schema": {
               "type": "number"
             }
@@ -569,7 +569,7 @@
         "parameters": [
           {
             "name": "address",
-            "in": "path",
+            "in": "query",
             "description": "Address filter (default: '' for no filter)",
             "required": false,
             "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
@@ -596,6 +596,58 @@
         "summary": "listProperties",
         "description": "Lists all tokens or smart properties.",
         "operationId": "dataRetrievalListProperties",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "description": "address filter (default: '*')",
+            "required": false,
+            "example": "*",
+            "schema": {
+              "type": "string"
+            }
+					},
+          {
+            "name": "count",
+            "in": "query",
+            "description": "show at most n transactions (default: 10)",
+            "required": false,
+            "example": 10,
+            "schema": {
+              "type": "number"
+            }
+					},
+          {
+            "name": "skip",
+            "in": "query",
+            "description": "skip the first n transactions (default: 0)",
+            "required": false,
+            "example": 0,
+            "schema": {
+              "type": "number"
+            }
+					},
+          {
+            "name": "startBlock",
+            "in": "query",
+            "description": "first block to begin the search (default: 0)",
+            "required": false,
+            "example": 0,
+            "schema": {
+              "type": "number"
+            }
+					},
+          {
+            "name": "endBlock",
+            "in": "query",
+            "description": "last block to include in the search (default: 9999999)",
+            "required": false,
+            "example": 9999999,
+            "schema": {
+              "type": "number"
+            }
+					}
+        ],
         "responses": {
           "200": {
             "description": "successful response"

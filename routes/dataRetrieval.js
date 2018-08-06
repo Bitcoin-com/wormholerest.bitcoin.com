@@ -92,7 +92,7 @@ router.get('/getAllBalancesForId/:propertyId', config.dataRetrievalRateLimit2, (
       id:"whc_getallbalancesforid",
       method: "whc_getallbalancesforid",
       params: [
-        req.params.propertyId
+        parseInt(req.params.propertyId)
       ]
     }
   })
@@ -143,7 +143,7 @@ router.get('/getBalancesHash/:propertyId', config.dataRetrievalRateLimit4, (req,
       id:"whc_getbalanceshash",
       method: "whc_getbalanceshash",
       params: [
-        req.params.propertyId
+        parseInt(req.params.propertyId)
       ]
     }
   })
@@ -172,7 +172,7 @@ router.get('/getCrowdSale/:propertyId', config.dataRetrievalRateLimit5, (req, re
       id:"whc_getcrowdsale",
       method: "whc_getcrowdsale",
       params: [
-        req.params.propertyId,
+        parseInt(req.params.propertyId),
         verbose
       ]
     }
@@ -208,14 +208,13 @@ router.get('/getCurrentConsensusHash', config.dataRetrievalRateLimit6, (req, res
 });
 
 router.get('/getFeeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
-  let address = false;
-  if(req.query.address && req.query.address === 'true') {
-    address = true;
+  let params = [];
+  if(req.query.address) {
+    params.push(req.query.address);
   }
 
-  let ecosystem = false;
-  if(req.query.ecosystem && req.query.ecosystem === 'true') {
-    ecosystem = true;
+  if(req.query.ecosystem) {
+    params.push(req.query.ecosystem);
   }
 
   BitboxHTTP({
@@ -228,10 +227,7 @@ router.get('/getFeeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
       jsonrpc: "1.0",
       id:"whc_getfeeshare",
       method: "whc_getfeeshare",
-      params: [
-        address,
-        ecosystem
-      ]
+      params: params
     }
   })
   .then((response) => {
@@ -243,15 +239,6 @@ router.get('/getFeeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
 });
 
 router.get('/getGrants/:propertyId', config.dataRetrievalRateLimit8, (req, res, next) => {
-  let address = false;
-  if(req.query.address && req.query.address === 'true') {
-    address = true;
-  }
-
-  let ecosystem = false;
-  if(req.query.ecosystem && req.query.ecosystem === 'true') {
-    ecosystem = true;
-  }
 
   BitboxHTTP({
     method: 'post',
@@ -264,7 +251,7 @@ router.get('/getGrants/:propertyId', config.dataRetrievalRateLimit8, (req, res, 
       id:"whc_getgrants",
       method: "whc_getgrants",
       params: [
-        req.params.propertyId,
+        parseInt(req.params.propertyId),
       ]
     }
   })
@@ -309,7 +296,10 @@ router.get('/getPayload/:txid', config.dataRetrievalRateLimit10, (req, res, next
     data: {
       jsonrpc: "1.0",
       id:"whc_getpayload",
-      method: "whc_getpayload"
+      method: "whc_getpayload",
+      params: [
+        req.params.txid,
+      ]
     }
   })
   .then((response) => {
@@ -333,7 +323,7 @@ router.get('/getProperty/:propertyId', config.dataRetrievalRateLimit11, (req, re
       id:"whc_getproperty",
       method: "whc_getproperty",
       params: [
-        req.params.propertyId
+        parseInt(req.params.propertyId)
       ]
     }
   })
@@ -358,8 +348,8 @@ router.get('/getSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit
       id:"whc_getseedblocks",
       method: "whc_getseedblocks",
       params: [
-        req.params.startBlock,
-        req.params.endBlock
+        parseInt(req.params.startBlock),
+        parseInt(req.params.endBlock)
       ]
     }
   })
@@ -435,7 +425,7 @@ router.get('/listBlockTransactions/:index', config.dataRetrievalRateLimit15, (re
       id:"whc_listblocktransactions",
       method: "whc_listblocktransactions",
       params: [
-        req.params.index
+        parseInt(req.params.index)
       ]
     }
   })
@@ -447,8 +437,11 @@ router.get('/listBlockTransactions/:index', config.dataRetrievalRateLimit15, (re
   });
 });
 
-router.get('/listPendingTransactions/:address', config.dataRetrievalRateLimit16, (req, res, next) => {
-
+router.get('/listPendingTransactions', config.dataRetrievalRateLimit16, (req, res, next) => {
+  let params = [];
+  if(req.query.address) {
+    params.push(req.query.address);
+  }
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -459,9 +452,7 @@ router.get('/listPendingTransactions/:address', config.dataRetrievalRateLimit16,
       jsonrpc: "1.0",
       id:"whc_listpendingtransactions",
       method: "whc_listpendingtransactions",
-      params: [
-        req.params.address
-      ]
+      params: params
     }
   })
   .then((response) => {
@@ -495,6 +486,22 @@ router.get('/listProperties', config.dataRetrievalRateLimit17, (req, res, next) 
 });
 
 router.get('/listTransactions', config.dataRetrievalRateLimit18, (req, res, next) => {
+  let params = [];
+  if(req.query.address) {
+    params.push(req.query.address);
+  }
+  if(req.query.count) {
+    params.push(req.query.count);
+  }
+  if(req.query.skip) {
+    params.push(req.query.skip);
+  }
+  if(req.query.startBlock) {
+    params.push(req.query.startBlock);
+  }
+  if(req.query.endBlock) {
+    params.push(req.query.endBlock);
+  }
 
   BitboxHTTP({
     method: 'post',
@@ -505,7 +512,8 @@ router.get('/listTransactions', config.dataRetrievalRateLimit18, (req, res, next
     data: {
       jsonrpc: "1.0",
       id:"whc_listtransactions",
-      method: "whc_listtransactions"
+      method: "whc_listtransactions",
+      params: params
     }
   })
   .then((response) => {
