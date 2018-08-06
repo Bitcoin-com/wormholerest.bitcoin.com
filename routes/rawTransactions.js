@@ -42,8 +42,11 @@ router.get('/', config.rawTransactionsRateLimit1, (req, res, next) => {
   res.json({ status: 'dataRetrieval' });
 });
 
-router.post('/createRawTxChange/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, (req, res, next) => {
+router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, (req, res, next) => {
   let query;
+  if(req.query.query) {
+    query = req.query.query;
+  }
 
   BitboxHTTP({
     method: 'post',
@@ -57,9 +60,9 @@ router.post('/createRawTxChange/:rawtx/:prevTxs/:destination/:fee', config.rawTr
       method: "whc_createrawtx_change",
       params: [
         req.params.rawtx,
-        req.params.prevTxs,
+        JSON.parse(req.params.prevTxs),
         req.params.destination,
-        req.params.fee,
+        parseFloat(req.params.fee),
         query
       ]
     }
@@ -72,7 +75,7 @@ router.post('/createRawTxChange/:rawtx/:prevTxs/:destination/:fee', config.rawTr
   });
 });
 
-router.post('/createRawTxInput/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, (req, res, next) => {
+router.post('/input/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -87,7 +90,7 @@ router.post('/createRawTxInput/:rawTx/:txid/:n', config.rawTransactionsRateLimit
       params: [
         req.params.rawTx,
         req.params.txid,
-        req.params.n
+        parseInt(req.params.n)
       ]
     }
   })
@@ -99,7 +102,7 @@ router.post('/createRawTxInput/:rawTx/:txid/:n', config.rawTransactionsRateLimit
   });
 });
 
-router.post('/createRawTxOpReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req, res, next) => {
+router.post('/opReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -125,7 +128,7 @@ router.post('/createRawTxOpReturn/:rawTx/:payload', config.rawTransactionsRateLi
   });
 });
 
-router.post('/createRawTxReference/:rawTx/:destination/:amount', config.rawTransactionsRateLimit5, (req, res, next) => {
+router.post('/reference/:rawTx/:destination/:amount', config.rawTransactionsRateLimit5, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',

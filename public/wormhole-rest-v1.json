@@ -1368,21 +1368,21 @@
         }
       }
     },
-    "/rawTransactions/createRawTxChange/{rawtx}/{prevTxs}/{destination}/{fee}/{position}": {
+    "/rawTransactions/change/{rawTx}/{prevTxs}/{destination}/{fee}": {
       "post": {
         "tags": [
           "rawTransactions"
         ],
         "summary": "createRawTxChange",
         "description": "Adds a change output to the transaction.",
-        "operationId": "rawTransactionsCreateRawTxChange",
+        "operationId": "rawTransactionsChange",
         "parameters": [
           {
             "name": "rawTx",
             "in": "path",
             "description": "The raw transaction to extend",
             "required": true,
-            "example": "",
+            "example": "0100000001b15ee60431ef57ec682790dec5a3c0d83a0c360633ea8308fbf6d5fc10a779670400000000ffffffff025c0d00000000000047512102f3e471222bb57a7d416c82bf81c627bfcd2bdc47f36e763ae69935bba4601ece21021580b888ff56feb27f17f08802ebed26258c23697d6a462d43fc13b565fda2dd52aeaa0a0000000000001976a914946cb2e08075bcbaf157e47bcb67eb2b2339d24288ac00000000",
             "schema": {
               "type": "string"
             }
@@ -1392,7 +1392,7 @@
             "in": "path",
             "description": "A JSON array of transaction inputs",
             "required": true,
-            "example": "",
+            "example": "[{\"txid\":\"6779a710fcd5f6fb0883ea3306360c3ad8c0a3c5de902768ec57ef3104e65eb1\",\"vout\":4,\"scriptPubKey\":\"76a9147b25205fd98d462880a3e5b0541235831ae959e588ac\",\"value\":0.00068257}]",
             "schema": {
               "type": "string"
             }
@@ -1402,7 +1402,7 @@
             "in": "path",
             "description": "The destination for the change",
             "required": true,
-            "example": "",
+            "example": "bitcoincash:qpaj2gzlmxx5v2yq50jmq4qjxkp3462eu5e4653006",
             "schema": {
               "type": "string"
             }
@@ -1412,7 +1412,7 @@
             "in": "path",
             "description": "The desired transaction fees",
             "required": true,
-            "example": 0,
+            "example": 0.00003500,
             "schema": {
               "type": "number"
             }
@@ -1422,7 +1422,7 @@
             "in": "query",
             "description": "The position of the change output (default: first position)",
             "required": false,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -1446,21 +1446,21 @@
         }
       }
     },
-    "/rawTransactions/createRawTxInput/{rawtx}/{txid}/{n}": {
+    "/rawTransactions/input/{rawTx}/{txid}/{n}": {
       "post": {
         "tags": [
           "rawTransactions"
         ],
         "summary": "createRawTxInput",
         "description": "Adds a transaction input to the transaction.",
-        "operationId": "rawTransactionsCreateRawTxInput",
+        "operationId": "rawTransactionsInput",
         "parameters": [
           {
             "name": "rawTx",
             "in": "path",
             "description": "The raw transaction to extend",
             "required": true,
-            "example": "",
+            "example": "01000000000000000000",
             "schema": {
               "type": "string"
             }
@@ -1470,7 +1470,7 @@
             "in": "path",
             "description": "The hash of the input transaction",
             "required": true,
-            "example": "",
+            "example": "b006729017df05eda586df9ad3f8ccfee5be340aadf88155b784d1fc0e8342ee",
             "schema": {
               "type": "string"
             }
@@ -1493,14 +1493,14 @@
         }
       }
     },
-    "/rawTransactions/createRawTxOpReturn/{rawtx}/{txid}/{n}": {
+    "/rawTransactions/opReturn/{rawtx}/{txid}/{n}": {
       "post": {
         "tags": [
           "rawTransactions"
         ],
         "summary": "createRawTxOpReturn",
         "description": "Adds a payload with class C (op-return) encoding to the transaction.",
-        "operationId": "rawTransactionsCreateRawTxOpReturn",
+        "operationId": "rawTransactionsOpReturn",
         "parameters": [
           {
             "name": "rawTx",
@@ -1530,14 +1530,14 @@
         }
       }
     },
-    "/rawTransactions/createRawTxReference/{rawtx}/{txid}/{n}": {
+    "/rawTransactions/reference/{rawtx}/{txid}/{n}": {
       "post": {
         "tags": [
           "rawTransactions"
         ],
         "summary": "createRawTxReference",
         "description": "Adds a reference output to the transaction.",
-        "operationId": "rawTransactionsCreateRawTxReference",
+        "operationId": "rawTransactionsReference",
         "parameters": [
           {
             "name": "rawTx",
