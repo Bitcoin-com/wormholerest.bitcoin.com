@@ -28,6 +28,7 @@ let configuration = require('./routes/configuration');
 let dataRetrieval = require('./routes/dataRetrieval');
 let payloadCreation = require('./routes/payloadCreation');
 let rawTransactions = require('./routes/rawTransactions');
+let transaction = require('./routes/transaction');
 
 app.use(swStats.getMiddleware({ swaggerSpec: apiSpec }));
 
@@ -71,6 +72,7 @@ app.use('/' + prefix + '/' + 'configuration', configuration);
 app.use('/' + prefix + '/' + 'dataRetrieval', dataRetrieval);
 app.use('/' + prefix + '/' + 'payloadCreation', payloadCreation);
 app.use('/' + prefix + '/' + 'rawTransactions', rawTransactions);
+app.use('/' + prefix + '/' + 'transaction', transaction);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -50,7 +50,11 @@ router.get('/', config.transactionRateLimit1, (req, res, next) => {
 });
 
 router.post('/burnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res, next) => {
-  let redeemaddress;
+  let redeemAddress;
+  if(req.query.redeemAddress) {
+    redeemAddress = req.query.redeemAddress;
+  }
+
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -62,8 +66,8 @@ router.post('/burnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res, n
       id:"whc_burnbchgetwhc",
       method: "whc_burnbchgetwhc",
       params: [
-        req.paams.amount,
-        redeemaddress
+        parseInt(req.params.amount),
+        redeemAddress
       ]
     }
   })
@@ -75,9 +79,16 @@ router.post('/burnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res, n
   });
 });
 
-router.post('/partiCrowSale/:fromAddress/:toAddress/:amount"', config.transactionRateLimit3, (req, res, next) => {
+router.post('/partiCrowSale/:fromAddress/:toAddress/:amount', config.transactionRateLimit3, (req, res, next) => {
   let redeemAddress;
+  if(req.query.redeemAddress) {
+    redeemAddress = req.query.redeemAddress;
+  }
+
   let referenceAmount;
+  if(req.query.referenceAmount) {
+    referenceAmount = req.query.referenceAmount;
+  }
 
   BitboxHTTP({
     method: 'post',
@@ -90,9 +101,9 @@ router.post('/partiCrowSale/:fromAddress/:toAddress/:amount"', config.transactio
       id:"whc_particrowsale",
       method: "whc_particrowsale",
       params: [
-        req.paams.fromAddress,
-        req.paams.toAddress,
-        req.paams.amount,
+        req.params.fromAddress,
+        req.params.toAddress,
+        parseFloat(req.params.amount),
         redeemAddress,
         referenceAmount
       ]
@@ -104,6 +115,7 @@ router.post('/partiCrowSale/:fromAddress/:toAddress/:amount"', config.transactio
   .catch((error) => {
     res.send(error.response.data.error.message);
   });
+});
 
 router.post('/send/:fromAddress/:toAddress/:propertyId/:amount', config.transactionRateLimit4, (req, res, next) => {
   let redeemAddress;
@@ -119,10 +131,10 @@ router.post('/send/:fromAddress/:toAddress/:propertyId/:amount', config.transact
       id:"whc_send",
       method: "whc_send",
       params: [
-        req.paams.fromAddress,
-        req.paams.toAddress,
-        req.paams.propertyId,
-        req.paams.amount,
+        req.params.fromAddress,
+        req.params.toAddress,
+        parseInt(req.params.propertyId),
+        parseFloat(req.params.amount),
         redeemAddress,
         referenceAmount
       ]
@@ -134,10 +146,18 @@ router.post('/send/:fromAddress/:toAddress/:propertyId/:amount', config.transact
   .catch((error) => {
     res.send(error.response.data.error.message);
   });
+});
 
 router.post('/sendAll/:fromAddress/:toAddress/:ecosystem', config.transactionRateLimit5, (req, res, next) => {
   let redeemAddress;
+  if(req.query.redeemAddress) {
+    redeemAddress = req.query.redeemAddress;
+  }
+
   let referenceAmount;
+  if(req.query.referenceAmount) {
+    referenceAmount = req.query.referenceAmount;
+  }
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -149,9 +169,9 @@ router.post('/sendAll/:fromAddress/:toAddress/:ecosystem', config.transactionRat
       id:"whc_sendall",
       method: "whc_sendall",
       params: [
-        req.paams.fromAddress,
-        req.paams.toAddress,
-        req.paams.ecosystem,
+        req.params.fromAddress,
+        req.params.toAddress,
+        parseInt(req.params.ecosystem),
         redeemAddress,
         referenceAmount
       ]
@@ -177,9 +197,9 @@ router.post('/sendChangeIssuer/:fromAddress/:toAddress/:propertyId', config.tran
       id:"whc_sendchangeissuer",
       method: "whc_sendchangeissuer",
       params: [
-        req.paams.fromAddress,
-        req.paams.toAddress,
-        req.paams.propertyId
+        req.params.fromAddress,
+        req.params.toAddress,
+        parseInt(req.params.propertyId)
       ]
     }
   })
@@ -203,8 +223,8 @@ router.post('/sendCloseCrowdSale/:fromAddress/:propertyId', config.transactionRa
       id:"whc_sendclosecrowdsale",
       method: "whc_sendclosecrowdsale",
       params: [
-        req.paams.fromAddress,
-        req.paams.propertyId
+        req.params.fromAddress,
+        parseInt(req.params.propertyId)
       ]
     }
   })
@@ -214,9 +234,13 @@ router.post('/sendCloseCrowdSale/:fromAddress/:propertyId', config.transactionRa
   .catch((error) => {
     res.send(error.response.data.error.message);
   });
+});
 
-router.post('/sendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}', config.transactionRateLimit8, (req, res, next) => {
+router.post('/sendGrant/:fromAddress/:toAddress/:propertyId/:amount', config.transactionRateLimit8, (req, res, next) => {
   let memo;
+  if(req.query.memo) {
+    memo = req.query.memo;
+  }
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -228,10 +252,10 @@ router.post('/sendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}', config
       id:"whc_sendgrant",
       method: "whc_sendgrant",
       params: [
-        req.paams.fromAddress,
-        req.paams.toAddress,
-        req.paams.propertyId,
-        req.paams.amount,
+        req.params.fromAddress,
+        req.params.toAddress,
+        parseInt(req.params.propertyId),
+        parseFloat(req.params.amount),
         memo
       ]
     }
@@ -256,21 +280,21 @@ router.post('/sendIssuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricision/:
       id:"whc_sendissuancecrowdsale",
       method: "whc_sendissuancecrowdsale",
       params: [
-        req.paams.fromAddress,
-        req.paams.ecosystem,
-        req.paams.propertyPricision,
-        req.paams.previousId,
-        req.paams.category,
-        req.paams.subcategory,
-        req.paams.name,
-        req.paams.url,
-        req.paams.data,
-        req.paams.propertyIdDesired,
-        req.paams.tokensPerUnit,
-        req.paams.deadline,
-        req.paams.earlyBonus,
-        req.paams.undefine,
-        req.paams.totalNumber
+        req.params.fromAddress,
+        parseInt(req.params.ecosystem),
+        parseInt(req.params.propertyPricision),
+        parseInt(req.params.previousId),
+        req.params.category,
+        req.params.subcategory,
+        req.params.name,
+        req.params.url,
+        req.params.data,
+        parseInt(req.params.propertyIdDesired),
+        req.params.tokensPerUnit,
+        parseInt(req.params.deadline),
+        parseInt(req.params.earlyBonus),
+        parseInt(req.params.undefine),
+        req.params.totalNumber
       ]
     }
   })
@@ -294,16 +318,16 @@ router.post('/sendIssuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:prev
       id:"whc_sendissuancefixed",
       method: "whc_sendissuancefixed",
       params: [
-        req.paams.fromAddress,
-        req.paams.ecosystem,
-        req.paams.propertyPricision,
-        req.paams.previousId,
-        req.paams.category,
-        req.paams.subcategory,
-        req.paams.name,
-        req.paams.url,
-        req.paams.data,
-        req.paams.totalNumber
+        req.params.fromAddress,
+        parseInt(req.params.ecosystem),
+        parseInt(req.params.propertyPricision),
+        parseInt(req.params.previousId),
+        req.params.category,
+        req.params.subcategory,
+        req.params.name,
+        req.params.url,
+        req.params.data,
+        req.params.totalNumber
       ]
     }
   })
@@ -327,15 +351,15 @@ router.post('/sendIssuanceManaged/:fromAddress/:ecosystem/:propertyPricision/:pr
       id:"whc_sendissuancemanaged",
       method: "whc_sendissuancemanaged",
       params: [
-        req.paams.fromAddress,
-        req.paams.ecosystem,
-        req.paams.propertyPricision,
-        req.paams.previousId,
-        req.paams.category,
-        req.paams.subcategory,
-        req.paams.name,
-        req.paams.url,
-        req.paams.data
+        req.params.fromAddress,
+        parseInt(req.params.ecosystem),
+        parseInt(req.params.propertyPricision),
+        parseInt(req.params.previousId),
+        req.params.category,
+        req.params.subcategory,
+        req.params.name,
+        req.params.url,
+        req.params.data
       ]
     }
   })
@@ -347,10 +371,19 @@ router.post('/sendIssuanceManaged/:fromAddress/:ecosystem/:propertyPricision/:pr
   });
 });
 
-router.post('/sendRawTx/{fromAddress}/{rawTransaction}', config.transactionRateLimit11, (req, res, next) => {
+router.post('/sendRawTx/:fromAddress/:rawTransaction', config.transactionRateLimit11, (req, res, next) => {
   let referenceAddress;
+  if(req.query.referenceAddress) {
+    referenceAddress = req.query.referenceAddress;
+  }
   let redeemAddress;
+  if(req.query.redeemAddress) {
+    redeemAddress = req.query.redeemAddress;
+  }
   let referenceAmount;
+  if(req.query.referenceAmount) {
+    referenceAmount = req.query.referenceAmount;
+  }
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -362,8 +395,8 @@ router.post('/sendRawTx/{fromAddress}/{rawTransaction}', config.transactionRateL
       id:"whc_sendrawtx",
       method: "whc_sendrawtx",
       params: [
-        req.paams.fromAddress,
-        req.paams.rawTransaction,
+        req.params.fromAddress,
+        req.params.rawTransaction,
         referenceAddress,
         redeemAddress,
         referenceAmount
@@ -380,6 +413,9 @@ router.post('/sendRawTx/{fromAddress}/{rawTransaction}', config.transactionRateL
 
 router.post('/sendRevoke/:fromAddress/:propertyId/:amount', config.transactionRateLimit12, (req, res, next) => {
   let memo;
+  if(req.query.memo) {
+    memo = req.query.memo;
+  }
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -391,9 +427,9 @@ router.post('/sendRevoke/:fromAddress/:propertyId/:amount', config.transactionRa
       id:"whc_sendrevoke",
       method: "whc_sendrevoke",
       params: [
-        req.paams.fromAddress,
-        req.paams.propertyId,
-        req.paams.amount,
+        req.params.fromAddress,
+        parseInt(req.params.propertyId),
+        parseFloat(req.params.amount),
         memo
       ]
     }
@@ -408,7 +444,13 @@ router.post('/sendRevoke/:fromAddress/:propertyId/:amount', config.transactionRa
 
 router.post('/sendSTO/:fromAddress/:propertyId/:amount', config.transactionRateLimit13, (req, res, next) => {
   let redeemAddress;
+  if(req.query.redeemAddress) {
+    redeemAddress = req.query.redeemAddress;
+  }
   let distributionProperty;
+  if(req.query.distributionProperty) {
+    distributionProperty = req.query.distributionProperty;
+  }
   BitboxHTTP({
     method: 'post',
     auth: {
@@ -420,9 +462,9 @@ router.post('/sendSTO/:fromAddress/:propertyId/:amount', config.transactionRateL
       id:"whc_sendsto",
       method: "whc_sendsto",
       params: [
-        req.paams.fromAddress,
-        req.paams.propertyId,
-        req.paams.amount,
+        req.params.fromAddress,
+        parseInt(req.params.propertyId),
+        parseFloat(req.params.amount),
         redeemAddress,
         distributionProperty
       ]
