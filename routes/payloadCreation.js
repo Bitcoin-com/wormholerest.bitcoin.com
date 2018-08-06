@@ -84,7 +84,7 @@ router.post('/changeIssuer/:propertyId', config.payloadCreationRateLimit2, (req,
       id:"whc_createpayload_changeissuer",
       method: "whc_createpayload_changeissuer",
       params: [
-        req.params.propertyId
+        parseInt(req.params.propertyId)
       ]
     }
   })
@@ -109,7 +109,7 @@ router.post('/closeCrowdSale/:propertyId', config.payloadCreationRateLimit3, (re
       id:"whc_createpayload_closecrowdsale",
       method: "whc_createpayload_closecrowdsale",
       params: [
-        req.params.propertyId
+        parseInt(req.params.propertyId)
       ]
     }
   })
@@ -121,7 +121,11 @@ router.post('/closeCrowdSale/:propertyId', config.payloadCreationRateLimit3, (re
   });
 });
 
-router.post('/grant/:propertyId', config.payloadCreationRateLimit4, (req, res, next) => {
+router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, (req, res, next) => {
+  let memo;
+  if(req.query.memo) {
+    memo = req.query.memo;
+  }
 
   BitboxHTTP({
     method: 'post',
@@ -134,7 +138,9 @@ router.post('/grant/:propertyId', config.payloadCreationRateLimit4, (req, res, n
       id:"whc_createpayload_grant",
       method: "whc_createpayload_grant",
       params: [
-        req.params.propertyId
+        parseInt(req.params.propertyId),
+        req.params.amount,
+        memo
       ]
     }
   })
@@ -159,19 +165,19 @@ router.post('/issuanceCrowdsale/:ecosystem/:propertyPricision/:previousId/:categ
       id:"whc_createpayload_issuancecrowdsale",
       method: "whc_createpayload_issuancecrowdsale",
       params: [
-        req.params.ecosystem,
-        req.params.propertyPricision,
-        req.params.previousId,
+        parseInt(req.params.ecosystem),
+        parseInt(req.params.propertyPricision),
+        parseInt(req.params.previousId),
         req.params.category,
         req.params.subcategory,
         req.params.name,
         req.params.url,
         req.params.data,
-        req.params.propertyIdDesired,
+        parseInt(req.params.propertyIdDesired),
         req.params.tokensPerUnit,
-        req.params.deadline,
-        req.params.earlyBonus,
-        req.params.undefine,
+        parseInt(req.params.deadline),
+        parseInt(req.params.earlyBonus),
+        parseInt(req.params.undefine),
         req.params.totalNumber
       ]
     }
@@ -197,9 +203,9 @@ router.post('/issuanceFixed/:ecosystem/:propertyPricision/:previousId/:category/
       id:"whc_createpayload_issuancefixed",
       method: "whc_createpayload_issuancefixed",
       params: [
-        req.params.ecosystem,
-        req.params.propertyPricision,
-        req.params.previousId,
+        parseInt(req.params.ecosystem),
+        parseInt(req.params.propertyPricision),
+        parseInt(req.params.previousId),
         req.params.category,
         req.params.subcategory,
         req.params.name,
@@ -230,9 +236,9 @@ router.post('/issuanceManaged/:ecosystem/:propertyPricision/:previousId/:categor
       id:"whc_createpayload_issuancemanaged",
       method: "whc_createpayload_issuancemanaged",
       params: [
-        req.params.ecosystem,
-        req.params.propertyPricision,
-        req.params.previousId,
+        parseInt(req.params.ecosystem),
+        parseInt(req.params.propertyPricision),
+        parseInt(req.params.previousId),
         req.params.category,
         req.params.subcategory,
         req.params.name,
@@ -249,7 +255,7 @@ router.post('/issuanceManaged/:ecosystem/:propertyPricision/:previousId/:categor
   });
 });
 
-router.get('/partiCrwoSale/:amount', config.payloadCreationRateLimit9, (req, res, next) => {
+router.post('/partiCrwoSale/:amount', config.payloadCreationRateLimit9, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -276,6 +282,9 @@ router.get('/partiCrwoSale/:amount', config.payloadCreationRateLimit9, (req, res
 
 router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, (req, res, next) => {
   let memo;
+  if(req.query.memo) {
+    memo = req.query.memo;
+  }
 
   BitboxHTTP({
     method: 'post',
@@ -288,7 +297,7 @@ router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, (r
       id:"whc_createpayload_revoke",
       method: "whc_createpayload_revoke",
       params: [
-        req.params.propertyId,
+        parseInt(req.params.propertyId),
         req.params.amount,
         memo
       ]
@@ -315,7 +324,7 @@ router.post('/sendAll/:ecosystem', config.payloadCreationRateLimit11, (req, res,
       id:"whc_createpayload_sendall",
       method: "whc_createpayload_sendall",
       params: [
-        req.params.ecosystem
+        parseInt(req.params.ecosystem)
       ]
     }
   })
@@ -340,7 +349,7 @@ router.post('/simpleSend/:propertyId/:amount', config.payloadCreationRateLimit12
       id:"whc_createpayload_simplesend",
       method: "whc_createpayload_simplesend",
       params: [
-        req.params.propertyId,
+        parseInt(req.params.propertyId),
         req.params.amount
       ]
     }
@@ -355,6 +364,9 @@ router.post('/simpleSend/:propertyId/:amount', config.payloadCreationRateLimit12
 
 router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, (req, res, next) => {
   let distributionProperty;
+  if(req.query.distributionProperty) {
+    distributionProperty = req.query.distributionProperty;
+  }
 
   BitboxHTTP({
     method: 'post',
@@ -367,7 +379,7 @@ router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, (req,
       id:"whc_createpayload_sto",
       method: "whc_createpayload_sto",
       params: [
-        req.params.propertyId,
+        parseInt(req.params.propertyId),
         req.params.amount,
         distributionProperty
       ]

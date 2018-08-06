@@ -699,7 +699,7 @@
             "in": "path",
             "description": "The identifier of the tokens",
             "required": true,
-            "example": 0,
+            "example": 3,
             "schema": {
               "type": "number"
             }
@@ -737,7 +737,7 @@
             "in": "path",
             "description": "The identifier of the crowdsale to close",
             "required": true,
-            "example": 0,
+            "example": 70,
             "schema": {
               "type": "number"
             }
@@ -775,7 +775,7 @@
             "in": "path",
             "description": "The identifier of the tokens to grant",
             "required": true,
-            "example": 0,
+            "example": 51,
             "schema": {
               "type": "number"
             }
@@ -843,7 +843,7 @@
             "in": "path",
             "description": "The pricision of the tokens to create:[0, 8]",
             "required": true,
-            "example": 8,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -863,7 +863,7 @@
             "in": "path",
             "description": "A category for the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "Companies",
             "schema": {
               "type": "string"
             }
@@ -873,7 +873,7 @@
             "in": "path",
             "description": "A subcategory for the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "Bitcoin Mining",
             "schema": {
               "type": "string"
             }
@@ -883,7 +883,7 @@
             "in": "path",
             "description": "The name of the new tokens to create",
             "required": true,
-            "example": "",
+            "example": "Quantum Miner",
             "schema": {
               "type": "string"
             }
@@ -893,7 +893,7 @@
             "in": "path",
             "description": "An URL for further information about the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "www.example.com",
             "schema": {
               "type": "string"
             }
@@ -903,7 +903,7 @@
             "in": "path",
             "description": "A description for the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "Quantum Miner Tokens",
             "schema": {
               "type": "string"
             }
@@ -913,7 +913,7 @@
             "in": "path",
             "description": "The identifier of a token eligible to participate in the crowdsale",
             "required": true,
-            "example": 0,
+            "example": 2,
             "schema": {
               "type": "number"
             }
@@ -923,7 +923,7 @@
             "in": "path",
             "description": "The amount of tokens granted per unit invested in the crowdsale",
             "required": true,
-            "example": "",
+            "example": "100",
             "schema": {
               "type": "string"
             }
@@ -933,7 +933,7 @@
             "in": "path",
             "description": "The deadline of the crowdsale as Unix timestamp",
             "required": true,
-            "example": 0,
+            "example": 1483228800,
             "schema": {
               "type": "number"
             }
@@ -943,7 +943,7 @@
             "in": "path",
             "description": "An early bird bonus for participants in percent per week",
             "required": true,
-            "example": 0,
+            "example": 30,
             "schema": {
               "type": "number"
             }
@@ -963,7 +963,7 @@
             "in": "path",
             "description": "The number of tokens to create",
             "required": true,
-            "example": "",
+            "example": "192978657",
             "schema": {
               "type": "string"
             }
@@ -1000,7 +1000,7 @@
             "in": "path",
             "description": "The pricision of the tokens to create:[0, 8]",
             "required": true,
-            "example": 8,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -1020,7 +1020,7 @@
             "in": "path",
             "description": "A category for the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "Companies",
             "schema": {
               "type": "string"
             }
@@ -1030,7 +1030,7 @@
             "in": "path",
             "description": "A subcategory for the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "Bitcoin Mining",
             "schema": {
               "type": "string"
             }
@@ -1040,7 +1040,7 @@
             "in": "path",
             "description": "The name of the new tokens to create",
             "required": true,
-            "example": "",
+            "example": "Quantum Miner",
             "schema": {
               "type": "string"
             }
@@ -1050,7 +1050,7 @@
             "in": "path",
             "description": "An URL for further information about the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "www.example.com",
             "schema": {
               "type": "string"
             }
@@ -1060,7 +1060,7 @@
             "in": "path",
             "description": "A description for the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "Quantum Miner Tokens",
             "schema": {
               "type": "string"
             }
@@ -1070,7 +1070,7 @@
             "in": "path",
             "description": "The number of tokens to create",
             "required": true,
-            "example": "",
+            "example": "1000000",
             "schema": {
               "type": "string"
             }
@@ -1083,7 +1083,7 @@
         }
       }
     },
-    "/payloadCreation/issuanceManaged/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
+    "/payloadCreation/issuanceManaged/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
       "post": {
         "tags": [
           "payloadCreation"
@@ -1107,7 +1107,7 @@
             "in": "path",
             "description": "The pricision of the tokens to create:[0, 8]",
             "required": true,
-            "example": 8,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -1127,7 +1127,7 @@
             "in": "path",
             "description": "A category for the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "Companies",
             "schema": {
               "type": "string"
             }
@@ -1137,7 +1137,7 @@
             "in": "path",
             "description": "A subcategory for the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "Bitcoin Mining",
             "schema": {
               "type": "string"
             }
@@ -1147,7 +1147,7 @@
             "in": "path",
             "description": "The name of the new tokens to create",
             "required": true,
-            "example": "",
+            "example": "Quantum Miner",
             "schema": {
               "type": "string"
             }
@@ -1157,7 +1157,7 @@
             "in": "path",
             "description": "An URL for further information about the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "www.example.com",
             "schema": {
               "type": "string"
             }
@@ -1167,7 +1167,7 @@
             "in": "path",
             "description": "A description for the new tokens (can be '')",
             "required": true,
-            "example": "",
+            "example": "Quantum Miner Tokens",
             "schema": {
               "type": "string"
             }
@@ -1197,7 +1197,7 @@
             "in": "path",
             "description": "The amount of WHC to particrowsale",
             "required": true,
-            "example": "",
+            "example": "100.0",
             "schema": {
               "type": "string"
             }
@@ -1224,7 +1224,7 @@
             "in": "path",
             "description": "The identifier of the tokens to revoke",
             "required": true,
-            "example": 0,
+            "example": 51,
             "schema": {
               "type": "number"
             }
@@ -1234,7 +1234,7 @@
             "in": "path",
             "description": "The amount of tokens to revoke",
             "required": true,
-            "example": "",
+            "example": "100",
             "schema": {
               "type": "string"
             }
@@ -1244,7 +1244,7 @@
             "in": "query",
             "description": "A text note attached to this transaction (none by default)",
             "required": false,
-            "example": "",
+            "example": "Goodbye BITBOX",
             "schema": {
               "type": "string"
             }
@@ -1271,7 +1271,7 @@
             "in": "path",
             "description": "The ecosystem of the tokens to send (1 for main ecosystem, 2 for test ecosystem)",
             "required": true,
-            "example": 1,
+            "example": 2,
             "schema": {
               "type": "number"
             }
@@ -1298,7 +1298,7 @@
             "in": "path",
             "description": "The identifier of the tokens to send",
             "required": true,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -1308,7 +1308,7 @@
             "in": "path",
             "description": "The amount to send",
             "required": true,
-            "example": "",
+            "example": "100.0",
             "schema": {
               "type": "string"
             }
@@ -1335,7 +1335,7 @@
             "in": "path",
             "description": "The identifier of the tokens to distribute",
             "required": true,
-            "example": 0,
+            "example": 3,
             "schema": {
               "type": "number"
             }
@@ -1345,7 +1345,7 @@
             "in": "path",
             "description": "The amount to distribute",
             "required": true,
-            "example": "",
+            "example": "5000",
             "schema": {
               "type": "string"
             }
