@@ -118,7 +118,7 @@ router.get('/getBalance/:address/:propertyId', config.dataRetrievalRateLimit3, (
       method: "whc_getbalance",
       params: [
         req.params.address,
-        req.params.propertyId
+        parseInt(req.params.propertyId)
       ]
     }
   })
