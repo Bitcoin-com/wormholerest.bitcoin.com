@@ -52,14 +52,14 @@
     }
   ],
   "paths": {
-    "/configuration/setAutoCommit/{flag}": {
+    "/configuration/autoCommit/{flag}": {
       "post": {
         "tags": [
           "configuration"
         ],
-        "summary": "setAutoCommit",
+        "summary": "autoCommit",
         "description": "Sets the global flag that determines whether transactions are automatically committed and broadcast.",
-        "operationId": "configurationSetAutoCommit",
+        "operationId": "configurationAutoCommit",
         "parameters": [
           {
             "name": "flag",

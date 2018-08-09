@@ -35,7 +35,7 @@ router.get('/', config.configurationRateLimit1, (req, res, next) => {
   res.json({ status: 'configuration' });
 });
 
-router.post('/setAutoCommit/:flag', config.configurationRateLimit2, (req, res, next) => {
+router.post('/autoCommit/:flag', config.configurationRateLimit2, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
