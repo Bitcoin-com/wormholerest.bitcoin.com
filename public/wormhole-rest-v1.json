@@ -1805,14 +1805,14 @@
         }
       }
     },
-    "/transaction/sendAll/{fromAddress}/{toAddress}/{ecosystem}": {
+    "/transaction/all/{fromAddress}/{toAddress}/{ecosystem}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendAll",
+        "summary": "all",
         "description": "Transfers all available tokens in the given ecosystem to the recipient.",
-        "operationId": "transactionSendAll",
+        "operationId": "transactionAll",
         "parameters": [
           {
             "name": "fromAddress",
@@ -1872,14 +1872,14 @@
         }
       }
     },
-    "/transaction/sendChangeIssuer/{fromAddress}/{toAddress}/{propertyId}": {
+    "/transaction/changeIssuer/{fromAddress}/{toAddress}/{propertyId}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendChangeIssuer",
+        "summary": "changeIssuer",
         "description": "Change the issuer on record of the given tokens.",
-        "operationId": "transactionSendChangeIssuer",
+        "operationId": "transactionChangeIssuer",
         "parameters": [
           {
             "name": "fromAddress",
@@ -1919,14 +1919,14 @@
         }
       }
     },
-    "/transaction/sendCloseCrowdSale/{fromAddress}/{propertyId}": {
+    "/transaction/closeCrowdSale/{fromAddress}/{propertyId}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendCloseCrowdSale",
+        "summary": "closeCrowdSale",
         "description": "Manually close a crowdsale.",
-        "operationId": "transactionSendCloseCrowdSale",
+        "operationId": "transactionCloseCrowdSale",
         "parameters": [
           {
             "name": "fromAddress",
@@ -1956,14 +1956,14 @@
         }
       }
     },
-    "/transaction/sendGrant/{fromAddress}/{toAddress}/{propertyId}/{amount}": {
+    "/transaction/grant/{fromAddress}/{toAddress}/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendGrant",
+        "summary": "grant",
         "description": "Issue or grant new units of managed tokens.",
-        "operationId": "transactionSendGrant",
+        "operationId": "transactionGrant",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2023,14 +2023,14 @@
         }
       }
     },
-    "/transaction/sendIssuanceCrowdSale/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
+    "/transaction/crowdSale/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendIssuanceCrowdSale",
+        "summary": "crowdSale",
         "description": "Create new tokens as crowdsale.",
-        "operationId": "transactionSendIssuanceCrowdSale",
+        "operationId": "transactionCrowdSale",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2190,14 +2190,14 @@
         }
       }
     },
-    "/transaction/sendIssuanceFixed/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{totalNumber}": {
+    "/transaction/fixed/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{totalNumber}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendIssuanceFixed",
+        "summary": "fixed",
         "description": "Create new tokens with fixed supply.",
-        "operationId": "transactionSendIssuanceFixed",
+        "operationId": "transactionFixed",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2307,14 +2307,14 @@
         }
       }
     },
-    "/transaction/sendIssuanceManaged/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
+    "/transaction/managed/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendIssuanceManaged",
+        "summary": "managed",
         "description": "Create new tokens with manageable supply.",
-        "operationId": "transactionSendIssuanceManaged",
+        "operationId": "transactionManaged",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2414,14 +2414,14 @@
         }
       }
     },
-    "/transaction/sendRawTx/{fromAddress}/{rawTransaction}": {
+    "/transaction/rawTx/{fromAddress}/{rawTransaction}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendIssuanceManaged",
+        "summary": "rawTx",
         "description": "Broadcasts a raw Omni Layer transaction.",
-        "operationId": "transactionSendIssuanceManaged",
+        "operationId": "transactionRawTx",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2481,14 +2481,14 @@
         }
       }
     },
-    "/transaction/sendRevoke/{fromAddress}/{propertyId}/{amount}": {
+    "/transaction/revoke/{fromAddress}/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendRevoke",
+        "summary": "revoke",
         "description": "Revoke units of managed tokens.",
-        "operationId": "transactionSendRevoke",
+        "operationId": "transactionRevoke",
         "parameters": [
           {
             "name": "fromAddress",
@@ -2538,14 +2538,14 @@
         }
       }
     },
-    "/transaction/sendSTO/{fromAddress}/{propertyId}/{amount}": {
+    "/transaction/STO/{fromAddress}/{propertyId}/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "sendSTO",
+        "summary": "STO",
         "description": "Create and broadcast a send-to-owners transaction.",
-        "operationId": "transactionSendSTO",
+        "operationId": "transactionSTO",
         "parameters": [
           {
             "name": "fromAddress",
