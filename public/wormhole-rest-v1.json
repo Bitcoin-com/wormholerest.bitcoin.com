@@ -327,7 +327,7 @@
             "in": "path",
             "description": "The identifier of the managed tokens to lookup",
             "required": true,
-            "example": 0,
+            "example": 3,
             "schema": {
               "type": "number"
             }
@@ -402,7 +402,7 @@
             "in": "path",
             "description": "The identifier of the tokens or property",
             "required": true,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -558,7 +558,7 @@
         }
       }
     },
-    "/dataRetrieval/pendingTransactions/{address}": {
+    "/dataRetrieval/pendingTransactions": {
       "get": {
         "tags": [
           "dataRetrieval"
@@ -913,7 +913,7 @@
             "in": "path",
             "description": "The identifier of a token eligible to participate in the crowdsale",
             "required": true,
-            "example": 2,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -1355,7 +1355,7 @@
             "in": "query",
             "description": "The identifier of the property holders to distribute to",
             "required": false,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -1402,7 +1402,7 @@
             "in": "path",
             "description": "The destination for the change",
             "required": true,
-            "example": "qpaj2gzlmxx5v2yq50jmq4qjxkp3462eu5e4653006",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -1530,7 +1530,7 @@
         }
       }
     },
-    "/rawTransactions/reference/{rawtx}/{txid}/{n}": {
+    "/rawTransactions/reference/{rawtx}/{txid}": {
       "post": {
         "tags": [
           "rawTransactions"
@@ -2592,7 +2592,7 @@
             "in": "query",
             "description": "The identifier of the property holders to distribute to",
             "required": false,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }

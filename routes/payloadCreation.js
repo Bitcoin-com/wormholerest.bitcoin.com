@@ -124,7 +124,7 @@ router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, (req
     req.params.amount
   ];
   if(req.query.memo) {
-    params.push(memo);
+    params.push(req.query.memo);
   }
 
   WormholeHTTP({
@@ -277,11 +277,13 @@ router.post('/partiCrwoSale/:amount', config.payloadCreationRateLimit9, (req, re
 });
 
 router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, (req, res, next) => {
-  let memo;
+  let params = [
+    parseInt(req.params.propertyId),
+    req.params.amount
+  ];
   if(req.query.memo) {
-    memo = req.query.memo;
+    params.push(req.query.memo);
   }
-
   WormholeHTTP({
     method: 'post',
     auth: {
@@ -292,11 +294,7 @@ router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, (r
       jsonrpc: "1.0",
       id:"whc_createpayload_revoke",
       method: "whc_createpayload_revoke",
-      params: [
-        parseInt(req.params.propertyId),
-        req.params.amount,
-        memo
-      ]
+      params: params
     }
   })
   .then((response) => {
@@ -364,7 +362,7 @@ router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, (req,
     req.params.amount
   ];
   if(req.query.distributionProperty) {
-    params.push(req.query.distributionProperty);
+    params.push(parseInt(req.query.distributionProperty));
   }
 
   WormholeHTTP({

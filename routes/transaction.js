@@ -436,7 +436,7 @@ router.post('/STO/:fromAddress/:propertyId/:amount', config.transactionRateLimit
     params.push(req.query.redeemAddress);
   }
   if(req.query.distributionProperty) {
-    params.push(req.query.distributionProperty);
+    params.push(parseInt(req.query.distributionProperty));
   }
   WormholeHTTP({
     method: 'post',

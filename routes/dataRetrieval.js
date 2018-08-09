@@ -211,7 +211,7 @@ router.get('/feeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
   }
 
   if(req.query.ecosystem) {
-    params.push(req.query.ecosystem);
+    params.push(parseInt(req.query.ecosystem));
   }
 
   WormholeHTTP({
