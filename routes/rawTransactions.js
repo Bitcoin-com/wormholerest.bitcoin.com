@@ -165,7 +165,6 @@ router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, 
   if(req.query.height) {
     params.push(req.query.height);
   }
-  console.log(params)
 
   WormholeHTTP({
     method: 'post',

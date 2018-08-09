@@ -47,9 +47,11 @@ router.get('/', config.transactionRateLimit1, (req, res, next) => {
 });
 
 router.post('/burnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res, next) => {
-  let redeemAddress;
+  let params = [
+    parseInt(req.params.amount)
+  ];
   if(req.query.redeemAddress) {
-    redeemAddress = req.query.redeemAddress;
+    params.push(req.query.redeemAddress);
   }
 
   WormholeHTTP({
@@ -62,10 +64,7 @@ router.post('/burnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res, n
       jsonrpc: "1.0",
       id:"whc_burnbchgetwhc",
       method: "whc_burnbchgetwhc",
-      params: [
-        parseInt(req.params.amount),
-        redeemAddress
-      ]
+      params: params
     }
   })
   .then((response) => {
@@ -145,7 +144,7 @@ router.post('/send/:fromAddress/:toAddress/:propertyId/:amount', config.transact
   });
 });
 
-router.post('/sendAll/:fromAddress/:toAddress/:ecosystem', config.transactionRateLimit5, (req, res, next) => {
+router.post('/all/:fromAddress/:toAddress/:ecosystem', config.transactionRateLimit5, (req, res, next) => {
   let redeemAddress;
   if(req.query.redeemAddress) {
     redeemAddress = req.query.redeemAddress;
@@ -182,7 +181,7 @@ router.post('/sendAll/:fromAddress/:toAddress/:ecosystem', config.transactionRat
   });
 });
 
-router.post('/sendChangeIssuer/:fromAddress/:toAddress/:propertyId', config.transactionRateLimit6, (req, res, next) => {
+router.post('/changeIssuer/:fromAddress/:toAddress/:propertyId', config.transactionRateLimit6, (req, res, next) => {
   WormholeHTTP({
     method: 'post',
     auth: {
@@ -208,7 +207,7 @@ router.post('/sendChangeIssuer/:fromAddress/:toAddress/:propertyId', config.tran
   });
 });
 
-router.post('/sendCloseCrowdSale/:fromAddress/:propertyId', config.transactionRateLimit7, (req, res, next) => {
+router.post('/closeCrowdSale/:fromAddress/:propertyId', config.transactionRateLimit7, (req, res, next) => {
   WormholeHTTP({
     method: 'post',
     auth: {
@@ -233,7 +232,7 @@ router.post('/sendCloseCrowdSale/:fromAddress/:propertyId', config.transactionRa
   });
 });
 
-router.post('/sendGrant/:fromAddress/:toAddress/:propertyId/:amount', config.transactionRateLimit8, (req, res, next) => {
+router.post('/grant/:fromAddress/:toAddress/:propertyId/:amount', config.transactionRateLimit8, (req, res, next) => {
   let memo;
   if(req.query.memo) {
     memo = req.query.memo;
@@ -265,7 +264,7 @@ router.post('/sendGrant/:fromAddress/:toAddress/:propertyId/:amount', config.tra
   });
 });
 
-router.post('/sendIssuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.transactionRateLimit9, (req, res, next) => {
+router.post('/issuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.transactionRateLimit9, (req, res, next) => {
   WormholeHTTP({
     method: 'post',
     auth: {
@@ -303,7 +302,7 @@ router.post('/sendIssuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricision/:
   });
 });
 
-router.post('/sendIssuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:totalNumber', config.transactionRateLimit1, (req, res, next) => {
+router.post('/issuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:totalNumber', config.transactionRateLimit1, (req, res, next) => {
   WormholeHTTP({
     method: 'post',
     auth: {
@@ -336,7 +335,7 @@ router.post('/sendIssuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:prev
   });
 });
 
-router.post('/sendIssuanceManaged/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.transactionRateLimit10, (req, res, next) => {
+router.post('/issuanceManaged/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.transactionRateLimit10, (req, res, next) => {
   WormholeHTTP({
     method: 'post',
     auth: {
@@ -368,7 +367,7 @@ router.post('/sendIssuanceManaged/:fromAddress/:ecosystem/:propertyPricision/:pr
   });
 });
 
-router.post('/sendRawTx/:fromAddress/:rawTransaction', config.transactionRateLimit11, (req, res, next) => {
+router.post('/rawTx/:fromAddress/:rawTransaction', config.transactionRateLimit11, (req, res, next) => {
   let referenceAddress;
   if(req.query.referenceAddress) {
     referenceAddress = req.query.referenceAddress;
@@ -408,7 +407,7 @@ router.post('/sendRawTx/:fromAddress/:rawTransaction', config.transactionRateLim
   });
 });
 
-router.post('/sendRevoke/:fromAddress/:propertyId/:amount', config.transactionRateLimit12, (req, res, next) => {
+router.post('/revoke/:fromAddress/:propertyId/:amount', config.transactionRateLimit12, (req, res, next) => {
   let memo;
   if(req.query.memo) {
     memo = req.query.memo;
@@ -439,7 +438,7 @@ router.post('/sendRevoke/:fromAddress/:propertyId/:amount', config.transactionRa
   });
 });
 
-router.post('/sendSTO/:fromAddress/:propertyId/:amount', config.transactionRateLimit13, (req, res, next) => {
+router.post('/STO/:fromAddress/:propertyId/:amount', config.transactionRateLimit13, (req, res, next) => {
   let redeemAddress;
   if(req.query.redeemAddress) {
     redeemAddress = req.query.redeemAddress;
