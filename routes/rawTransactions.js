@@ -21,7 +21,7 @@ let config = {
 let i = 1;
 while(i < 7) {
   config[`rawTransactionsRateLimit${i}`] = new RateLimit({
-    windowMs: 60*60*1000, // 1 hour window
+    windowMs: 60000, // 1 hour window
     delayMs: 0, // disable delaying - full speed until the max limit is reached
     max: 60, // start blocking after 60 requests
     handler: function (req, res, /*next*/) {
@@ -40,9 +40,14 @@ router.get('/', config.rawTransactionsRateLimit1, (req, res, next) => {
 });
 
 router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, (req, res, next) => {
-  let position;
+  let params = [
+    req.params.rawtx,
+    JSON.parse(req.params.prevTxs),
+    req.params.destination,
+    parseFloat(req.params.fee)
+  ];
   if(req.query.position) {
-    position = req.query.position;
+    params.push(parseInt(req.query.position));
   }
 
   WormholeHTTP({
@@ -55,13 +60,7 @@ router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsR
       jsonrpc: "1.0",
       id:"whc_createrawtx_change",
       method: "whc_createrawtx_change",
-      params: [
-        req.params.rawtx,
-        JSON.parse(req.params.prevTxs),
-        req.params.destination,
-        parseFloat(req.params.fee),
-        position
-      ]
+      params: params
     }
   })
   .then((response) => {
@@ -126,10 +125,14 @@ router.post('/opReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req,
 });
 
 router.post('/reference/:rawTx/:destination', config.rawTransactionsRateLimit5, (req, res, next) => {
-  let amount;
+  let params = [
+    req.params.rawTx,
+    req.params.destination
+  ];
   if(req.query.amount) {
-    amount = req.query.amount;
+    params.push(req.query.amount);
   }
+  console.log(params)
 
   WormholeHTTP({
     method: 'post',
@@ -141,11 +144,7 @@ router.post('/reference/:rawTx/:destination', config.rawTransactionsRateLimit5, 
       jsonrpc: "1.0",
       id:"whc_createrawtx_reference",
       method: "whc_createrawtx_reference",
-      params: [
-        req.params.rawTx,
-        req.params.destination,
-        amount
-      ]
+      params: params
     }
   })
   .then((response) => {
@@ -157,14 +156,16 @@ router.post('/reference/:rawTx/:destination', config.rawTransactionsRateLimit5, 
 });
 
 router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, res, next) => {
-  let prevTxs;
+  let params = [
+    req.params.rawTx
+  ];
   if(req.query.prevTxs) {
-    prevTxs = req.query.prevTxs;
+    params.push(JSON.parse(req.query.prevTxs));
   }
-  let height;
   if(req.query.height) {
-    height = req.query.height;
+    params.push(req.query.height);
   }
+  console.log(params)
 
   WormholeHTTP({
     method: 'post',
@@ -176,11 +177,7 @@ router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, 
       jsonrpc: "1.0",
       id:"whc_decodetransaction",
       method: "whc_decodetransaction",
-      params: [
-        req.params.rawTx,
-        prevTxs,
-        height
-      ]
+      params: params
     }
   })
   .then((response) => {

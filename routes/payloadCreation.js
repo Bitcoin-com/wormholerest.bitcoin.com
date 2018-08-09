@@ -28,7 +28,7 @@ let config = {
 let i = 1;
 while(i < 14) {
   config[`payloadCreationRateLimit${i}`] = new RateLimit({
-    windowMs: 60*60*1000, // 1 hour window
+    windowMs: 60000, // 1 hour window
     delayMs: 0, // disable delaying - full speed until the max limit is reached
     max: 60, // start blocking after 60 requests
     handler: function (req, res, /*next*/) {
@@ -119,9 +119,12 @@ router.post('/closeCrowdSale/:propertyId', config.payloadCreationRateLimit3, (re
 });
 
 router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, (req, res, next) => {
-  let memo;
+  let params = [
+    parseInt(req.params.propertyId),
+    req.params.amount
+  ];
   if(req.query.memo) {
-    memo = req.query.memo;
+    params.push(memo);
   }
 
   WormholeHTTP({
@@ -134,11 +137,7 @@ router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, (req
       jsonrpc: "1.0",
       id:"whc_createpayload_grant",
       method: "whc_createpayload_grant",
-      params: [
-        parseInt(req.params.propertyId),
-        req.params.amount,
-        memo
-      ]
+      params: params
     }
   })
   .then((response) => {

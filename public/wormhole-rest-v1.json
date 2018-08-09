@@ -104,7 +104,7 @@
             "in": "path",
             "description": "the address",
             "required": true,
-            "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -164,7 +164,7 @@
             "in": "path",
             "description": "The address",
             "required": true,
-            "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -287,7 +287,7 @@
             "in": "query",
             "description": "Retrieve the fee share for the supplied address",
             "required": false,
-            "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -572,7 +572,7 @@
             "in": "query",
             "description": "Address filter (default: '' for no filter)",
             "required": false,
-            "example": "bitcoincash:qzs02v05l7qs5s24srqju498qu55dwuj0cx5ehjm2c",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -1402,7 +1402,7 @@
             "in": "path",
             "description": "The destination for the change",
             "required": true,
-            "example": "bitcoincash:qpaj2gzlmxx5v2yq50jmq4qjxkp3462eu5e4653006",
+            "example": "qpaj2gzlmxx5v2yq50jmq4qjxkp3462eu5e4653006",
             "schema": {
               "type": "string"
             }
@@ -1554,7 +1554,7 @@
             "in": "path",
             "description": "The reference address or destination",
             "required": true,
-            "example": "bitcoincash:qpaj2gzlmxx5v2yq50jmq4qjxkp3462eu5e4653006",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -2448,7 +2448,7 @@
             "in": "query",
             "description": "A reference address (none by default)",
             "required": false,
-            "example": "bitcoincash:qztugrqe0ncszt2dx5fufhwlpgsxw2mqkqghpm3zhq",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
