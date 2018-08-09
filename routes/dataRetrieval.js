@@ -51,7 +51,7 @@ router.get('/', config.dataRetrievalRateLimit1, (req, res, next) => {
   res.json({ status: 'dataRetrieval' });
 });
 
-router.get('/getAllBalancesForAddress/:address', config.dataRetrievalRateLimit2, (req, res, next) => {
+router.get('/balancesForAddress/:address', config.dataRetrievalRateLimit2, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -76,7 +76,7 @@ router.get('/getAllBalancesForAddress/:address', config.dataRetrievalRateLimit2,
   });
 });
 
-router.get('/getAllBalancesForId/:propertyId', config.dataRetrievalRateLimit2, (req, res, next) => {
+router.get('/balancesForId/:propertyId', config.dataRetrievalRateLimit2, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -101,7 +101,7 @@ router.get('/getAllBalancesForId/:propertyId', config.dataRetrievalRateLimit2, (
   });
 });
 
-router.get('/getBalance/:address/:propertyId', config.dataRetrievalRateLimit3, (req, res, next) => {
+router.get('/balance/:address/:propertyId', config.dataRetrievalRateLimit3, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -127,7 +127,7 @@ router.get('/getBalance/:address/:propertyId', config.dataRetrievalRateLimit3, (
   });
 });
 
-router.get('/getBalancesHash/:propertyId', config.dataRetrievalRateLimit4, (req, res, next) => {
+router.get('/balancesHash/:propertyId', config.dataRetrievalRateLimit4, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -152,7 +152,7 @@ router.get('/getBalancesHash/:propertyId', config.dataRetrievalRateLimit4, (req,
   });
 });
 
-router.get('/getCrowdSale/:propertyId', config.dataRetrievalRateLimit5, (req, res, next) => {
+router.get('/crowdSale/:propertyId', config.dataRetrievalRateLimit5, (req, res, next) => {
   let verbose = false;
   if(req.query.verbose && req.query.verbose === 'true') {
     verbose = true;
@@ -182,7 +182,7 @@ router.get('/getCrowdSale/:propertyId', config.dataRetrievalRateLimit5, (req, re
   });
 });
 
-router.get('/getCurrentConsensusHash', config.dataRetrievalRateLimit6, (req, res, next) => {
+router.get('/currentConsensusHash', config.dataRetrievalRateLimit6, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -204,7 +204,7 @@ router.get('/getCurrentConsensusHash', config.dataRetrievalRateLimit6, (req, res
   });
 });
 
-router.get('/getFeeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
+router.get('/feeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
   let params = [];
   if(req.query.address) {
     params.push(req.query.address);
@@ -235,7 +235,7 @@ router.get('/getFeeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
   });
 });
 
-router.get('/getGrants/:propertyId', config.dataRetrievalRateLimit8, (req, res, next) => {
+router.get('/grants/:propertyId', config.dataRetrievalRateLimit8, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -260,7 +260,7 @@ router.get('/getGrants/:propertyId', config.dataRetrievalRateLimit8, (req, res, 
   });
 });
 
-router.get('/getInfo', config.dataRetrievalRateLimit9, (req, res, next) => {
+router.get('/info', config.dataRetrievalRateLimit9, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -282,7 +282,7 @@ router.get('/getInfo', config.dataRetrievalRateLimit9, (req, res, next) => {
   });
 });
 
-router.get('/getPayload/:txid', config.dataRetrievalRateLimit10, (req, res, next) => {
+router.get('/payload/:txid', config.dataRetrievalRateLimit10, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -307,7 +307,7 @@ router.get('/getPayload/:txid', config.dataRetrievalRateLimit10, (req, res, next
   });
 });
 
-router.get('/getProperty/:propertyId', config.dataRetrievalRateLimit11, (req, res, next) => {
+router.get('/property/:propertyId', config.dataRetrievalRateLimit11, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -332,7 +332,7 @@ router.get('/getProperty/:propertyId', config.dataRetrievalRateLimit11, (req, re
   });
 });
 
-router.get('/getSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12, (req, res, next) => {
+router.get('/seedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -358,7 +358,7 @@ router.get('/getSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit
   });
 });
 
-router.get('/getSTO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
+router.get('/STO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -384,7 +384,7 @@ router.get('/getSTO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (r
   });
 });
 
-router.get('/getTransaction/:txid', config.dataRetrievalRateLimit14, (req, res, next) => {
+router.get('/transaction/:txid', config.dataRetrievalRateLimit14, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -409,7 +409,7 @@ router.get('/getTransaction/:txid', config.dataRetrievalRateLimit14, (req, res, 
   });
 });
 
-router.get('/listBlockTransactions/:index', config.dataRetrievalRateLimit15, (req, res, next) => {
+router.get('/blockTransactions/:index', config.dataRetrievalRateLimit15, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -434,7 +434,7 @@ router.get('/listBlockTransactions/:index', config.dataRetrievalRateLimit15, (re
   });
 });
 
-router.get('/listPendingTransactions', config.dataRetrievalRateLimit16, (req, res, next) => {
+router.get('/pendingTransactions', config.dataRetrievalRateLimit16, (req, res, next) => {
   let params = [];
   if(req.query.address) {
     params.push(req.query.address);
@@ -460,7 +460,7 @@ router.get('/listPendingTransactions', config.dataRetrievalRateLimit16, (req, re
   });
 });
 
-router.get('/listProperties', config.dataRetrievalRateLimit17, (req, res, next) => {
+router.get('/properties', config.dataRetrievalRateLimit17, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -482,7 +482,7 @@ router.get('/listProperties', config.dataRetrievalRateLimit17, (req, res, next) 
   });
 });
 
-router.get('/listTransactions', config.dataRetrievalRateLimit18, (req, res, next) => {
+router.get('/transactions', config.dataRetrievalRateLimit18, (req, res, next) => {
   let params = [];
   if(req.query.address) {
     params.push(req.query.address);

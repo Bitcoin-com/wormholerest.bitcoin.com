@@ -90,14 +90,14 @@
         }
       }
     },
-    "/dataRetrieval/getAllBalancesForAddress/{address}": {
+    "/dataRetrieval/balancesForAddress/{address}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getAllBalancesForAddress",
+        "summary": "balancesForAddress",
         "description": "Returns a list of all token balances for a given address.",
-        "operationId": "dataRetrievalGetAllBalancesForAddress",
+        "operationId": "dataRetrievalBalancesForAddress",
         "parameters": [
           {
             "name": "address",
@@ -120,21 +120,21 @@
         }
       }
     },
-    "/dataRetrieval/getAllBalancesForId/{propertyId}": {
+    "/dataRetrieval/balancesForId/{propertyId}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getAllBalancesForId",
+        "summary": "balancesForId",
         "description": "Returns a list of token balances for a given currency or property identifier.",
-        "operationId": "dataRetrievalGetAllBalancesForId",
+        "operationId": "dataRetrievalBalancesForId",
         "parameters": [
           {
             "name": "propertyId",
             "in": "path",
             "description": "The property identifier",
             "required": true,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -150,14 +150,14 @@
         }
       }
     },
-    "/dataRetrieval/getBalance/{address}/{propertyId}": {
+    "/dataRetrieval/balance/{address}/{propertyId}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getBalance",
+        "summary": "balance",
         "description": "Returns the token balance for a given address and property.",
-        "operationId": "dataRetrievalGetBalance",
+        "operationId": "dataRetrievalBalance",
         "parameters": [
           {
             "name": "address",
@@ -174,7 +174,7 @@
             "in": "path",
             "description": "The property identifier",
             "required": true,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -190,21 +190,21 @@
         }
       }
     },
-    "/dataRetrieval/getBalancesHash/{propertyId}": {
+    "/dataRetrieval/balancesHash/{propertyId}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getBalancesHash",
+        "summary": "balancesHash",
         "description": "Returns a hash of the balances for the property.",
-        "operationId": "dataRetrievalGetBalancesHash",
+        "operationId": "dataRetrievalBalancesHash",
         "parameters": [
           {
             "name": "propertyId",
             "in": "path",
             "description": "The property to hash balances for",
             "required": true,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -220,21 +220,21 @@
         }
       }
     },
-    "/dataRetrieval/getCrowdSale/{propertyId}": {
+    "/dataRetrieval/crowdSale/{propertyId}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getCrowdSale",
+        "summary": "crowdSale",
         "description": "Returns information about a crowdsale.",
-        "operationId": "dataRetrievalGetCrowdSale",
+        "operationId": "dataRetrievalCrowdSale",
         "parameters": [
           {
             "name": "propertyId",
             "in": "path",
             "description": "The identifier of the crowdsale",
             "required": true,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -258,14 +258,14 @@
         }
       }
     },
-    "/dataRetrieval/getCurrentConsensusHash": {
+    "/dataRetrieval/currentConsensusHash": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getCurrentConsensusHash",
+        "summary": "currentConsensusHash",
         "description": "Returns the consensus hash for all balances for the current block.",
-        "operationId": "dataRetrievalGetCurrentConsensusHash",
+        "operationId": "dataRetrievalCurrentConsensusHash",
         "responses": {
           "200": {
             "description": "successful response"
@@ -273,14 +273,14 @@
         }
       }
     },
-    "/dataRetrieval/getFeeShare": {
+    "/dataRetrieval/feeShare": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getFeeShare",
+        "summary": "feeShare",
         "description": "Returns the percentage share of fees distribution applied to the wallet (default) or address (if supplied).",
-        "operationId": "dataRetrievalGetFeeShare",
+        "operationId": "dataRetrievalFeeShare",
         "parameters": [
           {
             "name": "address",
@@ -297,7 +297,7 @@
             "in": "query",
             "description": "The ecosystem to check the fee share (1 for main ecosystem, 2 for test ecosystem)",
             "required": false,
-            "example": 0,
+            "example": 1,
             "schema": {
               "type": "number"
             }
@@ -313,14 +313,14 @@
         }
       }
     },
-    "/dataRetrieval/getGrants/{propertyId}": {
+    "/dataRetrieval/grants/{propertyId}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getGrants",
+        "summary": "grants",
         "description": "Returns information about granted and revoked units of managed tokens.",
-        "operationId": "dataRetrievalGetGrants",
+        "operationId": "dataRetrievalGrants",
         "parameters": [
           {
             "name": "propertyId",
@@ -343,14 +343,14 @@
         }
       }
     },
-    "/dataRetrieval/getInfo": {
+    "/dataRetrieval/info": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getInfo",
+        "summary": "info",
         "description": "Returns various state information of the client and protocol.",
-        "operationId": "dataRetrievalGetInfo",
+        "operationId": "dataRetrievalInfo",
         "responses": {
           "200": {
             "description": "successful response"
@@ -358,14 +358,14 @@
         }
       }
     },
-    "/dataRetrieval/getPayload/{txid}": {
+    "/dataRetrieval/payload/{txid}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getPayload",
+        "summary": "payload",
         "description": "Get the payload for an Omni transaction.",
-        "operationId": "dataRetrievalGetPayload",
+        "operationId": "dataRetrievalPayload",
         "parameters": [
           {
             "name": "txid",
@@ -388,14 +388,14 @@
         }
       }
     },
-    "/dataRetrieval/getProperty/{propertyId}": {
+    "/dataRetrieval/property/{propertyId}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getProperty",
+        "summary": "property",
         "description": "Returns details for about the tokens or smart property to lookup.",
-        "operationId": "dataRetrievalGetProperty",
+        "operationId": "dataRetrievalProperty",
         "parameters": [
           {
             "name": "propertyId",
@@ -418,14 +418,14 @@
         }
       }
     },
-    "/dataRetrieval/getSeedBlocks/{startBlock}/{endBlock}": {
+    "/dataRetrieval/seedBlocks/{startBlock}/{endBlock}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getSeedBlocks",
+        "summary": "seedBlocks",
         "description": "Returns a list of blocks containing Omni transactions for use in seed block filtering.",
-        "operationId": "dataRetrievalGetSeedBlocks",
+        "operationId": "dataRetrievalSeedBlocks",
         "parameters": [
           {
             "name": "startBlock",
@@ -458,14 +458,14 @@
         }
       }
     },
-    "/dataRetrieval/getSTO/{txid}/{recipientFilter}": {
+    "/dataRetrieval/STO/{txid}/{recipientFilter}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getSTO",
+        "summary": "STO",
         "description": "Get information and recipients of a send-to-owners transaction.",
-        "operationId": "dataRetrievalGetSto",
+        "operationId": "dataRetrievalSto",
         "parameters": [
           {
             "name": "txid",
@@ -498,14 +498,14 @@
         }
       }
     },
-    "/dataRetrieval/getTransaction/{txid}": {
+    "/dataRetrieval/transaction/{txid}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "getTransaction",
+        "summary": "transaction",
         "description": "Get detailed information about an Omni transaction.",
-        "operationId": "dataRetrievalGetTransaction",
+        "operationId": "dataRetrievalTransaction",
         "parameters": [
           {
             "name": "txid",
@@ -528,14 +528,14 @@
         }
       }
     },
-    "/dataRetrieval/listBlockTransactions/{index}": {
+    "/dataRetrieval/blockTransactions/{index}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "listBlockTransactions",
+        "summary": "blockTransactions",
         "description": "Lists all Omni transactions in a block.",
-        "operationId": "dataRetrievalListBlockTransactions",
+        "operationId": "dataRetrievalBlockTransactions",
         "parameters": [
           {
             "name": "index",
@@ -558,14 +558,14 @@
         }
       }
     },
-    "/dataRetrieval/listPendingTransactions/{address}": {
+    "/dataRetrieval/pendingTransactions/{address}": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "listPendingTransactions",
+        "summary": "pendingTransactions",
         "description": "Returns a list of unconfirmed Omni transactions, pending in the memory pool.",
-        "operationId": "dataRetrievalListPendingTransactions",
+        "operationId": "dataRetrievalPendingTransactions",
         "parameters": [
           {
             "name": "address",
@@ -588,14 +588,14 @@
         }
       }
     },
-    "/dataRetrieval/listProperties": {
+    "/dataRetrieval/properties": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "listProperties",
+        "summary": "properties",
         "description": "Lists all tokens or smart properties.",
-        "operationId": "dataRetrievalListProperties",
+        "operationId": "dataRetrievalProperties",
         "parameters": [
           {
             "name": "address",
@@ -655,14 +655,14 @@
         }
       }
     },
-    "/dataRetrieval/listTransactions": {
+    "/dataRetrieval/transactions": {
       "get": {
         "tags": [
           "dataRetrieval"
         ],
-        "summary": "listTransactions",
+        "summary": "transactions",
         "description": "List wallet transactions, optionally filtered by an address and block boundaries.",
-        "operationId": "dataRetrievalListTransactions",
+        "operationId": "dataRetrievalTransactions",
         "responses": {
           "200": {
             "description": "successful response"
