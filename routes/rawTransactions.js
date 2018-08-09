@@ -40,9 +40,9 @@ router.get('/', config.rawTransactionsRateLimit1, (req, res, next) => {
 });
 
 router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, (req, res, next) => {
-  let query;
-  if(req.query.query) {
-    query = req.query.query;
+  let position;
+  if(req.query.position) {
+    position = req.query.position;
   }
 
   WormholeHTTP({
@@ -60,7 +60,7 @@ router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsR
         JSON.parse(req.params.prevTxs),
         req.params.destination,
         parseFloat(req.params.fee),
-        query
+        position
       ]
     }
   })
