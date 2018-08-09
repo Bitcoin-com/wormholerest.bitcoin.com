@@ -1648,7 +1648,7 @@
             "in": "query",
             "description": "The redeem bitcoin address",
             "required": false,
-            "example": "qqzy3s0ueaxkf8hcffhtgkgew8c7f7g85um9a2g74r",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -1675,7 +1675,7 @@
             "in": "path",
             "description": "The address to send from",
             "required": true,
-            "example": "qqxyplcfuxnm9z4usma2wmnu4kw9mexeug580mc3lx",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -1685,7 +1685,7 @@
             "in": "path",
             "description": "The address of the receiver",
             "required": true,
-            "example": "qqzy3s0ueaxkf8hcffhtgkgew8c7f7g85um9a2g74r",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -1705,7 +1705,7 @@
             "in": "query",
             "description": "An address that can spend the transaction dust (sender by default)",
             "required": false,
-            "example": "",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -1752,7 +1752,7 @@
             "in": "path",
             "description": "The address of the receiver",
             "required": true,
-            "example": "qqzy3s0ueaxkf8hcffhtgkgew8c7f7g85um9a2g74r",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -1819,7 +1819,7 @@
             "in": "path",
             "description": "The address to send from",
             "required": true,
-            "example": "qqxyplcfuxnm9z4usma2wmnu4kw9mexeug580mc3lx",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -1829,7 +1829,7 @@
             "in": "path",
             "description": "The address of the receiver",
             "required": true,
-            "example": "qqzy3s0ueaxkf8hcffhtgkgew8c7f7g85um9a2g74r",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -1886,7 +1886,7 @@
             "in": "path",
             "description": "The address associated with the tokens",
             "required": true,
-            "example": "qqxyplcfuxnm9z4usma2wmnu4kw9mexeug580mc3lx",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -1896,7 +1896,7 @@
             "in": "path",
             "description": "The address to transfer administrative control to",
             "required": true,
-            "example": "qqzy3s0ueaxkf8hcffhtgkgew8c7f7g85um9a2g74r",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -1933,7 +1933,7 @@
             "in": "path",
             "description": "The address associated with the crowdsale to close",
             "required": true,
-            "example": "qrutdtt3mwcutj8dusjkt9y75x0m07mukvs8v8g4tn",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -1970,7 +1970,7 @@
             "in": "path",
             "description": "The address to send from",
             "required": true,
-            "example": "qrutdtt3mwcutj8dusjkt9y75x0m07mukvs8v8g4tn",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -1980,7 +1980,7 @@
             "in": "path",
             "description": "The receiver of the tokens (sender by default, can be '')",
             "required": true,
-            "example": "qq6tftuhukdagy5tthhnnx7xk9awhyc49us2h08xj4",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -2037,7 +2037,7 @@
             "in": "path",
             "description": "The address to send from",
             "required": true,
-            "example": "qqxyplcfuxnm9z4usma2wmnu4kw9mexeug580mc3lx",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -2204,7 +2204,7 @@
             "in": "path",
             "description": "The address to send from",
             "required": true,
-            "example": "qqxyplcfuxnm9z4usma2wmnu4kw9mexeug580mc3lx",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -2321,7 +2321,7 @@
             "in": "path",
             "description": "The address to send from",
             "required": true,
-            "example": "qqxyplcfuxnm9z4usma2wmnu4kw9mexeug580mc3lx",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -2428,7 +2428,7 @@
             "in": "path",
             "description": "The address to send from",
             "required": true,
-            "example": "qqzy3s0ueaxkf8hcffhtgkgew8c7f7g85um9a2g74r",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -2458,7 +2458,7 @@
             "in": "query",
             "description": "An address that can spent the transaction dust (sender by default)",
             "required": false,
-            "example": "",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }
@@ -2495,7 +2495,7 @@
             "in": "path",
             "description": "The address to revoke the tokens from",
             "required": true,
-            "example": "qq6tftuhukdagy5tthhnnx7xk9awhyc49us2h08xj4",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -2552,7 +2552,7 @@
             "in": "path",
             "description": "The address to send from",
             "required": true,
-            "example": "qrutdtt3mwcutj8dusjkt9y75x0m07mukvs8v8g4tn",
+            "example": "bchtest:qq8k9aa764m2q7hruz45wddpn0r4e3ke8uvd9vlzv8",
             "schema": {
               "type": "string"
             }
@@ -2582,7 +2582,7 @@
             "in": "query",
             "description": "An address that can spend the transaction dust (sender by default)",
             "required": false,
-            "example": "",
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
             "schema": {
               "type": "string"
             }

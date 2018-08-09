@@ -232,7 +232,7 @@ router.post('/grant/:fromAddress/:toAddress/:propertyId/:amount', config.transac
     req.params.fromAddress,
     req.params.toAddress,
     parseInt(req.params.propertyId),
-    parseFloat(req.params.amount)
+    req.params.amount
   ];
   if(req.query.memo) {
     params.push(req.query.memo);
@@ -400,7 +400,7 @@ router.post('/revoke/:fromAddress/:propertyId/:amount', config.transactionRateLi
   let params = [
     req.params.fromAddress,
     parseInt(req.params.propertyId),
-    parseFloat(req.params.amount)
+    req.params.amount
   ];
   if(req.query.memo) {
     params.push(req.query.memo);
@@ -430,7 +430,7 @@ router.post('/STO/:fromAddress/:propertyId/:amount', config.transactionRateLimit
   let params = [
     req.params.fromAddress,
     parseInt(req.params.propertyId),
-    parseFloat(req.params.amount)
+    req.params.amount
   ];
   if(req.query.redeemAddress) {
     params.push(req.query.redeemAddress);
