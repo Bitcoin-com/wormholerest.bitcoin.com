@@ -152,7 +152,7 @@ router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, (req
   });
 });
 
-router.post('/issuanceCrowdsale/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.payloadCreationRateLimit6, (req, res, next) => {
+router.post('/crowdsale/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.payloadCreationRateLimit6, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -190,7 +190,7 @@ router.post('/issuanceCrowdsale/:ecosystem/:propertyPricision/:previousId/:categ
   });
 });
 
-router.post('/issuanceFixed/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:amount', config.payloadCreationRateLimit7, (req, res, next) => {
+router.post('/fixed/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:amount', config.payloadCreationRateLimit7, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',
@@ -223,7 +223,7 @@ router.post('/issuanceFixed/:ecosystem/:propertyPricision/:previousId/:category/
   });
 });
 
-router.post('/issuanceManaged/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.payloadCreationRateLimit8, (req, res, next) => {
+router.post('/managed/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.payloadCreationRateLimit8, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',

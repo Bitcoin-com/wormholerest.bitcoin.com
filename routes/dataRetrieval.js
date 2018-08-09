@@ -263,7 +263,7 @@ router.get('/getGrants/:propertyId', config.dataRetrievalRateLimit8, (req, res, 
   });
 });
 
-router.get('/getinfo', config.dataRetrievalRateLimit9, (req, res, next) => {
+router.get('/getInfo', config.dataRetrievalRateLimit9, (req, res, next) => {
 
   BitboxHTTP({
     method: 'post',

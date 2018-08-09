@@ -819,14 +819,14 @@
         }
       }
     },
-    "/payloadCreation/issuanceCrowdsale/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
+    "/payloadCreation/crowdsale/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "issuanceCrowdsale",
+        "summary": "crowdsale",
         "description": "Creates the payload for a new tokens issuance with crowdsale.",
-        "operationId": "payloadCreationIssuanceCrowdsale",
+        "operationId": "payloadCreationCrowdsale",
         "parameters": [
           {
             "name": "ecosystem",
@@ -976,14 +976,14 @@
         }
       }
     },
-    "/payloadCreation/issuanceFixed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
+    "/payloadCreation/fixed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "issuanceFixed",
+        "summary": "fixed",
         "description": "Creates the payload for a new tokens issuance with fixed supply.",
-        "operationId": "payloadCreationIssuanceFixed",
+        "operationId": "payloadCreationFixed",
         "parameters": [
           {
             "name": "ecosystem",
@@ -1083,14 +1083,14 @@
         }
       }
     },
-    "/payloadCreation/issuanceManaged/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
+    "/payloadCreation/managed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "issuanceManaged",
+        "summary": "managed",
         "description": "Creates the payload for a new tokens issuance with manageable supply.",
-        "operationId": "payloadCreationIssuanceManaged",
+        "operationId": "payloadCreationManaged",
         "parameters": [
           {
             "name": "ecosystem",
