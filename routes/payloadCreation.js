@@ -363,9 +363,12 @@ router.post('/simpleSend/:propertyId/:amount', config.payloadCreationRateLimit12
 });
 
 router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, (req, res, next) => {
-  let distributionProperty;
+  let params = [
+    parseInt(req.params.propertyId),
+    req.params.amount
+  ];
   if(req.query.distributionProperty) {
-    distributionProperty = req.query.distributionProperty;
+    params.push(req.query.distributionProperty);
   }
 
   BitboxHTTP({
@@ -378,11 +381,7 @@ router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, (req,
       jsonrpc: "1.0",
       id:"whc_createpayload_sto",
       method: "whc_createpayload_sto",
-      params: [
-        parseInt(req.params.propertyId),
-        req.params.amount,
-        distributionProperty
-      ]
+      params: params
     }
   })
   .then((response) => {
