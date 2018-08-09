@@ -3,10 +3,7 @@ let router = express.Router();
 let axios = require('axios');
 let RateLimit = require('express-rate-limit');
 
-let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
-let BITBOX = new BITBOXCli();
-
-let BitboxHTTP = axios.create({
+let WormholeHTTP = axios.create({
   baseURL: process.env.RPC_BASEURL
 });
 let username = process.env.RPC_USERNAME;
@@ -55,7 +52,7 @@ router.post('/burnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res, n
     redeemAddress = req.query.redeemAddress;
   }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -90,7 +87,7 @@ router.post('/partiCrowSale/:fromAddress/:toAddress/:amount', config.transaction
     referenceAmount = req.query.referenceAmount;
   }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -120,7 +117,7 @@ router.post('/partiCrowSale/:fromAddress/:toAddress/:amount', config.transaction
 router.post('/send/:fromAddress/:toAddress/:propertyId/:amount', config.transactionRateLimit4, (req, res, next) => {
   let redeemAddress;
   let referenceAmount;
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -158,7 +155,7 @@ router.post('/sendAll/:fromAddress/:toAddress/:ecosystem', config.transactionRat
   if(req.query.referenceAmount) {
     referenceAmount = req.query.referenceAmount;
   }
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -186,7 +183,7 @@ router.post('/sendAll/:fromAddress/:toAddress/:ecosystem', config.transactionRat
 });
 
 router.post('/sendChangeIssuer/:fromAddress/:toAddress/:propertyId', config.transactionRateLimit6, (req, res, next) => {
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -212,7 +209,7 @@ router.post('/sendChangeIssuer/:fromAddress/:toAddress/:propertyId', config.tran
 });
 
 router.post('/sendCloseCrowdSale/:fromAddress/:propertyId', config.transactionRateLimit7, (req, res, next) => {
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -241,7 +238,7 @@ router.post('/sendGrant/:fromAddress/:toAddress/:propertyId/:amount', config.tra
   if(req.query.memo) {
     memo = req.query.memo;
   }
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -269,7 +266,7 @@ router.post('/sendGrant/:fromAddress/:toAddress/:propertyId/:amount', config.tra
 });
 
 router.post('/sendIssuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.transactionRateLimit9, (req, res, next) => {
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -307,7 +304,7 @@ router.post('/sendIssuanceCrowdSale/:fromAddress/:ecosystem/:propertyPricision/:
 });
 
 router.post('/sendIssuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:totalNumber', config.transactionRateLimit1, (req, res, next) => {
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -340,7 +337,7 @@ router.post('/sendIssuanceFixed/:fromAddress/:ecosystem/:propertyPricision/:prev
 });
 
 router.post('/sendIssuanceManaged/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.transactionRateLimit10, (req, res, next) => {
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -384,7 +381,7 @@ router.post('/sendRawTx/:fromAddress/:rawTransaction', config.transactionRateLim
   if(req.query.referenceAmount) {
     referenceAmount = req.query.referenceAmount;
   }
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -416,7 +413,7 @@ router.post('/sendRevoke/:fromAddress/:propertyId/:amount', config.transactionRa
   if(req.query.memo) {
     memo = req.query.memo;
   }
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -451,7 +448,7 @@ router.post('/sendSTO/:fromAddress/:propertyId/:amount', config.transactionRateL
   if(req.query.distributionProperty) {
     distributionProperty = req.query.distributionProperty;
   }
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,

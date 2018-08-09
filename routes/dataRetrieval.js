@@ -3,10 +3,7 @@ let router = express.Router();
 let axios = require('axios');
 let RateLimit = require('express-rate-limit');
 
-let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
-let BITBOX = new BITBOXCli();
-
-let BitboxHTTP = axios.create({
+let WormholeHTTP = axios.create({
   baseURL: process.env.RPC_BASEURL
 });
 let username = process.env.RPC_USERNAME;
@@ -56,7 +53,7 @@ router.get('/', config.dataRetrievalRateLimit1, (req, res, next) => {
 
 router.get('/getAllBalancesForAddress/:address', config.dataRetrievalRateLimit2, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -81,7 +78,7 @@ router.get('/getAllBalancesForAddress/:address', config.dataRetrievalRateLimit2,
 
 router.get('/getAllBalancesForId/:propertyId', config.dataRetrievalRateLimit2, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -106,7 +103,7 @@ router.get('/getAllBalancesForId/:propertyId', config.dataRetrievalRateLimit2, (
 
 router.get('/getBalance/:address/:propertyId', config.dataRetrievalRateLimit3, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -132,7 +129,7 @@ router.get('/getBalance/:address/:propertyId', config.dataRetrievalRateLimit3, (
 
 router.get('/getBalancesHash/:propertyId', config.dataRetrievalRateLimit4, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -161,7 +158,7 @@ router.get('/getCrowdSale/:propertyId', config.dataRetrievalRateLimit5, (req, re
     verbose = true;
   }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -187,7 +184,7 @@ router.get('/getCrowdSale/:propertyId', config.dataRetrievalRateLimit5, (req, re
 
 router.get('/getCurrentConsensusHash', config.dataRetrievalRateLimit6, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -217,7 +214,7 @@ router.get('/getFeeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
     params.push(req.query.ecosystem);
   }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -240,7 +237,7 @@ router.get('/getFeeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
 
 router.get('/getGrants/:propertyId', config.dataRetrievalRateLimit8, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -265,7 +262,7 @@ router.get('/getGrants/:propertyId', config.dataRetrievalRateLimit8, (req, res, 
 
 router.get('/getInfo', config.dataRetrievalRateLimit9, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -287,7 +284,7 @@ router.get('/getInfo', config.dataRetrievalRateLimit9, (req, res, next) => {
 
 router.get('/getPayload/:txid', config.dataRetrievalRateLimit10, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -312,7 +309,7 @@ router.get('/getPayload/:txid', config.dataRetrievalRateLimit10, (req, res, next
 
 router.get('/getProperty/:propertyId', config.dataRetrievalRateLimit11, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -337,7 +334,7 @@ router.get('/getProperty/:propertyId', config.dataRetrievalRateLimit11, (req, re
 
 router.get('/getSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -363,7 +360,7 @@ router.get('/getSeedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit
 
 router.get('/getSTO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -389,7 +386,7 @@ router.get('/getSTO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (r
 
 router.get('/getTransaction/:txid', config.dataRetrievalRateLimit14, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -414,7 +411,7 @@ router.get('/getTransaction/:txid', config.dataRetrievalRateLimit14, (req, res, 
 
 router.get('/listBlockTransactions/:index', config.dataRetrievalRateLimit15, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -442,7 +439,7 @@ router.get('/listPendingTransactions', config.dataRetrievalRateLimit16, (req, re
   if(req.query.address) {
     params.push(req.query.address);
   }
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -465,7 +462,7 @@ router.get('/listPendingTransactions', config.dataRetrievalRateLimit16, (req, re
 
 router.get('/listProperties', config.dataRetrievalRateLimit17, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -503,7 +500,7 @@ router.get('/listTransactions', config.dataRetrievalRateLimit18, (req, res, next
     params.push(req.query.endBlock);
   }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,

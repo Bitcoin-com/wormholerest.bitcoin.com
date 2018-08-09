@@ -3,10 +3,7 @@ let router = express.Router();
 let axios = require('axios');
 let RateLimit = require('express-rate-limit');
 
-let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
-let BITBOX = new BITBOXCli();
-
-let BitboxHTTP = axios.create({
+let WormholeHTTP = axios.create({
   baseURL: process.env.RPC_BASEURL
 });
 let username = process.env.RPC_USERNAME;
@@ -48,7 +45,7 @@ router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsR
     query = req.query.query;
   }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -77,7 +74,7 @@ router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsR
 
 router.post('/input/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -104,7 +101,7 @@ router.post('/input/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, (req, re
 
 router.post('/opReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -128,9 +125,13 @@ router.post('/opReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req,
   });
 });
 
-router.post('/reference/:rawTx/:destination/:amount', config.rawTransactionsRateLimit5, (req, res, next) => {
+router.post('/reference/:rawTx/:destination', config.rawTransactionsRateLimit5, (req, res, next) => {
+  let amount;
+  if(req.query.amount) {
+    amount = req.query.amount;
+  }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -143,7 +144,7 @@ router.post('/reference/:rawTx/:destination/:amount', config.rawTransactionsRate
       params: [
         req.params.rawTx,
         req.params.destination,
-        parseFloat(req.params.amount)
+        amount
       ]
     }
   })
@@ -157,9 +158,15 @@ router.post('/reference/:rawTx/:destination/:amount', config.rawTransactionsRate
 
 router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, res, next) => {
   let prevTxs;
+  if(req.query.prevTxs) {
+    prevTxs = req.query.prevTxs;
+  }
   let height;
+  if(req.query.height) {
+    height = req.query.height;
+  }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,

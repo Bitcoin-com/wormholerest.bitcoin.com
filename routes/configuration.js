@@ -3,10 +3,7 @@ let router = express.Router();
 let axios = require('axios');
 let RateLimit = require('express-rate-limit');
 
-let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
-let BITBOX = new BITBOXCli();
-
-let BitboxHTTP = axios.create({
+let WormholeHTTP = axios.create({
   baseURL: process.env.RPC_BASEURL
 });
 let username = process.env.RPC_USERNAME;
@@ -40,7 +37,7 @@ router.get('/', config.configurationRateLimit1, (req, res, next) => {
 
 router.post('/setAutoCommit/:flag', config.configurationRateLimit2, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,

@@ -3,10 +3,7 @@ let router = express.Router();
 let axios = require('axios');
 let RateLimit = require('express-rate-limit');
 
-let BITBOXCli = require('bitbox-cli/lib/bitbox-cli').default;
-let BITBOX = new BITBOXCli();
-
-let BitboxHTTP = axios.create({
+let WormholeHTTP = axios.create({
   baseURL: process.env.RPC_BASEURL
 });
 let username = process.env.RPC_USERNAME;
@@ -51,7 +48,7 @@ router.get('/', config.payloadCreationRateLimit1, (req, res, next) => {
 
 router.get('/burnBCH', config.payloadCreationRateLimit2, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -73,7 +70,7 @@ router.get('/burnBCH', config.payloadCreationRateLimit2, (req, res, next) => {
 
 router.post('/changeIssuer/:propertyId', config.payloadCreationRateLimit2, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -98,7 +95,7 @@ router.post('/changeIssuer/:propertyId', config.payloadCreationRateLimit2, (req,
 
 router.post('/closeCrowdSale/:propertyId', config.payloadCreationRateLimit3, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -127,7 +124,7 @@ router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, (req
     memo = req.query.memo;
   }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -154,7 +151,7 @@ router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, (req
 
 router.post('/crowdsale/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.payloadCreationRateLimit6, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -192,7 +189,7 @@ router.post('/crowdsale/:ecosystem/:propertyPricision/:previousId/:category/:sub
 
 router.post('/fixed/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:amount', config.payloadCreationRateLimit7, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -225,7 +222,7 @@ router.post('/fixed/:ecosystem/:propertyPricision/:previousId/:category/:subcate
 
 router.post('/managed/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.payloadCreationRateLimit8, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -257,7 +254,7 @@ router.post('/managed/:ecosystem/:propertyPricision/:previousId/:category/:subca
 
 router.post('/partiCrwoSale/:amount', config.payloadCreationRateLimit9, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -286,7 +283,7 @@ router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, (r
     memo = req.query.memo;
   }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -313,7 +310,7 @@ router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, (r
 
 router.post('/sendAll/:ecosystem', config.payloadCreationRateLimit11, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -338,7 +335,7 @@ router.post('/sendAll/:ecosystem', config.payloadCreationRateLimit11, (req, res,
 
 router.post('/simpleSend/:propertyId/:amount', config.payloadCreationRateLimit12, (req, res, next) => {
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,
@@ -371,7 +368,7 @@ router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, (req,
     params.push(req.query.distributionProperty);
   }
 
-  BitboxHTTP({
+  WormholeHTTP({
     method: 'post',
     auth: {
       username: username,

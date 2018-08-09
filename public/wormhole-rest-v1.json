@@ -1561,7 +1561,7 @@
           },
           {
             "name": "amount",
-            "in": "path",
+            "in": "query",
             "description": "The optional reference amount (minimal by default)",
             "required": false,
             "example": 0.005,
@@ -1598,7 +1598,7 @@
           },
           {
             "name": "prevTxs",
-            "in": "path",
+            "in": "query",
             "description": "A JSON array of transaction inputs (default: none)",
             "required": false,
             "example": "[{\"txid\":\"6779a710fcd5f6fb0883ea3306360c3ad8c0a3c5de902768ec57ef3104e65eb1\",\"vout\":4,\"scriptPubKey\":\"76a9147b25205fd98d462880a3e5b0541235831ae959e588ac\",\"value\":0.00068257}]",
@@ -1608,7 +1608,7 @@
           },
           {
             "name": "height",
-            "in": "path",
+            "in": "query",
             "description": "The parsing block height (default: 0 for chain height)",
             "required": false,
             "example": 0,
