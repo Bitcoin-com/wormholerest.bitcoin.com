@@ -861,7 +861,7 @@
           {
             "name": "category",
             "in": "path",
-            "description": "A category for the new tokens (can be '')",
+            "description": "A category for the new tokens",
             "required": true,
             "example": "Companies",
             "schema": {
@@ -871,7 +871,7 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "A subcategory for the new tokens (can be '')",
+            "description": "A subcategory for the new tokens",
             "required": true,
             "example": "Bitcoin Mining",
             "schema": {
@@ -891,7 +891,7 @@
           {
             "name": "url",
             "in": "path",
-            "description": "An URL for further information about the new tokens (can be '')",
+            "description": "An URL for further information about the new tokens",
             "required": true,
             "example": "www.example.com",
             "schema": {
@@ -901,7 +901,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "A description for the new tokens (can be '')",
+            "description": "A description for the new tokens",
             "required": true,
             "example": "Quantum Miner Tokens",
             "schema": {
@@ -1018,7 +1018,7 @@
           {
             "name": "category",
             "in": "path",
-            "description": "A category for the new tokens (can be '')",
+            "description": "A category for the new tokens",
             "required": true,
             "example": "Companies",
             "schema": {
@@ -1028,7 +1028,7 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "A subcategory for the new tokens (can be '')",
+            "description": "A subcategory for the new tokens",
             "required": true,
             "example": "Bitcoin Mining",
             "schema": {
@@ -1048,7 +1048,7 @@
           {
             "name": "url",
             "in": "path",
-            "description": "An URL for further information about the new tokens (can be '')",
+            "description": "An URL for further information about the new tokens",
             "required": true,
             "example": "www.example.com",
             "schema": {
@@ -1058,7 +1058,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "A description for the new tokens (can be '')",
+            "description": "A description for the new tokens",
             "required": true,
             "example": "Quantum Miner Tokens",
             "schema": {
@@ -1125,7 +1125,7 @@
           {
             "name": "category",
             "in": "path",
-            "description": "A category for the new tokens (can be '')",
+            "description": "A category for the new tokens",
             "required": true,
             "example": "Companies",
             "schema": {
@@ -1135,7 +1135,7 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "A subcategory for the new tokens (can be '')",
+            "description": "A subcategory for the new tokens",
             "required": true,
             "example": "Bitcoin Mining",
             "schema": {
@@ -1155,7 +1155,7 @@
           {
             "name": "url",
             "in": "path",
-            "description": "An URL for further information about the new tokens (can be '')",
+            "description": "An URL for further information about the new tokens",
             "required": true,
             "example": "www.example.com",
             "schema": {
@@ -1165,7 +1165,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "A description for the new tokens (can be '')",
+            "description": "A description for the new tokens",
             "required": true,
             "example": "Quantum Miner Tokens",
             "schema": {
@@ -2075,7 +2075,7 @@
           {
             "name": "category",
             "in": "path",
-            "description": "A category for the new tokens (can be '')",
+            "description": "A category for the new tokens",
             "required": true,
             "example": "Companies",
             "schema": {
@@ -2085,7 +2085,7 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "A subcategory for the new tokens  (can be '')",
+            "description": "A subcategory for the new tokens ",
             "required": true,
             "example": "Bitcoin Mining",
             "schema": {
@@ -2105,7 +2105,7 @@
           {
             "name": "url",
             "in": "path",
-            "description": "An URL for further information about the new tokens (can be '')",
+            "description": "An URL for further information about the new tokens",
             "required": true,
             "example": "www.example.com",
             "schema": {
@@ -2115,7 +2115,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "A description for the new tokens (can be '')",
+            "description": "A description for the new tokens",
             "required": true,
             "example": "Hello BITBOX",
             "schema": {
@@ -2242,7 +2242,7 @@
           {
             "name": "category",
             "in": "path",
-            "description": "A category for the new tokens (can be '')",
+            "description": "A category for the new tokens",
             "required": true,
             "example": "Companies",
             "schema": {
@@ -2252,7 +2252,7 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "A subcategory for the new tokens  (can be '')",
+            "description": "A subcategory for the new tokens ",
             "required": true,
             "example": "Bitcoin Mining",
             "schema": {
@@ -2272,7 +2272,7 @@
           {
             "name": "url",
             "in": "path",
-            "description": "An URL for further information about the new tokens (can be '')",
+            "description": "An URL for further information about the new tokens",
             "required": true,
             "example": "www.example.com",
             "schema": {
@@ -2282,7 +2282,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "A description for the new tokens (can be '')",
+            "description": "A description for the new tokens",
             "required": true,
             "example": "Hello BITBOX",
             "schema": {
@@ -2359,7 +2359,7 @@
           {
             "name": "category",
             "in": "path",
-            "description": "A category for the new tokens (can be '')",
+            "description": "A category for the new tokens",
             "required": true,
             "example": "Companies",
             "schema": {
@@ -2369,7 +2369,7 @@
           {
             "name": "subcategory",
             "in": "path",
-            "description": "A subcategory for the new tokens (can be '')",
+            "description": "A subcategory for the new tokens",
             "required": true,
             "example": "Bitcoin Mining",
             "schema": {
@@ -2389,7 +2389,7 @@
           {
             "name": "url",
             "in": "path",
-            "description": "An URL for further information about the new tokens (can be '')",
+            "description": "An URL for further information about the new tokens",
             "required": true,
             "example": "www.example.com",
             "schema": {
@@ -2399,7 +2399,7 @@
           {
             "name": "data",
             "in": "path",
-            "description": "A description for the new tokens (can be '')",
+            "description": "A description for the new tokens",
             "required": true,
             "example": "Hello BITBOX",
             "schema": {
