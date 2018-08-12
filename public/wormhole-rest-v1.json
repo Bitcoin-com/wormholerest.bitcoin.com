@@ -11,6 +11,14 @@
   },
   "tags": [
     {
+      "name": "wallet",
+      "description": "wallet",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "https://developer.bitcoin.com/wormhole/docs/wallet.html"
+      }
+    },
+    {
       "name": "configuration",
       "description": "configuration",
       "externalDocs": {
@@ -52,6 +60,58 @@
     }
   ],
   "paths": {
+    "/wallet/newAddress": {
+      "get": {
+        "tags": [
+          "wallet"
+        ],
+        "summary": "newAddress",
+        "description": "Returns a new Bitcoin address for receiving payments.",
+        "operationId": "walletNewAddress",
+        "responses": {
+          "200": {
+            "description": "successful response"
+          }
+        }
+      }
+    },
+    "/wallet/sendToAddress/{address}/{amount}": {
+      "post": {
+        "tags": [
+          "wallet"
+        ],
+        "summary": "sendToAddress",
+        "description": "Send an amount of BCH to a given address.",
+        "operationId": "walletSendToAddress",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "path",
+            "description": "The bitcoin address to send to",
+            "required": true,
+            "example": "bchtest:qq2j9gp97gm9a6lwvhxc4zu28qvqm0x4j5e72v7ejg",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "amount",
+            "in": "path",
+            "description": "The amount in BCH to send",
+            "required": true,
+            "example": 1,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response"
+          }
+        }
+      }
+    },
     "/configuration/autoCommit/{flag}": {
       "post": {
         "tags": [
