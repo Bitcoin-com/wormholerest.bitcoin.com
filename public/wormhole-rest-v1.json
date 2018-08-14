@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "[Wormhole](http://wormhole.cash/) over HTTP",
-    "version": "0.0.1",
+    "version": "0.2.0",
     "title": "WormholeREST",
     "license": {
       "name": "MIT",
@@ -879,7 +879,7 @@
         }
       }
     },
-    "/payloadCreation/crowdsale/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
+    "/payloadCreation/crowdsale/{ecosystem}/{propertyPrecision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
       "post": {
         "tags": [
           "payloadCreation"
@@ -899,9 +899,9 @@
             }
 					},
           {
-            "name": "propertyPricision",
+            "name": "propertyPrecision",
             "in": "path",
-            "description": "The pricision of the tokens to create:[0, 8]",
+            "description": "The precision of the tokens to create:[0, 8]",
             "required": true,
             "example": 1,
             "schema": {
@@ -1036,7 +1036,7 @@
         }
       }
     },
-    "/payloadCreation/fixed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
+    "/payloadCreation/fixed/{ecosystem}/{propertyPrecision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
@@ -1056,9 +1056,9 @@
             }
 					},
           {
-            "name": "propertyPricision",
+            "name": "propertyPrecision",
             "in": "path",
-            "description": "The pricision of the tokens to create:[0, 8]",
+            "description": "The precision of the tokens to create:[0, 8]",
             "required": true,
             "example": 1,
             "schema": {
@@ -1143,7 +1143,7 @@
         }
       }
     },
-    "/payloadCreation/managed/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
+    "/payloadCreation/managed/{ecosystem}/{propertyPrecision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
       "post": {
         "tags": [
           "payloadCreation"
@@ -1163,9 +1163,9 @@
             }
 					},
           {
-            "name": "propertyPricision",
+            "name": "propertyPrecision",
             "in": "path",
-            "description": "The pricision of the tokens to create:[0, 8]",
+            "description": "The precision of the tokens to create:[0, 8]",
             "required": true,
             "example": 1,
             "schema": {
@@ -2083,7 +2083,7 @@
         }
       }
     },
-    "/transaction/crowdSale/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
+    "/transaction/crowdSale/{fromAddress}/{ecosystem}/{propertyPrecision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{propertyIdDesired}/{tokensPerUnit}/{deadline}/{earlyBonus}/{undefine}/{totalNumber}": {
       "post": {
         "tags": [
           "transaction"
@@ -2113,9 +2113,9 @@
             }
           },
           {
-            "name": "propertyPricision",
+            "name": "propertyPrecision",
             "in": "path",
-            "description": "The pricision of the tokens to create:[0, 8]",
+            "description": "The precision of the tokens to create:[0, 8]",
             "required": true,
             "example": 1,
             "schema": {
@@ -2250,7 +2250,7 @@
         }
       }
     },
-    "/transaction/fixed/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{totalNumber}": {
+    "/transaction/fixed/{fromAddress}/{ecosystem}/{propertyPrecision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}/{totalNumber}": {
       "post": {
         "tags": [
           "transaction"
@@ -2280,9 +2280,9 @@
             }
           },
           {
-            "name": "propertyPricision",
+            "name": "propertyPrecision",
             "in": "path",
-            "description": "The pricision of the tokens to create:[0, 8]",
+            "description": "The precision of the tokens to create:[0, 8]",
             "required": true,
             "example": 1,
             "schema": {
@@ -2367,7 +2367,7 @@
         }
       }
     },
-    "/transaction/managed/{fromAddress}/{ecosystem}/{propertyPricision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
+    "/transaction/managed/{fromAddress}/{ecosystem}/{propertyPrecision}/{previousId}/{category}/{subcategory}/{name}/{url}/{data}": {
       "post": {
         "tags": [
           "transaction"
@@ -2397,9 +2397,9 @@
             }
           },
           {
-            "name": "propertyPricision",
+            "name": "propertyPrecision",
             "in": "path",
-            "description": "The pricision of the tokens to create:[0, 8]",
+            "description": "The precision of the tokens to create:[0, 8]",
             "required": true,
             "example": 1,
             "schema": {

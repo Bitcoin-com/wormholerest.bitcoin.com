@@ -1,6 +1,6 @@
 {
   "name": "rest-cloud",
-  "version": "1.4.2",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "start": "node app.js",

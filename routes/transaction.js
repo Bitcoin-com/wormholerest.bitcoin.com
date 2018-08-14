@@ -258,7 +258,7 @@ router.post('/grant/:fromAddress/:toAddress/:propertyId/:amount', config.transac
   });
 });
 
-router.post('/crowdSale/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.transactionRateLimit9, (req, res, next) => {
+router.post('/crowdSale/:fromAddress/:ecosystem/:propertyPrecision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.transactionRateLimit9, (req, res, next) => {
   WormholeHTTP({
     method: 'post',
     auth: {
@@ -272,7 +272,7 @@ router.post('/crowdSale/:fromAddress/:ecosystem/:propertyPricision/:previousId/:
       params: [
         req.params.fromAddress,
         parseInt(req.params.ecosystem),
-        parseInt(req.params.propertyPricision),
+        parseInt(req.params.propertyPrecision),
         parseInt(req.params.previousId),
         req.params.category,
         req.params.subcategory,
@@ -296,7 +296,7 @@ router.post('/crowdSale/:fromAddress/:ecosystem/:propertyPricision/:previousId/:
   });
 });
 
-router.post('/fixed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data/:totalNumber', config.transactionRateLimit1, (req, res, next) => {
+router.post('/fixed/:fromAddress/:ecosystem/:propertyPrecision/:previousId/:category/:subcategory/:name/:url/:data/:totalNumber', config.transactionRateLimit1, (req, res, next) => {
   WormholeHTTP({
     method: 'post',
     auth: {
@@ -310,7 +310,7 @@ router.post('/fixed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:cate
       params: [
         req.params.fromAddress,
         parseInt(req.params.ecosystem),
-        parseInt(req.params.propertyPricision),
+        parseInt(req.params.propertyPrecision),
         parseInt(req.params.previousId),
         req.params.category,
         req.params.subcategory,
@@ -329,7 +329,7 @@ router.post('/fixed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:cate
   });
 });
 
-router.post('/managed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:category/:subcategory/:name/:url/:data', config.transactionRateLimit10, (req, res, next) => {
+router.post('/managed/:fromAddress/:ecosystem/:propertyPrecision/:previousId/:category/:subcategory/:name/:url/:data', config.transactionRateLimit10, (req, res, next) => {
   WormholeHTTP({
     method: 'post',
     auth: {
@@ -343,7 +343,7 @@ router.post('/managed/:fromAddress/:ecosystem/:propertyPricision/:previousId/:ca
       params: [
         req.params.fromAddress,
         parseInt(req.params.ecosystem),
-        parseInt(req.params.propertyPricision),
+        parseInt(req.params.propertyPrecision),
         parseInt(req.params.previousId),
         req.params.category,
         req.params.subcategory,
@@ -405,6 +405,8 @@ router.post('/revoke/:fromAddress/:propertyId/:amount', config.transactionRateLi
   if(req.query.memo) {
     params.push(req.query.memo);
   }
+
+  console.log(params)
   WormholeHTTP({
     method: 'post',
     auth: {
