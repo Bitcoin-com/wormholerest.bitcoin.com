@@ -257,10 +257,10 @@ describe("#dataRetrievalRouter", () => {
   });
 
   describe("#STO", () => {
-    it("should GET /STO/:txid/:recipientFilter", (done) => {
+    it("should GET /STO/:txid", (done) => {
       let mockRequest = httpMocks.createRequest({
         method: "GET",
-        url: "/STO/ac2df919be43fa793ff4955019195481878e0f0cab39834ad911124fdacfc603/*"
+        url: "/STO/ac2df919be43fa793ff4955019195481878e0f0cab39834ad911124fdacfc603/?recipientFilter=*"
       });
       let mockResponse = httpMocks.createResponse({
         eventEmitter: require('events').EventEmitter
@@ -268,8 +268,122 @@ describe("#dataRetrievalRouter", () => {
       dataRetrieval(mockRequest, mockResponse);
 
       mockResponse.on('end', () => {
-        let actualResponseBody = JSON.parse(mockResponse._getData());
-        assert.deepEqual(actualResponseBody, "Invalid address. Note: use cashAddress");
+        let actualResponseBody = Object.keys(JSON.parse(mockResponse._getData()));
+        assert.deepEqual(actualResponseBody, [ 'txid', 'fee', 'sendingaddress', 'ismine', 'version', 'type_int', 'type', 'propertyid', 'precision', 'ecosystem', 'category', 'subcategory', 'propertyname', 'data', 'url', 'amount', 'valid', 'blockhash', 'blocktime', 'positioninblock', 'block', 'confirmations' ]);
+        done();
+      });
+    });
+  });
+
+  describe("#transaction", () => {
+    it("should GET /transaction/:txid", (done) => {
+      let mockRequest = httpMocks.createRequest({
+        method: "GET",
+        url: "/transaction/ac2df919be43fa793ff4955019195481878e0f0cab39834ad911124fdacfc603"
+      });
+      let mockResponse = httpMocks.createResponse({
+        eventEmitter: require('events').EventEmitter
+      });
+      dataRetrieval(mockRequest, mockResponse);
+
+      mockResponse.on('end', () => {
+        let actualResponseBody = Object.keys(JSON.parse(mockResponse._getData()));
+        assert.deepEqual(actualResponseBody, [ 'txid', 'fee', 'sendingaddress', 'ismine', 'version', 'type_int', 'type', 'propertyid', 'precision', 'ecosystem', 'category', 'subcategory', 'propertyname', 'data', 'url', 'amount', 'valid', 'blockhash', 'blocktime', 'positioninblock', 'block', 'confirmations' ]);
+        done();
+      });
+    });
+  });
+
+  describe("#blockTransactions", () => {
+    it("should GET /blockTransactions/:index", (done) => {
+      let mockRequest = httpMocks.createRequest({
+        method: "GET",
+        url: "/blockTransactions/279007"
+      });
+      let mockResponse = httpMocks.createResponse({
+        eventEmitter: require('events').EventEmitter
+      });
+      dataRetrieval(mockRequest, mockResponse);
+
+      mockResponse.on('end', () => {
+        let actualResponseBody = Object.keys(JSON.parse(mockResponse._getData()));
+        assert.deepEqual(actualResponseBody, [ ]);
+        done();
+      });
+    });
+  });
+
+  describe("#pendingTransactions", () => {
+    it("should GET /pendingTransactions", (done) => {
+      let mockRequest = httpMocks.createRequest({
+        method: "GET",
+        url: "/pendingTransactions"
+      });
+      let mockResponse = httpMocks.createResponse({
+        eventEmitter: require('events').EventEmitter
+      });
+      dataRetrieval(mockRequest, mockResponse);
+
+      mockResponse.on('end', () => {
+        let actualResponseBody = Object.keys(JSON.parse(mockResponse._getData()));
+        assert.deepEqual(actualResponseBody, [ ]);
+        done();
+      });
+    });
+  });
+
+  describe("#properties", () => {
+    it("should GET /properties", (done) => {
+      let mockRequest = httpMocks.createRequest({
+        method: "GET",
+        url: "/properties"
+      });
+      let mockResponse = httpMocks.createResponse({
+        eventEmitter: require('events').EventEmitter
+      });
+      dataRetrieval(mockRequest, mockResponse);
+
+      mockResponse.on('end', () => {
+        let actualResponseBody = Object.keys(JSON.parse(mockResponse._getData())[0]);
+        assert.deepEqual(actualResponseBody, [ 'propertyid', 'name', 'category', 'subcategory', 'data', 'url', 'precision' ]);
+        done();
+      });
+    });
+  });
+
+  describe("#transactions", () => {
+    it("should GET /transactions", (done) => {
+      let mockRequest = httpMocks.createRequest({
+        method: "GET",
+        url: "/transactions"
+      });
+      let mockResponse = httpMocks.createResponse({
+        eventEmitter: require('events').EventEmitter
+      });
+      dataRetrieval(mockRequest, mockResponse);
+
+      mockResponse.on('end', () => {
+        let actualResponseBody = Object.keys(JSON.parse(mockResponse._getData())[0]);
+        assert.deepEqual(actualResponseBody, [ 'txid', 'fee', 'sendingaddress', 'ismine', 'version', 'type_int', 'type', 'propertyid', 'precision', 'ecosystem', 'category', 'subcategory', 'propertyname', 'data', 'url', 'amount', 'valid', 'blockhash', 'blocktime', 'positioninblock', 'block', 'confirmations' ]);
+        done();
+      });
+    });
+  });
+
+  describe("#transactions", () => {
+    it("should GET /transactions", (done) => {
+      let mockRequest = httpMocks.createRequest({
+        method: "GET",
+        url: "/transactions"
+      });
+      let mockResponse = httpMocks.createResponse({
+        eventEmitter: require('events').EventEmitter
+      });
+      dataRetrieval(mockRequest, mockResponse);
+
+      mockResponse.on('end', () => {
+        let actualResponseBody = Object.keys(JSON.parse(mockResponse._getData())[0]);
+        assert.deepEqual(actualResponseBody, [ 'txid', 'fee', 'sendingaddress', 'ismine', 'version', 'type_int', 'type', 'propertyid', 'precision', 'ecosystem', 'category', 'subcategory', 'propertyname', 'data', 'url', 'amount', 'valid', 'blockhash', 'blocktime', 'positioninblock', 'block', 'confirmations' ]);
         done();
       });
     });

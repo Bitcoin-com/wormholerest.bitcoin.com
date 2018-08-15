@@ -376,15 +376,13 @@ router.get('/STO/:txid', config.dataRetrievalRateLimit13, (req, res, next) => {
       jsonrpc: "1.0",
       id:"whc_getsto",
       method: "whc_getsto",
-      params: params 
+      params: params
     }
   })
   .then((response) => {
-    console.log('ressss', response.data.result)
     res.json(response.data.result);
   })
   .catch((error) => {
-    console.log('errrrr', error.response.data.error.message)
     res.send(error.response.data.error.message);
   });
 });
