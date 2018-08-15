@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "info": {
     "description": "[Wormhole](http://wormhole.cash/) over HTTP",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "title": "WormholeREST",
     "license": {
       "name": "MIT",
@@ -518,7 +518,7 @@
         }
       }
     },
-    "/dataRetrieval/STO/{txid}/{recipientFilter}": {
+    "/dataRetrieval/STO/{txid}": {
       "get": {
         "tags": [
           "dataRetrieval"
