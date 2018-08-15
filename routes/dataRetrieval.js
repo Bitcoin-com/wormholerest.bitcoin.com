@@ -358,7 +358,13 @@ router.get('/seedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12,
   });
 });
 
-router.get('/STO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
+router.get('/STO/:txid', config.dataRetrievalRateLimit13, (req, res, next) => {
+  let params = [
+    req.params.txid
+  ];
+  if(req.query.recipientFilter) {
+    params.push(req.query.recipientFilter);
+  }
 
   WormholeHTTP({
     method: 'post',
@@ -370,16 +376,15 @@ router.get('/STO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req,
       jsonrpc: "1.0",
       id:"whc_getsto",
       method: "whc_getsto",
-      params: [
-        req.params.txid,
-        req.params.recipientFilter
-      ]
+      params: params 
     }
   })
   .then((response) => {
+    console.log('ressss', response.data.result)
     res.json(response.data.result);
   })
   .catch((error) => {
+    console.log('errrrr', error.response.data.error.message)
     res.send(error.response.data.error.message);
   });
 });
