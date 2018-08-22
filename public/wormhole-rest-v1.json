@@ -1721,14 +1721,14 @@
         }
       }
     },
-    "/transaction/partiCrowSale/{fromAddress}/{toAddress}/{amount}": {
+    "/transaction/participateCrowdSale/{fromAddress}/{toAddress}/{amount}": {
       "post": {
         "tags": [
           "transaction"
         ],
-        "summary": "partiCrowSale",
+        "summary": "participateCrowdSale",
         "description": "Create and broadcast a participate crowsale transaction.",
-        "operationId": "transactionPartiCrowSale",
+        "operationId": "transactionParticipateCrowdSale",
         "parameters": [
           {
             "name": "fromAddress",

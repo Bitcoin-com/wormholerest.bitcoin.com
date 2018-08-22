@@ -75,7 +75,7 @@ router.post('/burnBCHGetWHC/:amount', config.transactionRateLimit2, (req, res, n
   });
 });
 
-router.post('/partiCrowSale/:fromAddress/:toAddress/:amount', config.transactionRateLimit3, (req, res, next) => {
+router.post('/participateCrowdSale/:fromAddress/:toAddress/:amount', config.transactionRateLimit3, (req, res, next) => {
   let params = [
     req.params.fromAddress,
     req.params.toAddress,
