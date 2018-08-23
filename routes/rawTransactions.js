@@ -16,10 +16,11 @@ let config = {
   rawTransactionsRateLimit4: undefined,
   rawTransactionsRateLimit5: undefined,
   rawTransactionsRateLimit6: undefined,
+  rawTransactionsRateLimit7: undefined
 };
 
 let i = 1;
-while(i < 7) {
+while(i < 8) {
   config[`rawTransactionsRateLimit${i}`] = new RateLimit({
     windowMs: 60000, // 1 hour window
     delayMs: 0, // disable delaying - full speed until the max limit is reached
@@ -176,6 +177,36 @@ router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, 
       jsonrpc: "1.0",
       id:"whc_decodetransaction",
       method: "whc_decodetransaction",
+      params: params
+    }
+  })
+  .then((response) => {
+    res.json(response.data.result);
+  })
+  .catch((error) => {
+    res.send(error.response.data.error.message);
+  });
+});
+
+router.get('/create/:inputs/:outputs', config.rawTransactionsRateLimit7, (req, res, next) => {
+  let params = [
+    req.params.inputs,
+    req.params.outputs
+  ];
+  if(req.query.locktime) {
+    params.push(req.query.locktime);
+  }
+
+  WormholeHTTP({
+    method: 'post',
+    auth: {
+      username: username,
+      password: password
+    },
+    data: {
+      jsonrpc: "1.0",
+      id:"createrawtransaction",
+      method: "createrawtransaction",
       params: params
     }
   })

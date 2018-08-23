@@ -1428,6 +1428,64 @@
         }
       }
     },
+    "/rawTransactions/create/{inputs}/{outputs}": {
+      "post": {
+        "tags": [
+          "rawTransactions"
+        ],
+        "summary": "createRawTxChange",
+        "description": "Create a transaction spending the given inputs and creating new outputs.",
+        "operationId": "rawTransactionsCreate",
+        "parameters": [
+          {
+            "name": "inputs",
+            "in": "path",
+            "description": "A json array of json objects",
+            "required": true,
+            "example": "[{\"txid\":\"myid\",\"vout\":0}]",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "outputs",
+            "in": "path",
+            "description": "A json object with outputs",
+            "required": true,
+            "example": "{\"address\":0.01}",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "locktime",
+            "in": "query",
+            "description": "Raw locktime. Non-0 value also locktime-activates inputs",
+            "required": false,
+            "example": 9,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response"
+          },
+          "400": {
+            "description": "Received an invalid block height.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "status": 500,
+                  "message": "Received an invalid block height."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/rawTransactions/change/{rawTx}/{prevTxs}/{destination}/{fee}": {
       "post": {
         "tags": [
@@ -1728,7 +1786,7 @@
         ],
         "summary": "participateCrowdSale",
         "description": "Create and broadcast a participate crowsale transaction.",
-        "operationId": "transactionParticipateCrowdSale",
+        "operationId": "transaction   ParticipateCrowdSale",
         "parameters": [
           {
             "name": "fromAddress",
