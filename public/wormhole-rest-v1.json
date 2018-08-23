@@ -1611,7 +1611,7 @@
         }
       }
     },
-    "/rawTransactions/opReturn/{rawtx}/{txid}": {
+    "/rawTransactions/opReturn/{rawTx}/{payload}": {
       "post": {
         "tags": [
           "rawTransactions"
