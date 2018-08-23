@@ -1648,7 +1648,7 @@
         }
       }
     },
-    "/rawTransactions/reference/{rawTx}/{txid}": {
+    "/rawTransactions/reference/{rawTx}/{destination}": {
       "post": {
         "tags": [
           "rawTransactions"
