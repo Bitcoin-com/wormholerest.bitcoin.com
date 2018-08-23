@@ -1648,7 +1648,7 @@
         }
       }
     },
-    "/rawTransactions/reference/{rawtx}/{txid}": {
+    "/rawTransactions/reference/{rawTx}/{txid}": {
       "post": {
         "tags": [
           "rawTransactions"
@@ -1695,7 +1695,7 @@
         }
       }
     },
-    "/rawTransactions/decodeTransaction/{rawtx}": {
+    "/rawTransactions/decodeTransaction/{rawTx}": {
       "get": {
         "tags": [
           "rawTransactions"
