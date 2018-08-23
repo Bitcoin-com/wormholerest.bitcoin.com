@@ -1452,7 +1452,7 @@
             "in": "path",
             "description": "A json object with outputs",
             "required": true,
-            "example": "{\"address\":0.01}",
+            "example": "{}",
             "schema": {
               "type": "string"
             }
@@ -1462,7 +1462,7 @@
             "in": "query",
             "description": "Raw locktime. Non-0 value also locktime-activates inputs",
             "required": false,
-            "example": 9,
+            "example": 0,
             "schema": {
               "type": "number"
             }

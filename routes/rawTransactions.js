@@ -188,7 +188,7 @@ router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, 
   });
 });
 
-router.get('/create/:inputs/:outputs', config.rawTransactionsRateLimit7, (req, res, next) => {
+router.post('/create/:inputs/:outputs', config.rawTransactionsRateLimit7, (req, res, next) => {
   let params = [
     req.params.inputs,
     req.params.outputs
