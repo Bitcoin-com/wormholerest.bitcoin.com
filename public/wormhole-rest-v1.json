@@ -518,7 +518,7 @@
         }
       }
     },
-    "/dataRetrieval/STO/{txid}": {
+    "/dataRetrieval/STO/{txid}/{recipientFilter}": {
       "get": {
         "tags": [
           "dataRetrieval"
@@ -539,9 +539,9 @@
 					},
           {
             "name": "recipientFilter",
-            "in": "query",
+            "in": "path",
             "description": "A filter for recipients (wallet by default, '*' for all)",
-            "required": false,
+            "required": true,
             "example": "*",
             "schema": {
               "type": "string"
