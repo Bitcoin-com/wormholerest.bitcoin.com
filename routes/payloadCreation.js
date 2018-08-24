@@ -251,7 +251,7 @@ router.post('/managed/:ecosystem/:propertyPrecision/:previousId/:category/:subca
   });
 });
 
-router.post('/partiCrwoSale/:amount', config.payloadCreationRateLimit9, (req, res, next) => {
+router.post('/participateCrowdSale/:amount', config.payloadCreationRateLimit9, (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',

@@ -1243,19 +1243,19 @@
         }
       }
     },
-    "/payloadCreation/partiCrwoSale/{amount}": {
+    "/payloadCreation/participateCrowdSale/{amount}": {
       "post": {
         "tags": [
           "payloadCreation"
         ],
-        "summary": "partiCrwoSale",
-        "description": "Create the payload for a participate crowsale transaction",
-        "operationId": "payloadCreationPartiCrwoSale",
+        "summary": "participateCrowdSale",
+        "description": "Create the payload for a participate crowdsale transaction",
+        "operationId": "payloadCreationParticipateCrowdSale",
         "parameters": [
           {
             "name": "amount",
             "in": "path",
-            "description": "The amount of WHC to particrowsale",
+            "description": "The amount of WHC to participateCrowdSale",
             "required": true,
             "example": "100.0",
             "schema": {
