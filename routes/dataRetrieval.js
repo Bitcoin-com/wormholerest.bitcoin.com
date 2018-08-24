@@ -358,13 +358,11 @@ router.get('/seedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12,
   });
 });
 
-router.get('/STO/:txid', config.dataRetrievalRateLimit13, (req, res, next) => {
+router.get('/STO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
   let params = [
-    req.params.txid
+    req.params.txid,
+    req.params.recipientFilter
   ];
-  if(req.query.recipientFilter) {
-    params.push(req.query.recipientFilter);
-  }
 
   WormholeHTTP({
     method: 'post',
