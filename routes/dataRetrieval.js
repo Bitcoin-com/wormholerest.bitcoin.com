@@ -204,37 +204,6 @@ router.get('/currentConsensusHash', config.dataRetrievalRateLimit6, (req, res, n
   });
 });
 
-router.get('/feeShare', config.dataRetrievalRateLimit7, (req, res, next) => {
-  let params = [];
-  if(req.query.address) {
-    params.push(req.query.address);
-  }
-
-  if(req.query.ecosystem) {
-    params.push(parseInt(req.query.ecosystem));
-  }
-
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getfeeshare",
-      method: "whc_getfeeshare",
-      params: params
-    }
-  })
-  .then((response) => {
-    res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
-});
-
 router.get('/grants/:propertyId', config.dataRetrievalRateLimit8, (req, res, next) => {
 
   WormholeHTTP({
