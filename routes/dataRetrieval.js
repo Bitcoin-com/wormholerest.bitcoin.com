@@ -451,44 +451,4 @@ router.get('/properties', config.dataRetrievalRateLimit17, (req, res, next) => {
     res.send(error.response.data.error.message);
   });
 });
-
-router.get('/transactions', config.dataRetrievalRateLimit18, (req, res, next) => {
-  let params = [];
-  if(req.query.address) {
-    params.push(req.query.address);
-  }
-  if(req.query.count) {
-    params.push(req.query.count);
-  }
-  if(req.query.skip) {
-    params.push(req.query.skip);
-  }
-  if(req.query.startBlock) {
-    params.push(req.query.startBlock);
-  }
-  if(req.query.endBlock) {
-    params.push(req.query.endBlock);
-  }
-
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_listtransactions",
-      method: "whc_listtransactions",
-      params: params
-    }
-  })
-  .then((response) => {
-    res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
-});
-
 module.exports = router;

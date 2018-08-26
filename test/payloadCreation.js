@@ -153,11 +153,11 @@ describe("#payloadCreationRouter", () => {
     });
   });
 
-  describe("#partiCrwoSale", () => {
-    it("should POST /partiCrwoSale/:amount", (done) => {
+  describe("#participateCrowdSale", () => {
+    it("should POST /participateCrowdSale/:amount", (done) => {
       let mockRequest = httpMocks.createRequest({
         method: "POST",
-        url: "/partiCrwoSale/100.0"
+        url: "/participateCrowdSale/100.0"
       });
       let mockResponse = httpMocks.createResponse({
         eventEmitter: require('events').EventEmitter
