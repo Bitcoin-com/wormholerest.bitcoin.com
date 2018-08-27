@@ -48,7 +48,7 @@ let requestConfig = {
 };
 
 router.get('/', config.rawTransactionsRateLimit1, async (req, res, next) => {
-  res.json({ status: 'dataRetrieval' });
+  res.json({ status: 'rawTransactions' });
 });
 
 router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, async (req, res, next) => {
@@ -62,16 +62,9 @@ router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsR
     params.push(parseInt(req.query.position));
   }
 
-  WormholeHTTP()
-  .then((response) => {
-    res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
-  requestConfig.data.id = "whc_createpayload_burnbch";
-  requestConfig.data.method = "whc_createpayload_burnbch";
-  requestConfig.data.params = [ ];
+  requestConfig.data.id = "whc_createrawtx_change";
+  requestConfig.data.method = "whc_createrawtx_change";
+  requestConfig.data.params = params;
 
   try {
     let response = await WormholeHTTP(requestConfig);
@@ -82,33 +75,13 @@ router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsR
 });
 
 router.post('/input/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, async (req, res, next) => {
-
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createrawtx_input",
-      method: "whc_createrawtx_input",
-      params: [
-        req.params.rawTx,
-        req.params.txid,
-        parseInt(req.params.n)
-      ]
-    }
-  })
-  .then((response) => {
-    res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
-  requestConfig.data.id = "whc_createpayload_burnbch";
-  requestConfig.data.method = "whc_createpayload_burnbch";
-  requestConfig.data.params = [ ];
+  requestConfig.data.id = "whc_createrawtx_input";
+  requestConfig.data.method = "whc_createrawtx_input";
+  requestConfig.data.params = [
+    req.params.rawTx,
+    req.params.txid,
+    parseInt(req.params.n)
+  ];
 
   try {
     let response = await WormholeHTTP(requestConfig);
@@ -119,32 +92,12 @@ router.post('/input/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, async (r
 });
 
 router.post('/opReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, async (req, res, next) => {
-
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createrawtx_opreturn",
-      method: "whc_createrawtx_opreturn",
-      params: [
-        req.params.rawTx,
-        req.params.payload
-      ]
-    }
-  })
-  .then((response) => {
-    res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
-  requestConfig.data.id = "whc_createpayload_burnbch";
-  requestConfig.data.method = "whc_createpayload_burnbch";
-  requestConfig.data.params = [ ];
+  requestConfig.data.id = "whc_createrawtx_opreturn";
+  requestConfig.data.method = "whc_createrawtx_opreturn";
+  requestConfig.data.params = [
+    req.params.rawTx,
+    req.params.payload
+  ];
 
   try {
     let response = await WormholeHTTP(requestConfig);
@@ -175,7 +128,7 @@ router.post('/reference/:rawTx/:destination', config.rawTransactionsRateLimit5, 
   }
 });
 
-router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, async (req, res, next) => {
+router.post('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, async (req, res, next) => {
   let params = [
     req.params.rawTx
   ];
