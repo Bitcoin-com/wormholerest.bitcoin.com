@@ -47,11 +47,11 @@ let requestConfig = {
   }
 };
 
-router.get('/', config.rawTransactionsRateLimit1, (req, res, next) => {
+router.get('/', config.rawTransactionsRateLimit1, async (req, res, next) => {
   res.json({ status: 'dataRetrieval' });
 });
 
-router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, (req, res, next) => {
+router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, async (req, res, next) => {
   let params = [
     req.params.rawtx,
     JSON.parse(req.params.prevTxs),
@@ -81,7 +81,7 @@ router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsR
   }
 });
 
-router.post('/input/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, (req, res, next) => {
+router.post('/input/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, async (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -118,7 +118,7 @@ router.post('/input/:rawTx/:txid/:n', config.rawTransactionsRateLimit3, (req, re
   }
 });
 
-router.post('/opReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req, res, next) => {
+router.post('/opReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, async (req, res, next) => {
 
   WormholeHTTP({
     method: 'post',
@@ -154,7 +154,7 @@ router.post('/opReturn/:rawTx/:payload', config.rawTransactionsRateLimit4, (req,
   }
 });
 
-router.post('/reference/:rawTx/:destination', config.rawTransactionsRateLimit5, (req, res, next) => {
+router.post('/reference/:rawTx/:destination', config.rawTransactionsRateLimit5, async (req, res, next) => {
   let params = [
     req.params.rawTx,
     req.params.destination
@@ -175,7 +175,7 @@ router.post('/reference/:rawTx/:destination', config.rawTransactionsRateLimit5, 
   }
 });
 
-router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, res, next) => {
+router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, async (req, res, next) => {
   let params = [
     req.params.rawTx
   ];
@@ -198,7 +198,7 @@ router.get('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, (req, 
   }
 });
 
-router.post('/create/:inputs/:outputs', config.rawTransactionsRateLimit7, (req, res, next) => {
+router.post('/create/:inputs/:outputs', config.rawTransactionsRateLimit7, async (req, res, next) => {
   let params = [
     JSON.parse(req.params.inputs),
     JSON.parse(req.params.outputs)
