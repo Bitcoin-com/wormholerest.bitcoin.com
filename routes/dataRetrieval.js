@@ -47,408 +47,264 @@ while(i < 19) {
   i++;
 }
 
-router.get('/', config.dataRetrievalRateLimit1, (req, res, next) => {
+let requestConfig = {
+  method: 'post',
+  auth: {
+    username: username,
+    password: password
+  },
+  data: {
+    jsonrpc: "1.0"
+  }
+}
+
+router.get('/', config.dataRetrievalRateLimit1, async (req, res, next) => {
   res.json({ status: 'dataRetrieval' });
 });
 
-router.get('/balancesForAddress/:address', config.dataRetrievalRateLimit2, (req, res, next) => {
+router.get('/balancesForAddress/:address', config.dataRetrievalRateLimit2, async (req, res, next) => {
+  requestConfig.data.id = "whc_getallbalancesforaddress";
+  requestConfig.data.method = "whc_getallbalancesforaddress";
+  requestConfig.data.params = [
+    req.params.address
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getallbalancesforaddress",
-      method: "whc_getallbalancesforaddress",
-      params: [
-        req.params.address
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/balancesForId/:propertyId', config.dataRetrievalRateLimit2, (req, res, next) => {
+router.get('/balancesForId/:propertyId', config.dataRetrievalRateLimit2, async (req, res, next) => {
+  requestConfig.data.id = "whc_getallbalancesforid";
+  requestConfig.data.method = "whc_getallbalancesforid";
+  requestConfig.data.params = [
+    parseInt(req.params.propertyId)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getallbalancesforid",
-      method: "whc_getallbalancesforid",
-      params: [
-        parseInt(req.params.propertyId)
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/balance/:address/:propertyId', config.dataRetrievalRateLimit3, (req, res, next) => {
+router.get('/balance/:address/:propertyId', config.dataRetrievalRateLimit3, async (req, res, next) => {
+  requestConfig.data.id = "whc_getbalance";
+  requestConfig.data.method = "whc_getbalance";
+  requestConfig.data.params = [
+    req.params.address,
+    parseInt(req.params.propertyId)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getbalance",
-      method: "whc_getbalance",
-      params: [
-        req.params.address,
-        parseInt(req.params.propertyId)
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/balancesHash/:propertyId', config.dataRetrievalRateLimit4, (req, res, next) => {
+router.get('/balancesHash/:propertyId', config.dataRetrievalRateLimit4, async (req, res, next) => {
+  requestConfig.data.id = "whc_getbalanceshash";
+  requestConfig.data.method = "whc_getbalanceshash";
+  requestConfig.data.params = [
+    parseInt(req.params.propertyId)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getbalanceshash",
-      method: "whc_getbalanceshash",
-      params: [
-        parseInt(req.params.propertyId)
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/crowdSale/:propertyId', config.dataRetrievalRateLimit5, (req, res, next) => {
+router.get('/crowdSale/:propertyId', config.dataRetrievalRateLimit5, async (req, res, next) => {
   let verbose = false;
   if(req.query.verbose && req.query.verbose === 'true') {
     verbose = true;
   }
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getcrowdsale",
-      method: "whc_getcrowdsale",
-      params: [
-        parseInt(req.params.propertyId),
-        verbose
-      ]
-    }
-  })
-  .then((response) => {
+  requestConfig.data.id = "whc_getcrowdsale";
+  requestConfig.data.method = "whc_getcrowdsale";
+  requestConfig.data.params = [
+    parseInt(req.params.propertyId),
+    verbose
+  ];
+
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/currentConsensusHash', config.dataRetrievalRateLimit6, (req, res, next) => {
+router.get('/currentConsensusHash', config.dataRetrievalRateLimit6, async (req, res, next) => {
+  requestConfig.data.id = "whc_getcurrentconsensushash";
+  requestConfig.data.method = "whc_getcurrentconsensushash";
+  requestConfig.data.params = [ ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getcurrentconsensushash",
-      method: "whc_getcurrentconsensushash"
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/grants/:propertyId', config.dataRetrievalRateLimit8, (req, res, next) => {
+router.get('/grants/:propertyId', config.dataRetrievalRateLimit8, async (req, res, next) => {
+  requestConfig.data.id = "whc_getgrants";
+  requestConfig.data.method = "whc_getgrants";
+  requestConfig.data.params = [
+    parseInt(req.params.propertyId)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getgrants",
-      method: "whc_getgrants",
-      params: [
-        parseInt(req.params.propertyId),
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/info', config.dataRetrievalRateLimit9, (req, res, next) => {
+router.get('/info', config.dataRetrievalRateLimit9, async (req, res, next) => {
+  requestConfig.data.id = "whc_getinfo";
+  requestConfig.data.method = "whc_getinfo";
+  requestConfig.data.params = [ ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getinfo",
-      method: "whc_getinfo"
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/payload/:txid', config.dataRetrievalRateLimit10, (req, res, next) => {
+router.get('/payload/:txid', config.dataRetrievalRateLimit10, async (req, res, next) => {
+  requestConfig.data.id = "whc_getpayload";
+  requestConfig.data.method = "whc_getpayload";
+  requestConfig.data.params = [
+    req.params.txid,
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getpayload",
-      method: "whc_getpayload",
-      params: [
-        req.params.txid,
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/property/:propertyId', config.dataRetrievalRateLimit11, (req, res, next) => {
+router.get('/property/:propertyId', config.dataRetrievalRateLimit11, async (req, res, next) => {
+  requestConfig.data.id = "whc_getproperty";
+  requestConfig.data.method = "whc_getproperty";
+  requestConfig.data.params = [
+    parseInt(req.params.propertyId)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getproperty",
-      method: "whc_getproperty",
-      params: [
-        parseInt(req.params.propertyId)
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/seedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12, (req, res, next) => {
+router.get('/seedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12, async (req, res, next) => {
+  requestConfig.data.id = "whc_getseedblocks";
+  requestConfig.data.method = "whc_getseedblocks";
+  requestConfig.data.params = [
+    parseInt(req.params.startBlock),
+    parseInt(req.params.endBlock)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getseedblocks",
-      method: "whc_getseedblocks",
-      params: [
-        parseInt(req.params.startBlock),
-        parseInt(req.params.endBlock)
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/STO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, (req, res, next) => {
-  let params = [
+router.get('/STO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, async (req, res, next) => {
+  requestConfig.data.id = "whc_getsto";
+  requestConfig.data.method = "whc_getsto";
+  requestConfig.data.params = [
     req.params.txid,
     req.params.recipientFilter
   ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_getsto",
-      method: "whc_getsto",
-      params: params
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/transaction/:txid', config.dataRetrievalRateLimit14, (req, res, next) => {
+router.get('/transaction/:txid', config.dataRetrievalRateLimit14, async (req, res, next) => {
+  requestConfig.data.id = "whc_gettransaction";
+  requestConfig.data.method = "whc_gettransaction";
+  requestConfig.data.params = [
+    req.params.txid
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_gettransaction",
-      method: "whc_gettransaction",
-      params: [
-        req.params.txid
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/blockTransactions/:index', config.dataRetrievalRateLimit15, (req, res, next) => {
+router.get('/blockTransactions/:index', config.dataRetrievalRateLimit15, async (req, res, next) => {
+  requestConfig.data.id = "whc_listblocktransactions";
+  requestConfig.data.method = "whc_listblocktransactions";
+  requestConfig.data.params = [
+    parseInt(req.params.index)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_listblocktransactions",
-      method: "whc_listblocktransactions",
-      params: [
-        parseInt(req.params.index)
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/pendingTransactions', config.dataRetrievalRateLimit16, (req, res, next) => {
+router.get('/pendingTransactions', config.dataRetrievalRateLimit16, async (req, res, next) => {
   let params = [];
   if(req.query.address) {
     params.push(req.query.address);
   }
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_listpendingtransactions",
-      method: "whc_listpendingtransactions",
-      params: params
-    }
-  })
-  .then((response) => {
+
+  requestConfig.data.id = "whc_listpendingtransactions";
+  requestConfig.data.method = "whc_listpendingtransactions";
+  requestConfig.data.params = params;
+
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.get('/properties', config.dataRetrievalRateLimit17, (req, res, next) => {
+router.get('/properties', config.dataRetrievalRateLimit17, async (req, res, next) => {
+  requestConfig.data.id = "whc_listproperties";
+  requestConfig.data.method = "whc_listproperties";
+  requestConfig.data.params = [ ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_listproperties",
-      method: "whc_listproperties"
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 module.exports = router;

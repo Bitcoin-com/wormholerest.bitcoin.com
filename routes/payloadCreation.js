@@ -42,83 +42,65 @@ while(i < 14) {
   i++;
 }
 
-router.get('/', config.payloadCreationRateLimit1, (req, res, next) => {
+let requestConfig = {
+  method: 'post',
+  auth: {
+    username: username,
+    password: password
+  },
+  data: {
+    jsonrpc: "1.0"
+  }
+};
+
+router.get('/', config.payloadCreationRateLimit1, async (req, res, next) => {
   res.json({ status: 'payloadCreation' });
 });
 
-router.get('/burnBCH', config.payloadCreationRateLimit2, (req, res, next) => {
+router.get('/burnBCH', config.payloadCreationRateLimit2, async (req, res, next) => {
+  requestConfig.data.id = "whc_createpayload_burnbch";
+  requestConfig.data.method = "whc_createpayload_burnbch";
+  requestConfig.data.params = [ ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_burnbch",
-      method: "whc_createpayload_burnbch"
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/changeIssuer/:propertyId', config.payloadCreationRateLimit2, (req, res, next) => {
+router.post('/changeIssuer/:propertyId', config.payloadCreationRateLimit2, async (req, res, next) => {
+  requestConfig.data.id = "whc_createpayload_changeissuer";
+  requestConfig.data.method = "whc_createpayload_changeissuer";
+  requestConfig.data.params = [
+    parseInt(req.params.propertyId)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_changeissuer",
-      method: "whc_createpayload_changeissuer",
-      params: [
-        parseInt(req.params.propertyId)
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/closeCrowdSale/:propertyId', config.payloadCreationRateLimit3, (req, res, next) => {
+router.post('/closeCrowdSale/:propertyId', config.payloadCreationRateLimit3, async (req, res, next) => {
+  requestConfig.data.id = "whc_createpayload_closecrowdsale";
+  requestConfig.data.method = "whc_createpayload_closecrowdsale";
+  requestConfig.data.params = [
+    parseInt(req.params.propertyId)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_closecrowdsale",
-      method: "whc_createpayload_closecrowdsale",
-      params: [
-        parseInt(req.params.propertyId)
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, (req, res, next) => {
+router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, async (req, res, next) => {
   let params = [
     parseInt(req.params.propertyId),
     req.params.amount
@@ -127,156 +109,107 @@ router.post('/grant/:propertyId/:amount', config.payloadCreationRateLimit4, (req
     params.push(req.query.memo);
   }
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_grant",
-      method: "whc_createpayload_grant",
-      params: params
-    }
-  })
-  .then((response) => {
+  requestConfig.data.id = "whc_createpayload_grant";
+  requestConfig.data.method = "whc_createpayload_grant";
+  requestConfig.data.params = params;
+
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/crowdsale/:ecosystem/:propertyPrecision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.payloadCreationRateLimit6, (req, res, next) => {
+router.post('/crowdsale/:ecosystem/:propertyPrecision/:previousId/:category/:subcategory/:name/:url/:data/:propertyIdDesired/:tokensPerUnit/:deadline/:earlyBonus/:undefine/:totalNumber', config.payloadCreationRateLimit6, async (req, res, next) => {
+  requestConfig.data.id = "whc_createpayload_issuancecrowdsale";
+  requestConfig.data.method = "whc_createpayload_issuancecrowdsale";
+  requestConfig.data.params = [
+    parseInt(req.params.ecosystem),
+    parseInt(req.params.propertyPrecision),
+    parseInt(req.params.previousId),
+    req.params.category,
+    req.params.subcategory,
+    req.params.name,
+    req.params.url,
+    req.params.data,
+    parseInt(req.params.propertyIdDesired),
+    req.params.tokensPerUnit,
+    parseInt(req.params.deadline),
+    parseInt(req.params.earlyBonus),
+    parseInt(req.params.undefine),
+    req.params.totalNumber
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_issuancecrowdsale",
-      method: "whc_createpayload_issuancecrowdsale",
-      params: [
-        parseInt(req.params.ecosystem),
-        parseInt(req.params.propertyPrecision),
-        parseInt(req.params.previousId),
-        req.params.category,
-        req.params.subcategory,
-        req.params.name,
-        req.params.url,
-        req.params.data,
-        parseInt(req.params.propertyIdDesired),
-        req.params.tokensPerUnit,
-        parseInt(req.params.deadline),
-        parseInt(req.params.earlyBonus),
-        parseInt(req.params.undefine),
-        req.params.totalNumber
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/fixed/:ecosystem/:propertyPrecision/:previousId/:category/:subcategory/:name/:url/:data/:amount', config.payloadCreationRateLimit7, (req, res, next) => {
+router.post('/fixed/:ecosystem/:propertyPrecision/:previousId/:category/:subcategory/:name/:url/:data/:amount', config.payloadCreationRateLimit7, async (req, res, next) => {
+  requestConfig.data.id = "whc_createpayload_issuancefixed";
+  requestConfig.data.method = "whc_createpayload_issuancefixed";
+  requestConfig.data.params = [
+    parseInt(req.params.ecosystem),
+    parseInt(req.params.propertyPrecision),
+    parseInt(req.params.previousId),
+    req.params.category,
+    req.params.subcategory,
+    req.params.name,
+    req.params.url,
+    req.params.data,
+    req.params.amount
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_issuancefixed",
-      method: "whc_createpayload_issuancefixed",
-      params: [
-        parseInt(req.params.ecosystem),
-        parseInt(req.params.propertyPrecision),
-        parseInt(req.params.previousId),
-        req.params.category,
-        req.params.subcategory,
-        req.params.name,
-        req.params.url,
-        req.params.data,
-        req.params.amount
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/managed/:ecosystem/:propertyPrecision/:previousId/:category/:subcategory/:name/:url/:data', config.payloadCreationRateLimit8, (req, res, next) => {
+router.post('/managed/:ecosystem/:propertyPrecision/:previousId/:category/:subcategory/:name/:url/:data', config.payloadCreationRateLimit8, async (req, res, next) => {
+  requestConfig.data.id = "whc_createpayload_issuancemanaged";
+  requestConfig.data.method = "whc_createpayload_issuancemanaged";
+  requestConfig.data.params = [
+    parseInt(req.params.ecosystem),
+    parseInt(req.params.propertyPrecision),
+    parseInt(req.params.previousId),
+    req.params.category,
+    req.params.subcategory,
+    req.params.name,
+    req.params.url,
+    req.params.data
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_issuancemanaged",
-      method: "whc_createpayload_issuancemanaged",
-      params: [
-        parseInt(req.params.ecosystem),
-        parseInt(req.params.propertyPrecision),
-        parseInt(req.params.previousId),
-        req.params.category,
-        req.params.subcategory,
-        req.params.name,
-        req.params.url,
-        req.params.data
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/participateCrowdSale/:amount', config.payloadCreationRateLimit9, (req, res, next) => {
+router.post('/participateCrowdSale/:amount', config.payloadCreationRateLimit9, async (req, res, next) => {
+  requestConfig.data.id = "whc_createpayload_particrwosale";
+  requestConfig.data.method = "whc_createpayload_particrwosale";
+  requestConfig.data.params = [
+    req.params.amount
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_particrwosale",
-      method: "whc_createpayload_particrwosale",
-      params: [
-        req.params.amount
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, (req, res, next) => {
+router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, async (req, res, next) => {
   let params = [
     parseInt(req.params.propertyId),
     req.params.amount
@@ -284,79 +217,51 @@ router.post('/revoke/:propertyId/:amount', config.payloadCreationRateLimit10, (r
   if(req.query.memo) {
     params.push(req.query.memo);
   }
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_revoke",
-      method: "whc_createpayload_revoke",
-      params: params
-    }
-  })
-  .then((response) => {
+
+  requestConfig.data.id = "whc_createpayload_revoke";
+  requestConfig.data.method = "whc_createpayload_revoke";
+  requestConfig.data.params = params;
+
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/sendAll/:ecosystem', config.payloadCreationRateLimit11, (req, res, next) => {
+router.post('/sendAll/:ecosystem', config.payloadCreationRateLimit11, async (req, res, next) => {
+  requestConfig.data.id = "whc_createpayload_sendall";
+  requestConfig.data.method = "whc_createpayload_sendall";
+  requestConfig.data.params = [
+    parseInt(req.params.ecosystem)
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_sendall",
-      method: "whc_createpayload_sendall",
-      params: [
-        parseInt(req.params.ecosystem)
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/simpleSend/:propertyId/:amount', config.payloadCreationRateLimit12, (req, res, next) => {
+router.post('/simpleSend/:propertyId/:amount', config.payloadCreationRateLimit12, async (req, res, next) => {
+  requestConfig.data.id = "whc_createpayload_simplesend";
+  requestConfig.data.method = "whc_createpayload_simplesend";
+  requestConfig.data.params = [
+    parseInt(req.params.propertyId),
+    req.params.amount
+  ];
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_simplesend",
-      method: "whc_createpayload_simplesend",
-      params: [
-        parseInt(req.params.propertyId),
-        req.params.amount
-      ]
-    }
-  })
-  .then((response) => {
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
-router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, (req, res, next) => {
+router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, async (req, res, next) => {
   let params = [
     parseInt(req.params.propertyId),
     req.params.amount
@@ -365,25 +270,16 @@ router.post('/STO/:propertyId/:amount', config.payloadCreationRateLimit13, (req,
     params.push(parseInt(req.query.distributionProperty));
   }
 
-  WormholeHTTP({
-    method: 'post',
-    auth: {
-      username: username,
-      password: password
-    },
-    data: {
-      jsonrpc: "1.0",
-      id:"whc_createpayload_sto",
-      method: "whc_createpayload_sto",
-      params: params
-    }
-  })
-  .then((response) => {
+  requestConfig.data.id = "whc_createpayload_sto";
+  requestConfig.data.method = "whc_createpayload_sto";
+  requestConfig.data.params = params;
+
+  try {
+    let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
-  })
-  .catch((error) => {
-    res.send(error.response.data.error.message);
-  });
+  } catch (error) {
+    res.status(500).send(error.response.data.error.message);
+  }
 });
 
 module.exports = router;
