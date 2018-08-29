@@ -1,6 +1,6 @@
 {
-  "name": "rest-cloud",
-  "version": "0.5.1",
+  "name": "wormholerest.bitcoin.com",
+  "version": "0.5.2",
   "private": true,
   "scripts": {
     "start": "node app.js",
@@ -8,7 +8,7 @@
     "test": "nyc mocha --require babel-core/register --timeout 5000"
   },
   "engines": {
-    "node": ">=10.3.0"
+    "node": ">=8.11.3"
   },
   "dependencies": {
     "axios": "^0.18.0",

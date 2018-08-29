@@ -109,7 +109,7 @@ describe("#rawTransactionsRouter", () => {
 
       mockResponse.on('end', () => {
         let actualResponseBody = mockResponse._getData();
-        assert.equal(actualResponseBody, 'Not a Master Protocol transaction');
+        assert.equal(actualResponseBody.message, 'Not a Master Protocol transaction');
         done();
       });
     });
