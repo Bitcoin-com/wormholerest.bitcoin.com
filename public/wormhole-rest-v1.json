@@ -1572,6 +1572,36 @@
           }
         }
       }
+    },
+    "/rawtransactions/sendRawTransaction/{hex}": {
+      "post": {
+        "tags": [
+          "rawTransactions"
+        ],
+        "summary": "Submits raw transaction to local node and network.",
+        "description": "Submits raw transaction (serialized, hex-encoded) to local node and network. Also see createrawtransaction and signrawtransaction calls.",
+        "operationId": "sendRawTransaction",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hex",
+            "description": "The hex string of the raw transaction",
+            "required": true,
+            "example": "01000000010000000000000000000000000000000000000000000000000000000000000000ffffffff0704ffff001d0104ffffffff0100f2052a0100000043410496b538e853519c726a2c91e61ec11600ae1390813a627c66fb8be7947be63c52da7589379515d4e0a604f8141781e62294721166bf621e73a82cbf2342c858eeac00000000",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Transaction not found"
+          }
+        }
+      }
     }
   },
   "servers": [
