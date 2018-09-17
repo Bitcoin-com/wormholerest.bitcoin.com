@@ -257,16 +257,12 @@ router.post(
 );
 
 router.post(
-  "/sendAll/:from/:to/:ecosystem",
+  "/sendAll/:ecosystem",
   config.payloadCreationRateLimit11,
   async (req, res, next) => {
     requestConfig.data.id = "whc_createpayload_sendall";
     requestConfig.data.method = "whc_createpayload_sendall";
-    requestConfig.data.params = [
-      req.params.from,
-      req.params.to,
-      parseInt(req.params.ecosystem)
-    ];
+    requestConfig.data.params = [parseInt(req.params.ecosystem)];
 
     try {
       let response = await WormholeHTTP(requestConfig);
