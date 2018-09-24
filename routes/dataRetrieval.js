@@ -73,7 +73,8 @@ router.get('/balancesForAddress/:address', config.dataRetrievalRateLimit2, async
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -88,7 +89,8 @@ router.get('/balancesForId/:propertyId', config.dataRetrievalRateLimit2, async (
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -104,7 +106,7 @@ router.get('/balance/:address/:propertyId', config.dataRetrievalRateLimit3, asyn
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -119,7 +121,8 @@ router.get('/balancesHash/:propertyId', config.dataRetrievalRateLimit4, async (r
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -140,7 +143,8 @@ router.get('/crowdSale/:propertyId', config.dataRetrievalRateLimit5, async (req,
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -153,7 +157,8 @@ router.get('/currentConsensusHash', config.dataRetrievalRateLimit6, async (req, 
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -168,7 +173,8 @@ router.get('/grants/:propertyId', config.dataRetrievalRateLimit8, async (req, re
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -181,7 +187,8 @@ router.get('/info', config.dataRetrievalRateLimit9, async (req, res, next) => {
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -196,7 +203,8 @@ router.get('/payload/:txid', config.dataRetrievalRateLimit10, async (req, res, n
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -211,7 +219,8 @@ router.get('/property/:propertyId', config.dataRetrievalRateLimit11, async (req,
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -227,7 +236,8 @@ router.get('/seedBlocks/:startBlock/:endBlock', config.dataRetrievalRateLimit12,
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -243,7 +253,8 @@ router.get('/STO/:txid/:recipientFilter', config.dataRetrievalRateLimit13, async
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -258,7 +269,8 @@ router.get('/transaction/:txid', config.dataRetrievalRateLimit14, async (req, re
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -273,7 +285,8 @@ router.get('/blockTransactions/:index', config.dataRetrievalRateLimit15, async (
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -291,7 +304,8 @@ router.get('/pendingTransactions', config.dataRetrievalRateLimit16, async (req, 
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 
@@ -304,7 +318,8 @@ router.get('/properties', config.dataRetrievalRateLimit17, async (req, res, next
     let response = await WormholeHTTP(requestConfig);
     res.json(response.data.result);
   } catch (error) {
-    res.status(500).send(error.response.data.error);
+    console.log(error)
+    res.status(500).send('Internal server error');
   }
 });
 module.exports = router;
