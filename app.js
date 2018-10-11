@@ -1,19 +1,14 @@
 let express = require('express');
 let path = require('path');
-let favicon = require('serve-favicon');
+
 let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
-let basicAuth = require('express-basic-auth');
 let helmet = require('helmet');
-let RateLimit = require('express-rate-limit');
-let axios = require('axios');
+
 let debug = require('debug')('rest-cloud:server');
 let http = require('http');
-let BitcoinCashZMQDecoder = require('bitcoincash-zmq-decoder');
 
-let zmq = require('zeromq')
-  , sock = zmq.socket('sub');
 
 let swStats = require('swagger-stats');
 let apiSpec = require('./public/wormhole-rest-v1.json');
@@ -43,19 +38,11 @@ app.use("/public", express.static(__dirname + "/public"));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(bodyParser.json());
+app.use(bodyParser.json({limit: '10mb'}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-//
-// let username = process.env.USERNAME;
-// let password = process.env.PASSWORD;
-//
-// app.use(basicAuth(
-//   {
-//     users: { username: password }
-//   }
-// ));
+
 
 // Make io accessible to our router
 app.use(function (req, res, next) {
@@ -105,33 +92,7 @@ app.set('port', port);
 //
 let server = http.createServer(app);
 let io = require('socket.io').listen(server);
-//
-// io.on('connection', (socket) => {
-//   console.log("Socket Connected")
-//
-//   socket.on('disconnect', () => {
-//     console.log("Socket Disconnected")
-//   })
-// });
 
-// let bitcoincashZmqDecoder =  new BitcoinCashZMQDecoder(process.env.NETWORK);
-//
-// sock.connect(`tcp://${process.env.ZEROMQ_URL}:${process.env.ZEROMQ_PORT}`);
-// sock.subscribe('raw');
-//
-// sock.on('message', (topic, message) => {
-//   let decoded = topic.toString('ascii');
-//   if (decoded === 'rawtx') {
-//     let txd = bitcoincashZmqDecoder.decodeTransaction(message);
-//     io.emit('transactions', JSON.stringify(txd, null, 2));
-//   } else if (decoded === 'rawblock') {
-//     let blck = bitcoincashZmqDecoder.decodeBlock(message);
-//     io.emit('blocks', JSON.stringify(blck, null, 2));
-//   }
-// });
-/**
- * Listen on provided port, on all network interfaces.
- */
 
 server.listen(port);
 server.on('error', onError);

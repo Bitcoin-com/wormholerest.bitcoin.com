@@ -20,15 +20,17 @@ let config = {
 };
 
 let i = 1;
-while(i < 8) {
+while (i < 8) {
   config[`rawTransactionsRateLimit${i}`] = new RateLimit({
     windowMs: 60000, // 1 hour window
     delayMs: 0, // disable delaying - full speed until the max limit is reached
     max: 60, // start blocking after 60 requests
-    handler: function (req, res, /*next*/) {
+    handler: function (req, res, /*next*/ ) {
       res.format({
         json: function () {
-          res.status(500).json({ error: 'Too many requests. Limits are 60 requests per minute.' });
+          res.status(500).json({
+            error: 'Too many requests. Limits are 60 requests per minute.'
+          });
         }
       });
     }
@@ -48,7 +50,32 @@ let requestConfig = {
 };
 
 router.get('/', config.rawTransactionsRateLimit1, async (req, res, next) => {
-  res.json({ status: 'rawTransactions' });
+  res.json({
+    status: 'rawTransactions'
+  });
+});
+
+router.post('/change', config.rawTransactionsRateLimit2, async (req, res, next) => {
+  let params = [
+    req.body.rawtx,
+    req.body.prevTxs,
+    req.body.destination,
+    parseFloat(req.body.fee)
+  ];
+  if (req.body.position) {
+    params.push(parseInt(req.body.position));
+  }
+
+  requestConfig.data.id = "whc_createrawtx_change";
+  requestConfig.data.method = "whc_createrawtx_change";
+  requestConfig.data.params = params;
+
+  try {
+    let response = await WormholeHTTP(requestConfig);
+    res.json(response.data.result);
+  } catch (error) {
+    res.status(500).send(error.response.data.error);
+  }
 });
 
 router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsRateLimit2, async (req, res, next) => {
@@ -58,7 +85,7 @@ router.post('/change/:rawtx/:prevTxs/:destination/:fee', config.rawTransactionsR
     req.params.destination,
     parseFloat(req.params.fee)
   ];
-  if(req.query.position) {
+  if (req.query.position) {
     params.push(parseInt(req.query.position));
   }
 
@@ -112,7 +139,7 @@ router.post('/reference/:rawTx/:destination', config.rawTransactionsRateLimit5, 
     req.params.rawTx,
     req.params.destination
   ];
-  if(req.query.amount) {
+  if (req.query.amount) {
     params.push(req.query.amount);
   }
 
@@ -132,10 +159,10 @@ router.post('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, async
   let params = [
     req.params.rawTx
   ];
-  if(req.query.prevTxs) {
+  if (req.query.prevTxs) {
     params.push(JSON.parse(req.query.prevTxs));
   }
-  if(req.query.height) {
+  if (req.query.height) {
     params.push(req.query.height);
   }
 
@@ -151,12 +178,12 @@ router.post('/decodeTransaction/:rawTx', config.rawTransactionsRateLimit6, async
   }
 });
 
-router.post('/create/:inputs/:outputs', config.rawTransactionsRateLimit7, async (req, res, next) => {
+router.post('/create', config.rawTransactionsRateLimit7, async (req, res, next) => {
   let params = [
-    JSON.parse(req.params.inputs),
-    JSON.parse(req.params.outputs)
+    req.body.inputs,
+    req.body.outputs
   ];
-  if(req.query.locktime) {
+  if (req.query.locktime) {
     params.push(req.query.locktime);
   }
 
@@ -172,10 +199,10 @@ router.post('/create/:inputs/:outputs', config.rawTransactionsRateLimit7, async 
   }
 });
 
-router.post('/sendRawTransaction/:hex', config.rawTransactionsRateLimit5, (req, res, next) => {
+router.post('/sendRawTransaction', config.rawTransactionsRateLimit5, (req, res, next) => {
   try {
-    let transactions = JSON.parse(req.params.hex);
-    if(transactions.length > 20) {
+    let transactions = JSON.parse(req.body.hex);
+    if (transactions.length > 20) {
       res.json({
         error: 'Array too large. Max 20 transactions'
       });
@@ -184,6 +211,46 @@ router.post('/sendRawTransaction/:hex', config.rawTransactionsRateLimit5, (req, 
     let result = [];
     transactions = transactions.map((transaction) => {
       return WormholeHTTP({
+          method: 'post',
+          auth: {
+            username: username,
+            password: password
+          },
+          data: {
+            jsonrpc: "1.0",
+            id: "sendrawtransaction",
+            method: "sendrawtransaction",
+            params: [
+              transaction
+            ]
+          }
+        })
+        .catch(error => {
+          try {
+            return {
+              data: {
+                result: error.response.data.error.message
+              }
+            };
+          } catch (ex) {
+            return {
+              data: {
+                result: "unknown error"
+              }
+            };
+          }
+        })
+    })
+    axios.all(transactions)
+      .then(axios.spread((...args) => {
+        for (let i = 0; i < args.length; i++) {
+          let parsed = args[i].data.result;
+          result.push(parsed);
+        }
+        res.json(result);
+      }));
+  } catch (error) {
+    WormholeHTTP({
         method: 'post',
         auth: {
           username: username,
@@ -191,60 +258,94 @@ router.post('/sendRawTransaction/:hex', config.rawTransactionsRateLimit5, (req, 
         },
         data: {
           jsonrpc: "1.0",
-          id:"sendrawtransaction",
+          id: "sendrawtransaction",
           method: "sendrawtransaction",
           params: [
-            transaction
+            req.params.hex
           ]
         }
       })
-      .catch(error => {
-        try {
-          return {
-            data: {
-              result: error.response.data.error.message
-            }
-          };
-        } catch (ex) {
-          return {
-            data: {
-              result: "unknown error"
-            }
-          };
-        }
+      .then((response) => {
+        res.json(response.data.result);
       })
+      .catch((error) => {
+        res.send(error.response.data.error.message);
+      });
+  }
+});
+
+router.post('/sendRawTransaction/:hex', config.rawTransactionsRateLimit5, (req, res, next) => {
+  try {
+    let transactions = JSON.parse(req.params.hex);
+    if (transactions.length > 20) {
+      res.json({
+        error: 'Array too large. Max 20 transactions'
+      });
+    }
+
+    let result = [];
+    transactions = transactions.map((transaction) => {
+      return WormholeHTTP({
+          method: 'post',
+          auth: {
+            username: username,
+            password: password
+          },
+          data: {
+            jsonrpc: "1.0",
+            id: "sendrawtransaction",
+            method: "sendrawtransaction",
+            params: [
+              transaction
+            ]
+          }
+        })
+        .catch(error => {
+          try {
+            return {
+              data: {
+                result: error.response.data.error.message
+              }
+            };
+          } catch (ex) {
+            return {
+              data: {
+                result: "unknown error"
+              }
+            };
+          }
+        })
     })
     axios.all(transactions)
-    .then(axios.spread((...args) => {
-      for (let i = 0; i < args.length; i++) {
-        let parsed = args[i].data.result;
-        result.push(parsed);
-      }
-      res.json(result);
-    }));
-  }
-  catch(error) {
+      .then(axios.spread((...args) => {
+        for (let i = 0; i < args.length; i++) {
+          let parsed = args[i].data.result;
+          result.push(parsed);
+        }
+        res.json(result);
+      }));
+  } catch (error) {
     WormholeHTTP({
-      method: 'post',
-      auth: {
-        username: username,
-        password: password
-      },
-      data: {
-        jsonrpc: "1.0",
-        id:"sendrawtransaction",
-        method: "sendrawtransaction",
-        params: [
-          req.params.hex
-        ]
-      }
-    })
-    .then((response) => {
-      res.json(response.data.result);
-    })
-    .catch((error) => {
-      res.send(error.response.data.error.message);
-    });
+        method: 'post',
+        auth: {
+          username: username,
+          password: password
+        },
+        data: {
+          jsonrpc: "1.0",
+          id: "sendrawtransaction",
+          method: "sendrawtransaction",
+          params: [
+            req.params.hex
+          ]
+        }
+      })
+      .then((response) => {
+        res.json(response.data.result);
+      })
+      .catch((error) => {
+        res.send(error.response.data.error.message);
+      });
   }
 });
 
